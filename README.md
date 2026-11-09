@@ -90,6 +90,23 @@ repository must carry: the repository, the crate, the features attaching the
 dependency, and the dependency. Where a crate asks of another a feature the
 other's set lacks, it names them and writes nothing.
 
+A crate is built from its source without what the build never reads
+(`crate-source.nix`), for a member and for a git crate alike: in each directory
+holding a Cargo.toml, `tests`, `benches`, `examples`, `.beads`, `.github`,
+`Cargo.lock`, `Cargo.nix`, `crate-hashes.json`, `flake.nix`, `flake.lock`,
+`rust-toolchain.toml`, `.gitignore` and Markdown are left out; `src/`,
+`build.rs` and every other file stay, for a crate may `include_str!` or its
+build script may read them. The remaining tree is copied to the store at
+evaluation (`builtins.path`, named for the crate and its version), so its path
+is decided by its content alone: the same crate at two commits that differ only
+in a test, a README, a lock or a flake is one path and one build, and a crate
+built in its own repository is the same path as that commit taken as a git
+dependency. The fetchgit stays a fixed-output fetch; the copy is made over its
+result, which is realised at evaluation, so the evaluation runs where the fetch
+may. A root package is built as a git crate is, found by name in its source.
+A member's test build reads its whole source, for a test may read the
+repository's files.
+
 `memberChecks` and `extraChecks` are functions of the build context (below)
 with `workspace`, the imported Cargo.nix, `tests`, each member's test build,
 `check`, the base's check of a member under a feature set

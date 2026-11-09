@@ -63,27 +63,39 @@ let
     import ./crate-builds.nix context { inherit generated buildRustCrateForPkgs; };
 
   members = generated.workspaceMembers;
+  identity = import ./crate-identity.nix { inherit lib; };
 
   buildCrate = fromSet (p: (buildRustCrateForPkgs p).override { defaultCrateOverrides = buildOverrides; });
 
-  # A member's build reads its source without tests/, so an edit to an
-  # integration test rebuilds only the member's test build and check, never
-  # the member or its dependents. Its test build reads the whole source.
-  withoutTests =
-    source:
-    let
-      root = toString (source.origSrc or source);
-    in
-    lib.cleanSourceWith {
-      src = source;
-      filter = path: _: path != "${root}/tests" && !lib.hasPrefix "${root}/tests/" path;
-    };
+  # A crate is built from its source without what the build never reads
+  # (crate-source.nix): a member's, and a git crate's, so a member and the same
+  # commit as a git dependency are one path, and an edit to a test, a README or
+  # a flake rebuilds no crate. A member's test build reads its whole source.
+  packaged = import ./crate-source.nix { inherit lib; };
   buildOverrides =
     crateOverrides
     // lib.mapAttrs (
       name: _: attributes:
-      (crateOverrides.${name} or (_: { })) attributes // { src = withoutTests attributes.src; }
-    ) members;
+      (crateOverrides.${name} or (_: { })) attributes
+      // {
+        src = packaged attributes;
+      }
+      # A root package is found by name in its source, as a git crate is, so
+      # it and the same commit taken as a git dependency are one build.
+      // lib.optionalAttrs (toString (attributes.src.origSrc or attributes.src) == toString source) {
+        workspace_member = null;
+      }
+    ) members
+    // lib.listToAttrs (
+      map (
+        crate:
+        lib.nameValuePair crate.crateName (
+          attributes:
+          (crateOverrides.${crate.crateName} or (_: { })) attributes
+          // lib.optionalAttrs (identity.isGit attributes) { src = packaged attributes; }
+        )
+      ) (lib.filter identity.isGit (lib.attrValues generated.internal.crates))
+    );
 
   # The member's crate built with its tests under a feature set, as
   # `cargo test -p <member> --features …` builds it: its library and binaries
