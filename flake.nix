@@ -99,6 +99,7 @@
         crate-version-set-one-revision = import ./crate-version-set-test.nix contexts.${system} {
           generator = self.packages.${system}.crate-version-set;
         };
+        crate-features-named-sets = import ./crate-features-test.nix contexts.${system};
       });
 
       packages = lib.genAttrs systems (
@@ -119,7 +120,8 @@
           } (builtins.readFile ./crate-version-set.py);
           # Writes crate-features.json, one feature set per registry crate
           # version and per git crate version, from what the active
-          # repositories' Cargo.nix resolve:
+          # repositories' Cargo.nix resolve, keeping each crate's named sets,
+          # written by hand:
           #   nix run github:LiGoldragon/build-base#crate-feature-set -- <repository>/Cargo.nix ...
           crate-feature-set =
             pkgs.writers.writePython3Bin "crate-feature-set" { flakeIgnore = [ "E501" ]; }

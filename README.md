@@ -61,10 +61,10 @@ the set is generated when the list is empty. `checks.crate-version-set-one-revis
 proves the refusal on a fixture of two repositories locking one git crate
 version at two revisions.
 
-The base holds, beside it, one feature set for every such crate,
-`crate-features.json`, `{ "registry": …, "git": … }`: by crate and version in
-each map (a git crate has one revision per version, so no revision keys it),
-the union over every revision the given Cargo.nix files lock, the features it is built with
+The base holds, beside it, one feature set for every such crate, or the named
+sets below, `crate-features.json`, `{ "registry": …, "git": … }`: by crate and
+version in each map (a git crate has one revision per version, so no revision
+keys it), the union over every revision the given Cargo.nix files lock, the features it is built with
 (`features`) and the optional dependencies they attach (`attaches`). It
 admits no exception: where the union attaches an optional dependency some
 repository builds the crate without, that repository carries the edge, in
@@ -84,8 +84,31 @@ whose Cargo.nix resolves, for a crate it builds, a version or a git revision
 the set lacks or a feature it does not hold, or lacks an optional dependency
 the set's features attach, naming each crate. What a Cargo.nix resolves is
 what crate2nix gives each crate when every member is built with all its
-features and its dev-dependencies (`resolved-features.nix`). The set is
-derived, never written by hand:
+features and its dev-dependencies (`resolved-features.nix`), member by member.
+
+A feature is an input: a crate built with and without one is two builds. Where
+a vision line places a feature per consumer, a crate holds named sets in place
+of its union, written by hand in `crate-features.json`, each a deliberate entry:
+
+```json
+"signal": { "10.4.1": { "sets": [
+  { "name": "plain", "features": [ … ], "attaches": [ … ],
+    "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\"" },
+  { "name": "datom", "features": [ "datom", … ], "attaches": [ … ], "vision": "…" }
+] } }
+```
+
+Every crate with named sets lists the same names in the same order. A build,
+a member's, a test build, doc or clippy, takes the first name whose sets hold
+what it resolves for every crate with named sets, and under that name each
+such crate is built with its set of the name and every other crate with its
+union over dependencies built under the same name, so a Nexus's signal and a
+CLI's are two builds, each one store path everywhere, and no build links
+both. `checks.crate-features` refuses a workspace a member of which resolves a
+crate with named sets as no listed set holds, naming the member, the crate,
+its features and the listed sets, or as no one name holds for all of them, or
+lacks an optional dependency a set it may be built with attaches. The set is
+derived, its named sets kept as written:
 
 ```sh
 nix run github:LiGoldragon/build-base#crate-feature-set -- <repository>/Cargo.nix ...
@@ -94,8 +117,16 @@ nix run github:LiGoldragon/build-base#crate-feature-set -- <repository>/Cargo.ni
 writes `crate-features.json` from the given workspaces, each named by its
 directory, as the union of what each resolves, and names each edge a
 repository must carry: the repository, the crate, the features attaching the
-dependency, and the dependency. Where a crate asks of another a feature the
-other's set lacks, it names them and writes nothing.
+dependency, and the dependency. It keeps the named sets the file holds,
+writing their `attaches`, and never adds one: where a member resolves a crate
+with named sets as no listed set holds, or as no one name holds for all of
+them, it names the member, the crates, their features and the listed sets, and
+writes nothing; named sets of a crate no workspace resolves are dropped, and
+named. Where a crate asks of another, under any name, a feature the other's
+set of that name lacks, it names them and writes nothing: a crate whose union
+passes a per-consumer feature on takes named sets itself.
+`checks.crate-features-named-sets` proves the check on fixtures: a set not
+listed is refused, a listed second set passes.
 
 A crate is built from its source without what the build never reads
 (`crate-source.nix`), for a member and for a git crate alike: in each directory
@@ -114,7 +145,9 @@ may. A root package is built as a git crate is, found by name in its source.
 A member's test build reads its whole source, for a test may read the
 repository's files.
 
-`memberChecks` and `extraChecks` are functions of the build context (below)
+`memberChecks` and `extraChecks` are functions of the build context (below),
+its `buildRustCrateForPkgs` replaced by `buildRustCrateForPkgsFor`, the function
+building the crates of one build from the feature set (below),
 with `workspace`, the imported Cargo.nix, `tests`, each member's test build,
 `check`, the base's check of a member under a feature set
 (`check "member" [ "default" "feature" ]`), and `doc`, rustdoc over a member's
@@ -163,8 +196,10 @@ cargoNixCheck {
 `crate2nix`, `buildRustCrateForPkgs` and `cargoNixCheck` for a flake that needs
 more, and `lib.workspace.<system>`, given the same arguments as
 `workspaceOutputs`, is one system's workspace, `packages`, `tests`, `checks`,
-`devShell`, and `workspace` and `buildRustCrateForPkgs`, the imported
-Cargo.nix and the function that builds its crates from the feature set, for a
-flake that composes its own outputs; the context's own `buildRustCrateForPkgs`
+`devShell`, and `workspace` and `buildRustCrateForPkgsFor`, the imported
+Cargo.nix and, given `{ packageId; features; runTests; }`, the function that
+builds the crates of that build from the feature set under the set name it
+takes, for a flake that composes its own outputs
+(`builtRustCratesWithFeatures { …; buildRustCrateForPkgsFunc = buildRustCrateForPkgsFor { … }; }`); the context's own `buildRustCrateForPkgs`
 knows no Cargo.nix and builds a crate as it is resolved. Cargo stays the
 local loop: `nix develop`.
