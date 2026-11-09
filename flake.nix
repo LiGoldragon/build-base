@@ -97,23 +97,25 @@
         {
           toolchain = contexts.${system}.toolchain;
           crate2nix = contexts.${system}.crate2nix;
-          # Writes third-party-versions.json from the active repositories'
-          # aligned locks, or names the crates they misalign on:
-          #   nix run github:LiGoldragon/build-base#third-party-version-set -- <Cargo.lock ...>
-          third-party-version-set = pkgs.writers.writePython3Bin "third-party-version-set" {
+          # Writes crate-versions.json from the active repositories' locks,
+          # the registry crates and the git crates they take, or names the
+          # registry crates they misalign on:
+          #   nix run github:LiGoldragon/build-base#crate-version-set -- <Cargo.lock ...>
+          crate-version-set = pkgs.writers.writePython3Bin "crate-version-set" {
             flakeIgnore = [ "E501" ];
-          } (builtins.readFile ./third-party-version-set.py);
-          # Writes third-party-features.json, one feature set per third-party
-          # crate, from what the active repositories' Cargo.nix resolve:
-          #   nix run github:LiGoldragon/build-base#third-party-feature-set -- <repository>/Cargo.nix ...
-          third-party-feature-set =
-            pkgs.writers.writePython3Bin "third-party-feature-set" { flakeIgnore = [ "E501" ]; }
+          } (builtins.readFile ./crate-version-set.py);
+          # Writes crate-features.json, one feature set per registry crate
+          # version and per git crate revision, from what the active
+          # repositories' Cargo.nix resolve:
+          #   nix run github:LiGoldragon/build-base#crate-feature-set -- <repository>/Cargo.nix ...
+          crate-feature-set =
+            pkgs.writers.writePython3Bin "crate-feature-set" { flakeIgnore = [ "E501" ]; }
               (
                 builtins.replaceStrings [ "@resolver@" "@nixpkgs@" "@system@" ] [
-                  "${./resolved-features.nix}"
+                  "${self}/resolved-features.nix"
                   "${pkgs.path}"
                   system
-                ] (builtins.readFile ./third-party-feature-set.py)
+                ] (builtins.readFile ./crate-feature-set.py)
               );
         }
       );

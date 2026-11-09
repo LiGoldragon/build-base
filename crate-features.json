@@ -1,0 +1,1924 @@
+{
+  "git": {
+    "datom-codec": {
+      "0.32.2": {
+        "4dff16b4f7412febc3b71aac8b49680cd20988cb": {
+          "attaches": [
+            "rkyv"
+          ],
+          "features": [
+            "default",
+            "dep:rkyv",
+            "protos/rkyv",
+            "rkyv"
+          ]
+        }
+      },
+      "0.33.0": {
+        "eabead48b31e8d4f429d7fb156dd18548bbd79c1": {
+          "attaches": [
+            "rkyv"
+          ],
+          "features": [
+            "default",
+            "dep:rkyv",
+            "protos/rkyv",
+            "rkyv"
+          ]
+        }
+      },
+      "0.33.1": {
+        "09a0526949b043f921b6d3ce115b7f455291f2e2": {
+          "attaches": [
+            "rkyv"
+          ],
+          "features": [
+            "default",
+            "dep:rkyv",
+            "protos/rkyv",
+            "rkyv"
+          ]
+        },
+        "0bbeb11b692606f85b5c60187b14586802cb4701": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        },
+        "5cd62196d07ab52c69b6ed287510fa310c1838e7": {
+          "attaches": [
+            "rkyv"
+          ],
+          "features": [
+            "default",
+            "dep:rkyv",
+            "protos/rkyv",
+            "rkyv"
+          ]
+        }
+      }
+    },
+    "datom-codec-derive": {
+      "0.32.0": {
+        "4dff16b4f7412febc3b71aac8b49680cd20988cb": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        }
+      },
+      "0.32.3": {
+        "09a0526949b043f921b6d3ce115b7f455291f2e2": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        },
+        "0bbeb11b692606f85b5c60187b14586802cb4701": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        },
+        "5cd62196d07ab52c69b6ed287510fa310c1838e7": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        },
+        "eabead48b31e8d4f429d7fb156dd18548bbd79c1": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        }
+      }
+    },
+    "ethos-zero": {
+      "16.0.0": {
+        "c2653dd82adbdb1f1f2f654405c6620e0d06fd58": {
+          "attaches": [],
+          "features": [
+            "datom",
+            "default"
+          ]
+        }
+      },
+      "17.0.0": {
+        "07714b0171802787bea1eefe4caa2d826d9c4030": {
+          "attaches": [],
+          "features": [
+            "datom",
+            "default"
+          ]
+        }
+      },
+      "19.2.0": {
+        "5a5daca315ab24460ccbcd5038130c453e853e6e": {
+          "attaches": [],
+          "features": [
+            "datom",
+            "default"
+          ]
+        }
+      },
+      "22.0.0": {
+        "1976e45fe1edfd5676cb33919dba1ec20c785a02": {
+          "attaches": [],
+          "features": [
+            "datom",
+            "default"
+          ]
+        },
+        "daa22eea68b5fc8c5b71c5790a77b6473c335108": {
+          "attaches": [],
+          "features": [
+            "datom",
+            "default"
+          ]
+        }
+      }
+    },
+    "example-signal": {
+      "0.1.0": {
+        "21c87e960efed9d1d58ffd61009c8357a3aa6bf8": {
+          "attaches": [],
+          "features": [
+            "default",
+            "example-word/json",
+            "json"
+          ]
+        }
+      }
+    },
+    "flow-ethos": {
+      "0.53.1": {
+        "c585ea6792cec66ffd81fb0a24cea3df90efd197": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "dep:datom-codec",
+            "dep:protos",
+            "protos"
+          ]
+        }
+      }
+    },
+    "message-defaults": {
+      "0.22.1": {
+        "f46b38e0a9996e1593095f4154cd0597ff3ebe69": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        }
+      }
+    },
+    "message-nexus": {
+      "0.22.1": {
+        "f46b38e0a9996e1593095f4154cd0597ff3ebe69": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        }
+      }
+    },
+    "meta-signal-belief-nexus": {
+      "0.4.1": {
+        "341ea8b1669b525e860301aa04dcd5c872615d2e": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:protos",
+            "protos",
+            "signal-belief-nexus/datom",
+            "translator/datom"
+          ]
+        }
+      }
+    },
+    "meta-signal-flow": {
+      "72.0.0": {
+        "27d06b7b4995ad275c2c2c85dd0ffb5499482dd7": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:protos",
+            "flow-ethos/datom",
+            "protos",
+            "signal-flow/datom",
+            "signal/datom"
+          ]
+        }
+      }
+    },
+    "meta-signal-herdr-nexus": {
+      "0.2.1": {
+        "5b89490efd0b28fc00bbda49cff5314d3bea8762": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:protos",
+            "protos",
+            "translator/datom"
+          ]
+        }
+      }
+    },
+    "meta-signal-message": {
+      "3.0.1": {
+        "4d81b6481292f9212065a83c30f29640de60505e": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        }
+      }
+    },
+    "protos": {
+      "0.32.2": {
+        "15b41da8f2579e73ead59bc0c2b97529b8ac32d3": {
+          "attaches": [
+            "rkyv"
+          ],
+          "features": [
+            "default",
+            "dep:rkyv",
+            "rkyv"
+          ]
+        }
+      },
+      "0.33.0": {
+        "3c7ade34010cec6cec153ae694ee335f7fea0193": {
+          "attaches": [
+            "rkyv"
+          ],
+          "features": [
+            "default",
+            "dep:rkyv",
+            "rkyv"
+          ]
+        },
+        "4024614f1298bafcce7cb1bf1741005df6b0ef88": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        },
+        "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8": {
+          "attaches": [
+            "rkyv"
+          ],
+          "features": [
+            "default",
+            "dep:rkyv",
+            "rkyv"
+          ]
+        }
+      }
+    },
+    "sema": {
+      "0.1.1": {
+        "51d7927c872f0df12791bad8d39a4db6433b01a1": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        }
+      }
+    },
+    "sema-engine": {
+      "0.18.0": {
+        "9884905ff9c660ad97a35c524e42532d5c7bac90": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        }
+      },
+      "0.19.0": {
+        "6a95a0925c9e6a6a144037ffdbad8c7d3cc126f2": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        }
+      }
+    },
+    "signal": {
+      "10.3.0": {
+        "7afb68bcd19ce774f47d11c5e69f6e10054f78de": {
+          "attaches": [
+            "datom-codec",
+            "protos",
+            "tokio"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:protos",
+            "dep:tokio",
+            "protos",
+            "tokio",
+            "transport"
+          ]
+        }
+      },
+      "10.4.0": {
+        "7e6dfe5e7539e0de35d5b568156867356542eb2c": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "dep:datom-codec",
+            "dep:protos",
+            "protos"
+          ]
+        }
+      }
+    },
+    "signal-belief-nexus": {
+      "0.3.3": {
+        "1a8bef46b0ec5652c13c1ec3f79b109f4cb6febe": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:protos",
+            "protos",
+            "translator/datom"
+          ]
+        }
+      }
+    },
+    "signal-flow": {
+      "53.0.0": {
+        "79eaa70bb6595f7708ea63ca0d11802b0958852e": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:protos",
+            "flow-ethos/datom",
+            "protos",
+            "signal/datom"
+          ]
+        }
+      },
+      "57.0.0": {
+        "3d0a4cdd0364a30e5586eac7db59917faca5072f": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:protos",
+            "flow-ethos/datom",
+            "protos",
+            "signal/datom"
+          ]
+        }
+      }
+    },
+    "signal-herdr-nexus": {
+      "0.2.0": {
+        "7c724f8d557b9ce8c5ee36a447dbd882aa623187": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:protos",
+            "protos"
+          ]
+        }
+      }
+    },
+    "signal-message": {
+      "21.0.1": {
+        "998c824c98a1e2f5e32f9e3a69bf09d3a29aff6b": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        }
+      }
+    },
+    "signal-sema": {
+      "0.2.0": {
+        "4f3a24e6677ab9d200672851016c4c760c1e36e8": {
+          "attaches": [],
+          "features": []
+        }
+      }
+    },
+    "translator": {
+      "0.3.1": {
+        "1b0e38bb9f870855f9d0ff99eb80725ad79f8b9f": {
+          "attaches": [
+            "datom-codec",
+            "libc",
+            "nix",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:libc",
+            "dep:nix",
+            "dep:protos",
+            "libc",
+            "nix",
+            "protos",
+            "text",
+            "unix"
+          ]
+        }
+      },
+      "0.3.2": {
+        "571979d667d8b16171847c3122b7577a2eaa6669": {
+          "attaches": [
+            "datom-codec",
+            "libc",
+            "nix",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:libc",
+            "dep:nix",
+            "dep:protos",
+            "libc",
+            "nix",
+            "protos",
+            "text",
+            "unix"
+          ]
+        }
+      },
+      "0.4.0": {
+        "84353c56826ae8187f11c368ebb1ac25619e3324": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "dep:datom-codec",
+            "dep:protos",
+            "protos"
+          ]
+        }
+      }
+    }
+  },
+  "registry": {
+    "anyhow": {
+      "1.0.104": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "arrayvec": {
+      "0.7.8": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "autocfg": {
+      "1.5.1": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "base64": {
+      "0.22.1": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "default",
+          "std"
+        ]
+      }
+    },
+    "bit-set": {
+      "0.8.0": {
+        "attaches": [],
+        "features": [
+          "bit-vec/std",
+          "default",
+          "std"
+        ]
+      }
+    },
+    "bit-vec": {
+      "0.8.0": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "bitflags": {
+      "2.13.2": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "blake3": {
+      "1.8.7": {
+        "attaches": [],
+        "features": [
+          "constant_time_eq/std",
+          "default",
+          "std"
+        ]
+      }
+    },
+    "block-buffer": {
+      "0.10.4": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "bumpalo": {
+      "3.20.3": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "bytecheck": {
+      "0.8.3": {
+        "attaches": [
+          "simdutf8"
+        ],
+        "features": [
+          "dep:simdutf8",
+          "simdutf8"
+        ]
+      }
+    },
+    "bytecheck_derive": {
+      "0.8.3": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "bytes": {
+      "1.12.1": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "caseless": {
+      "0.2.2": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "cc": {
+      "1.4.6": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "cfg-if": {
+      "1.0.4": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "cfg_aliases": {
+      "0.2.2": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "comrak": {
+      "0.59.0": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "constant_time_eq": {
+      "0.4.2": {
+        "attaches": [],
+        "features": [
+          "std"
+        ]
+      }
+    },
+    "cpufeatures": {
+      "0.2.17": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      },
+      "0.3.1": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "crypto-common": {
+      "0.1.7": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "data-encoding": {
+      "2.11.1": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "default",
+          "std"
+        ]
+      }
+    },
+    "digest": {
+      "0.10.7": {
+        "attaches": [
+          "block-buffer"
+        ],
+        "features": [
+          "alloc",
+          "block-buffer",
+          "core-api",
+          "crypto-common/std",
+          "default",
+          "dep:block-buffer",
+          "std"
+        ]
+      }
+    },
+    "entities": {
+      "1.0.1": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "equivalent": {
+      "1.0.2": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "errno": {
+      "0.3.14": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "fastrand": {
+      "2.5.0": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "default",
+          "std"
+        ]
+      }
+    },
+    "fearless_simd": {
+      "1.2.0": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "fearless_simd_macros": {
+      "0.1.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "find-msvc-tools": {
+      "0.1.12": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "finl_unicode": {
+      "1.5.1": {
+        "attaches": [],
+        "features": [
+          "categories",
+          "default",
+          "grapheme_clusters"
+        ]
+      }
+    },
+    "fnv": {
+      "1.0.7": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "fsevent-sys": {
+      "4.1.0": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "futures-core": {
+      "0.3.34": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "futures-task": {
+      "0.3.34": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "futures-util": {
+      "0.3.34": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "generic-array": {
+      "0.14.7": {
+        "attaches": [],
+        "features": [
+          "default",
+          "more_lengths"
+        ]
+      }
+    },
+    "getrandom": {
+      "0.3.4": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      },
+      "0.4.3": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "hashbrown": {
+      "0.17.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "http": {
+      "1.5.0": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "httparse": {
+      "1.10.1": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "indexmap": {
+      "2.14.2": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "inotify": {
+      "0.11.5": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "inotify-sys": {
+      "0.1.8": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "itoa": {
+      "1.0.19": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "js-sys": {
+      "0.3.105": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "kqueue": {
+      "1.2.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "kqueue-sys": {
+      "1.1.2": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "libc": {
+      "0.2.189": {
+        "attaches": [],
+        "features": [
+          "default",
+          "extra_traits",
+          "std"
+        ]
+      }
+    },
+    "linux-raw-sys": {
+      "0.12.1": {
+        "attaches": [],
+        "features": [
+          "auxvec",
+          "elf",
+          "errno",
+          "general",
+          "if_ether",
+          "ioctl",
+          "net",
+          "netlink",
+          "no_std",
+          "prctl",
+          "xdp"
+        ]
+      }
+    },
+    "log": {
+      "0.4.34": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "memchr": {
+      "2.8.3": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "std"
+        ]
+      }
+    },
+    "memchr-n": {
+      "0.1.10": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "memoffset": {
+      "0.9.1": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "mio": {
+      "1.2.3": {
+        "attaches": [
+          "log"
+        ],
+        "features": [
+          "default",
+          "dep:log",
+          "log",
+          "os-ext",
+          "os-poll",
+          "windows-sys/Win32_Security",
+          "windows-sys/Win32_System_Pipes"
+        ]
+      }
+    },
+    "munge": {
+      "0.4.7": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "munge_macro": {
+      "0.4.7": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "nix": {
+      "0.30.1": {
+        "attaches": [
+          "memoffset"
+        ],
+        "features": [
+          "default",
+          "dep:memoffset",
+          "feature",
+          "fs",
+          "memoffset",
+          "poll",
+          "process",
+          "signal",
+          "socket",
+          "user"
+        ]
+      }
+    },
+    "notify": {
+      "8.2.0": {
+        "attaches": [
+          "fsevent-sys"
+        ],
+        "features": [
+          "default",
+          "dep:fsevent-sys",
+          "fsevent-sys",
+          "macos_fsevent"
+        ]
+      }
+    },
+    "notify-types": {
+      "2.1.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "num-traits": {
+      "0.2.19": {
+        "attaches": [],
+        "features": [
+          "std"
+        ]
+      }
+    },
+    "once_cell": {
+      "1.21.4": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "race",
+          "std"
+        ]
+      }
+    },
+    "phf": {
+      "0.14.0": {
+        "attaches": [],
+        "features": [
+          "default",
+          "phf_shared/std",
+          "serde?/std",
+          "std"
+        ]
+      }
+    },
+    "phf_codegen": {
+      "0.14.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "phf_generator": {
+      "0.14.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "phf_shared": {
+      "0.14.0": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "pin-project-lite": {
+      "0.2.17": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "ppv-lite86": {
+      "0.2.21": {
+        "attaches": [],
+        "features": [
+          "simd",
+          "std"
+        ]
+      }
+    },
+    "prettyplease": {
+      "0.3.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "proc-macro2": {
+      "1.0.107": {
+        "attaches": [],
+        "features": [
+          "default",
+          "proc-macro"
+        ]
+      }
+    },
+    "proptest": {
+      "1.11.0": {
+        "attaches": [
+          "bit-set",
+          "bit-vec",
+          "regex-syntax",
+          "rusty-fork",
+          "tempfile"
+        ],
+        "features": [
+          "bit-set",
+          "bit-vec",
+          "default",
+          "dep:bit-set",
+          "dep:bit-vec",
+          "dep:regex-syntax",
+          "dep:rusty-fork",
+          "dep:tempfile",
+          "fork",
+          "num-traits/std",
+          "rand/os_rng",
+          "rand/std",
+          "regex-syntax",
+          "rusty-fork",
+          "rusty-fork/timeout",
+          "std",
+          "tempfile",
+          "timeout"
+        ]
+      }
+    },
+    "ptr_meta": {
+      "0.3.2": {
+        "attaches": [
+          "ptr_meta_derive"
+        ],
+        "features": [
+          "dep:ptr_meta_derive",
+          "derive",
+          "ptr_meta_derive",
+          "std"
+        ]
+      }
+    },
+    "ptr_meta_derive": {
+      "0.3.2": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "quick-error": {
+      "1.2.3": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "quote": {
+      "1.0.47": {
+        "attaches": [],
+        "features": [
+          "default",
+          "proc-macro",
+          "proc-macro2/proc-macro"
+        ]
+      }
+    },
+    "r-efi": {
+      "5.3.0": {
+        "attaches": [],
+        "features": []
+      },
+      "6.0.0": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "rancor": {
+      "0.1.3": {
+        "attaches": [],
+        "features": [
+          "alloc"
+        ]
+      }
+    },
+    "rand": {
+      "0.9.5": {
+        "attaches": [
+          "rand_chacha"
+        ],
+        "features": [
+          "alloc",
+          "default",
+          "dep:rand_chacha",
+          "os_rng",
+          "rand_chacha",
+          "rand_chacha?/std",
+          "rand_core/os_rng",
+          "rand_core/std",
+          "small_rng",
+          "std",
+          "std_rng",
+          "thread_rng"
+        ]
+      }
+    },
+    "rand_chacha": {
+      "0.9.0": {
+        "attaches": [],
+        "features": [
+          "ppv-lite86/std",
+          "rand_core/std",
+          "std"
+        ]
+      }
+    },
+    "rand_core": {
+      "0.9.5": {
+        "attaches": [
+          "getrandom"
+        ],
+        "features": [
+          "default",
+          "dep:getrandom",
+          "getrandom",
+          "getrandom?/std",
+          "os_rng",
+          "std"
+        ]
+      }
+    },
+    "rand_xorshift": {
+      "0.4.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "redb": {
+      "4.3.0": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "regex-syntax": {
+      "0.8.11": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std",
+          "unicode",
+          "unicode-age",
+          "unicode-bool",
+          "unicode-case",
+          "unicode-gencat",
+          "unicode-perl",
+          "unicode-script",
+          "unicode-segment"
+        ]
+      }
+    },
+    "rend": {
+      "0.5.4": {
+        "attaches": [
+          "bytecheck"
+        ],
+        "features": [
+          "bytecheck",
+          "dep:bytecheck"
+        ]
+      }
+    },
+    "rkyv": {
+      "0.8.18": {
+        "attaches": [
+          "bytecheck",
+          "hashbrown"
+        ],
+        "features": [
+          "alloc",
+          "bytecheck",
+          "bytes-1?/std",
+          "default",
+          "dep:bytecheck",
+          "dep:hashbrown",
+          "hashbrown",
+          "indexmap-2?/std",
+          "little_endian",
+          "pointer_width_32",
+          "ptr_meta/std",
+          "rancor/alloc",
+          "rend/bytecheck",
+          "rkyv_derive/bytecheck",
+          "std",
+          "tinyvec-1?/alloc",
+          "unaligned",
+          "uuid-1?/std"
+        ]
+      }
+    },
+    "rkyv_derive": {
+      "0.8.18": {
+        "attaches": [],
+        "features": [
+          "bytecheck"
+        ]
+      }
+    },
+    "rustc-hash": {
+      "2.1.3": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "rustix": {
+      "1.1.4": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "bitflags/std",
+          "default",
+          "event",
+          "fs",
+          "libc?/std",
+          "libc_errno?/std",
+          "linux-raw-sys/if_ether",
+          "linux-raw-sys/net",
+          "linux-raw-sys/netlink",
+          "linux-raw-sys/prctl",
+          "linux-raw-sys/xdp",
+          "net",
+          "process",
+          "rand",
+          "std",
+          "time"
+        ]
+      }
+    },
+    "rustversion": {
+      "1.0.23": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "rusty-fork": {
+      "0.3.1": {
+        "attaches": [
+          "wait-timeout"
+        ],
+        "features": [
+          "dep:wait-timeout",
+          "timeout",
+          "wait-timeout"
+        ]
+      }
+    },
+    "same-file": {
+      "1.0.6": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "serde": {
+      "1.0.229": {
+        "attaches": [
+          "serde_derive"
+        ],
+        "features": [
+          "default",
+          "dep:serde_derive",
+          "derive",
+          "serde_core/std",
+          "serde_derive",
+          "std"
+        ]
+      }
+    },
+    "serde_core": {
+      "1.0.229": {
+        "attaches": [],
+        "features": [
+          "result",
+          "std"
+        ]
+      }
+    },
+    "serde_derive": {
+      "1.0.229": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "serde_json": {
+      "1.0.154": {
+        "attaches": [],
+        "features": [
+          "default",
+          "memchr/std",
+          "serde_core/std",
+          "std"
+        ]
+      }
+    },
+    "sha1": {
+      "0.10.7": {
+        "attaches": [],
+        "features": [
+          "default",
+          "digest/std",
+          "std"
+        ]
+      }
+    },
+    "sha2": {
+      "0.10.9": {
+        "attaches": [],
+        "features": [
+          "default",
+          "digest/std",
+          "std"
+        ]
+      }
+    },
+    "shlex": {
+      "2.0.1": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "simdutf8": {
+      "0.1.5": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "siphasher": {
+      "1.0.4": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "slab": {
+      "0.4.12": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "smallvec": {
+      "1.16.5": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "syn": {
+      "2.0.119": {
+        "attaches": [
+          "quote"
+        ],
+        "features": [
+          "clone-impls",
+          "default",
+          "dep:quote",
+          "derive",
+          "full",
+          "parsing",
+          "printing",
+          "proc-macro",
+          "proc-macro2/proc-macro",
+          "quote",
+          "quote?/proc-macro"
+        ]
+      },
+      "3.0.5": {
+        "attaches": [
+          "quote"
+        ],
+        "features": [
+          "clone-impls",
+          "default",
+          "dep:quote",
+          "derive",
+          "fold",
+          "full",
+          "parsing",
+          "printing",
+          "proc-macro",
+          "proc-macro2/proc-macro",
+          "quote",
+          "quote?/proc-macro"
+        ]
+      }
+    },
+    "tempfile": {
+      "3.27.0": {
+        "attaches": [
+          "getrandom"
+        ],
+        "features": [
+          "default",
+          "dep:getrandom",
+          "getrandom"
+        ]
+      }
+    },
+    "thiserror": {
+      "2.0.21": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "thiserror-impl": {
+      "2.0.21": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "tinyvec": {
+      "1.13.2": {
+        "attaches": [
+          "tinyvec_macros"
+        ],
+        "features": [
+          "alloc",
+          "default",
+          "dep:tinyvec_macros",
+          "tinyvec_macros"
+        ]
+      }
+    },
+    "tinyvec_macros": {
+      "0.1.1": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "tokio": {
+      "1.53.1": {
+        "attaches": [
+          "bytes",
+          "tokio-macros"
+        ],
+        "features": [
+          "bytes",
+          "default",
+          "dep:bytes",
+          "dep:tokio-macros",
+          "io-util",
+          "macros",
+          "rt",
+          "tokio-macros"
+        ]
+      }
+    },
+    "tokio-macros": {
+      "2.7.2": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "toml_datetime": {
+      "0.6.11": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "toml_edit": {
+      "0.22.27": {
+        "attaches": [
+          "toml_write",
+          "winnow"
+        ],
+        "features": [
+          "default",
+          "dep:toml_write",
+          "dep:winnow",
+          "display",
+          "parse",
+          "toml_write",
+          "winnow"
+        ]
+      }
+    },
+    "toml_write": {
+      "0.1.2": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "default",
+          "std"
+        ]
+      }
+    },
+    "tungstenite": {
+      "0.28.0": {
+        "attaches": [
+          "data-encoding",
+          "http",
+          "httparse",
+          "sha1"
+        ],
+        "features": [
+          "data-encoding",
+          "default",
+          "dep:data-encoding",
+          "dep:http",
+          "dep:httparse",
+          "dep:sha1",
+          "handshake",
+          "http",
+          "httparse",
+          "sha1"
+        ]
+      }
+    },
+    "typed-arena": {
+      "2.0.2": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "typenum": {
+      "1.20.1": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "unarray": {
+      "0.1.4": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "unicode-ident": {
+      "1.0.24": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "unicode-normalization": {
+      "0.1.26": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std"
+        ]
+      }
+    },
+    "utf-8": {
+      "0.7.6": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "uuid": {
+      "1.26.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "version_check": {
+      "0.9.5": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "wait-timeout": {
+      "0.2.1": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "walkdir": {
+      "2.5.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "wasi": {
+      "0.11.1+wasi-snapshot-preview1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "wasip2": {
+      "1.0.1+wasi-0.2.4": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "wasm-bindgen": {
+      "0.2.128": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "wasm-bindgen-macro": {
+      "0.2.128": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "wasm-bindgen-macro-support": {
+      "0.2.128": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "wasm-bindgen-shared": {
+      "0.2.128": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "winapi-util": {
+      "0.1.11": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "windows-link": {
+      "0.2.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "windows-sys": {
+      "0.60.2": {
+        "attaches": [],
+        "features": []
+      },
+      "0.61.2": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "windows-targets": {
+      "0.53.5": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "windows_aarch64_gnullvm": {
+      "0.53.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "windows_aarch64_msvc": {
+      "0.53.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "windows_i686_gnu": {
+      "0.53.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "windows_i686_gnullvm": {
+      "0.53.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "windows_i686_msvc": {
+      "0.53.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "windows_x86_64_gnu": {
+      "0.53.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "windows_x86_64_gnullvm": {
+      "0.53.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "windows_x86_64_msvc": {
+      "0.53.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "winnow": {
+      "0.7.15": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "default",
+          "memchr?/std",
+          "std"
+        ]
+      }
+    },
+    "wit-bindgen": {
+      "0.46.0": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "zerocopy": {
+      "0.8.57": {
+        "attaches": [],
+        "features": [
+          "default",
+          "simd"
+        ]
+      }
+    },
+    "zerocopy-derive": {
+      "0.8.57": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "zmij": {
+      "1.0.23": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    }
+  }
+}

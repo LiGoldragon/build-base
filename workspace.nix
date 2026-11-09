@@ -9,12 +9,13 @@
 #                    the check memberChecks gives in its place;
 # checks.cargo-nix   the committed Cargo.nix is what the base's crate2nix
 #                    generates from the workspace (cargo-nix.nix);
-# checks.third-party-versions
-#                    Cargo.lock locks each third-party crate at a version
-#                    the base's set holds (third-party-versions.nix);
-# checks.third-party-features
-#                    the base's feature set builds each third-party crate as
-#                    Cargo.nix resolves it (third-party-features.nix);
+# checks.crate-versions
+#                    Cargo.lock locks each registry crate at a version and
+#                    each git crate at a revision the base's set holds
+#                    (crate-versions.nix);
+# checks.crate-features
+#                    the base's feature set builds each registry and git
+#                    crate as Cargo.nix resolves it (crate-features.nix);
 # checks.<extra>     each check extraChecks returns;
 # checks.default     every check above: green default is the whole gate.
 #
@@ -28,9 +29,9 @@
 # lints applied, with clippy flags. memberChecks
 # returns, by member name, the check that stands in place of the base's, or
 # null for a member that has no check. extraChecks returns more checks, by
-# names no member, cargo-nix, third-party-versions, third-party-features or
-# default has. Every third-party crate is built with the base's one feature
-# set for it (third-party-builds.nix), in the members' builds and in every
+# names no member, cargo-nix, crate-versions, crate-features or default has.
+# Every registry and git crate the set holds is built with the base's one
+# feature set for it (crate-builds.nix), in the members' builds and in every
 # build through `workspace` and `buildRustCrateForPkgs`.
 context:
 {
@@ -56,10 +57,10 @@ let
       defaultCrateOverrides = buildOverrides;
     };
 
-  # Builds a crate, each third-party crate with the base's feature set.
+  # Builds a crate, each registry and git crate with the base's feature set.
   fromSet =
     buildRustCrateForPkgs:
-    import ./third-party-builds.nix context { inherit generated buildRustCrateForPkgs; };
+    import ./crate-builds.nix context { inherit generated buildRustCrateForPkgs; };
 
   members = generated.workspaceMembers;
 
@@ -275,14 +276,14 @@ let
     );
   ownChecks = memberCheckSet // {
     cargo-nix = import ./cargo-nix.nix context { inherit source cargoNix generated; };
-    third-party-versions = import ./third-party-versions.nix context { lockFile = source + "/Cargo.lock"; };
-    third-party-features = import ./third-party-features.nix context { inherit generated; };
+    crate-versions = import ./crate-versions.nix context { lockFile = source + "/Cargo.lock"; };
+    crate-features = import ./crate-features.nix context { inherit generated; };
   };
   consumerChecks = extraChecks given;
   taken = lib.attrNames members ++ [
     "cargo-nix"
-    "third-party-versions"
-    "third-party-features"
+    "crate-versions"
+    "crate-features"
     "default"
   ];
   clashes = lib.filter (name: lib.elem name taken) (lib.attrNames consumerChecks);
@@ -293,7 +294,7 @@ in
 {
   inherit tests;
   # The imported Cargo.nix and the function it builds a crate with, each
-  # third-party crate from the set, for a flake that builds more of it.
+  # registry and git crate from the set, for a flake that builds more of it.
   workspace = generated;
   buildRustCrateForPkgs = buildCrate;
 
