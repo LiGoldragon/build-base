@@ -9,6 +9,9 @@
 #                    the check memberChecks gives in its place;
 # checks.cargo-nix   the committed Cargo.nix is what the base's crate2nix
 #                    generates from the workspace (cargo-nix.nix);
+# checks.third-party-versions
+#                    Cargo.lock locks each third-party crate at a version
+#                    the base's set holds (third-party-versions.nix);
 # checks.<extra>     each check extraChecks returns;
 # checks.default     every check above: green default is the whole gate.
 #
@@ -20,7 +23,7 @@
 # member's library under a feature set with rustdoc flags. memberChecks
 # returns, by member name, the check that stands in place of the base's, or
 # null for a member that has no check. extraChecks returns more checks, by
-# names no member, cargo-nix or default has.
+# names no member, cargo-nix, third-party-versions or default has.
 context:
 {
   cargoNix,
@@ -226,10 +229,12 @@ let
     );
   ownChecks = memberCheckSet // {
     cargo-nix = import ./cargo-nix.nix context { inherit source cargoNix generated; };
+    third-party-versions = import ./third-party-versions.nix context { lockFile = source + "/Cargo.lock"; };
   };
   consumerChecks = extraChecks given;
   taken = lib.attrNames members ++ [
     "cargo-nix"
+    "third-party-versions"
     "default"
   ];
   clashes = lib.filter (name: lib.elem name taken) (lib.attrNames consumerChecks);

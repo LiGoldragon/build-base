@@ -88,9 +88,21 @@
           };
       };
 
-      packages = lib.genAttrs systems (system: {
-        toolchain = contexts.${system}.toolchain;
-        crate2nix = contexts.${system}.crate2nix;
-      });
+      packages = lib.genAttrs systems (
+        system:
+        let
+          pkgs = contexts.${system}.pkgs;
+        in
+        {
+          toolchain = contexts.${system}.toolchain;
+          crate2nix = contexts.${system}.crate2nix;
+          # Writes third-party-versions.json from the active repositories'
+          # aligned locks, or names the crates they misalign on:
+          #   nix run github:LiGoldragon/build-base#third-party-version-set -- <Cargo.lock ...>
+          third-party-version-set = pkgs.writers.writePython3Bin "third-party-version-set" {
+            flakeIgnore = [ "E501" ];
+          } (builtins.readFile ./third-party-version-set.py);
+        }
+      );
     };
 }

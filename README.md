@@ -30,6 +30,23 @@ with the committed file.
 Commit `crate-hashes.json` with `Cargo.nix`: the offline generation reads git
 dependencies' hashes from it.
 
+The base holds one version set for every third-party crate (a locked package
+from a registry) across the active repositories, `third-party-versions.json`:
+crate name to the versions locked, one per crate except where the locks carry
+semver-incompatible versions side by side. `checks.third-party-versions`
+refuses a Cargo.lock that locks a third-party crate at a version outside the
+set, naming each as `<crate>: lock <version> set <versions>`. A version moves
+once, here, and every active repository's lock moves with it. The set is
+derived, never written by hand:
+
+```sh
+nix run github:LiGoldragon/build-base#third-party-version-set -- <Cargo.lock ...>
+```
+
+writes `third-party-versions.json` in the working directory from the given
+locks, or, where two locks carry semver-compatible versions of one crate that
+differ, names the crate, each version and its lock, and writes nothing.
+
 `memberChecks` and `extraChecks` are functions of the build context (below)
 with `workspace`, the imported Cargo.nix, `tests`, each member's test build,
 `check`, the base's check of a member under a feature set
@@ -40,7 +57,7 @@ build links them, no cargo involved
 `$out/share/doc`). `memberChecks` gives, by member name, the check that stands in place of
 the base's (a member whose tests need an environment), or null for a member
 that has no check. `extraChecks` returns the repository's own further checks,
-under names no member, `cargo-nix` or `default` has:
+under names no member, `cargo-nix`, `third-party-versions` or `default` has:
 
 ```nix
 base.lib.workspaceOutputs {
