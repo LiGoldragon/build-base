@@ -491,17 +491,17 @@
   },
   "serde": {
     "1.0.229": {
-      "attaches": [],
+      "attaches": [
+        "serde_derive"
+      ],
       "features": [
         "default",
+        "dep:serde_derive",
+        "derive",
         "serde_core/std",
+        "serde_derive",
         "std"
-      ],
-      "held": {
-        "dep:serde_derive": "attaches serde_derive, which ethos-zero does not give serde",
-        "derive": "attaches serde_derive, which ethos-zero does not give serde",
-        "serde_derive": "attaches serde_derive, which ethos-zero does not give serde"
-      }
+      ]
     }
   },
   "serde_core": {
