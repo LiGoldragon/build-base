@@ -49,32 +49,32 @@ differ, names the crate, each version and its lock, and writes nothing.
 
 The base holds, beside it, one feature set for every third-party crate,
 `third-party-features.json`: by crate and version, the features it is built
-with (`features`), the optional dependencies they attach (`attaches`), and the
-features held out pending a ruling (`held`), each with the dependency it
-would attach and the repositories whose Cargo.nix lack it. Every third-party
-crate the set holds is built with the set's features, its optional
-dependencies those features attach and every third-party crate beneath it
-under its own set, whichever member, test build or repository reaches it
-(`third-party-builds.nix`, the function each Cargo.nix is imported with), so
-it has one store path everywhere; features are additive, so the union of what
-each repository asks builds for all. A crate the set lacks, or whose
-resolution asks a held feature, is built as its build resolves it, over
-third-party dependencies built from the set. `checks.third-party-features`
-refuses a workspace whose Cargo.nix resolves, for a third-party crate, a
-version the set lacks or a feature it neither holds nor holds out, or lacks
-an optional dependency the set's features attach, naming each crate. What a
-Cargo.nix resolves is what crate2nix gives each crate when every member is
-built with all its features and its dev-dependencies
-(`resolved-features.nix`). The set is derived, never written by hand:
+with (`features`) and the optional dependencies they attach (`attaches`). It
+admits no exception: where the union attaches an optional dependency some
+repository's lock lacks, that repository carries the edge, in its manifest,
+lock and Cargo.nix. Every third-party crate the set holds is built with the
+set's features, its optional dependencies those features attach and every
+third-party crate beneath it under its own set, whichever member, test build
+or repository reaches it (`third-party-builds.nix`, the function each
+Cargo.nix is imported with), so it has one store path everywhere; features
+are additive, so the union of what each repository asks builds for all. A
+crate the set lacks, or whose resolution asks a feature the set does not
+hold, is built as its build resolves it, over third-party dependencies built
+from the set. `checks.third-party-features` refuses a workspace whose
+Cargo.nix resolves, for a third-party crate, a version the set lacks or a
+feature it does not hold, or lacks an optional dependency the set's features
+attach, naming each crate. What a Cargo.nix resolves is what crate2nix gives
+each crate when every member is built with all its features and its
+dev-dependencies (`resolved-features.nix`). The set is derived, never written by hand:
 
 ```sh
 nix run github:LiGoldragon/build-base#third-party-feature-set -- <repository>/Cargo.nix ...
 ```
 
 writes `third-party-features.json` from the given workspaces, each named by
-its directory, as the union of what each resolves; a feature that would
-attach an optional dependency some workspace holding the crate lacks is held
-out with every feature implying it, and named. Where a third-party crate asks
+its directory, as the union of what each resolves, and names each edge a
+repository must carry: the repository, the crate, the features attaching
+the dependency, and the dependency. Where a third-party crate asks
 of another a feature the other's set lacks, it names them and writes nothing.
 
 `memberChecks` and `extraChecks` are functions of the build context (below)

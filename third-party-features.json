@@ -44,6 +44,14 @@
       ]
     }
   },
+  "block-buffer": {
+    "0.10.4": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
   "bumpalo": {
     "3.20.3": {
       "attaches": [],
@@ -81,6 +89,47 @@
       "attaches": [],
       "features": [
         "default"
+      ]
+    }
+  },
+  "cfg_aliases": {
+    "0.2.2": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
+  "cpufeatures": {
+    "0.2.17": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
+  "crypto-common": {
+    "0.1.7": {
+      "attaches": [],
+      "features": [
+        "default",
+        "std"
+      ]
+    }
+  },
+  "digest": {
+    "0.10.7": {
+      "attaches": [
+        "block-buffer"
+      ],
+      "features": [
+        "alloc",
+        "block-buffer",
+        "core-api",
+        "crypto-common/std",
+        "default",
+        "dep:block-buffer",
+        "std"
       ]
     }
   },
@@ -133,6 +182,15 @@
       "features": []
     }
   },
+  "generic-array": {
+    "0.14.7": {
+      "attaches": [],
+      "features": [
+        "default",
+        "more_lengths"
+      ]
+    }
+  },
   "getrandom": {
     "0.3.4": {
       "attaches": [],
@@ -155,7 +213,10 @@
   "indexmap": {
     "2.14.2": {
       "attaches": [],
-      "features": []
+      "features": [
+        "default",
+        "std"
+      ]
     }
   },
   "itoa": {
@@ -177,6 +238,7 @@
       "attaches": [],
       "features": [
         "default",
+        "extra_traits",
         "std"
       ]
     }
@@ -190,7 +252,8 @@
         "errno",
         "general",
         "ioctl",
-        "no_std"
+        "no_std",
+        "prctl"
       ]
     }
   },
@@ -200,6 +263,14 @@
       "features": [
         "alloc",
         "std"
+      ]
+    }
+  },
+  "memoffset": {
+    "0.9.1": {
+      "attaches": [],
+      "features": [
+        "default"
       ]
     }
   },
@@ -213,6 +284,25 @@
     "0.4.7": {
       "attaches": [],
       "features": []
+    }
+  },
+  "nix": {
+    "0.30.1": {
+      "attaches": [
+        "memoffset"
+      ],
+      "features": [
+        "default",
+        "dep:memoffset",
+        "feature",
+        "fs",
+        "memoffset",
+        "poll",
+        "process",
+        "signal",
+        "socket",
+        "user"
+      ]
     }
   },
   "num-traits": {
@@ -432,6 +522,7 @@
         "alloc",
         "bytecheck",
         "bytes-1?/std",
+        "default",
         "dep:bytecheck",
         "dep:hashbrown",
         "hashbrown",
@@ -464,9 +555,13 @@
         "alloc",
         "bitflags/std",
         "default",
+        "event",
         "fs",
         "libc?/std",
         "libc_errno?/std",
+        "linux-raw-sys/prctl",
+        "process",
+        "rand",
         "std"
       ]
     }
@@ -528,6 +623,16 @@
         "default",
         "memchr/std",
         "serde_core/std",
+        "std"
+      ]
+    }
+  },
+  "sha2": {
+    "0.10.9": {
+      "attaches": [],
+      "features": [
+        "default",
+        "digest/std",
         "std"
       ]
     }
@@ -649,6 +754,49 @@
       ]
     }
   },
+  "toml_datetime": {
+    "0.6.11": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
+  "toml_edit": {
+    "0.22.27": {
+      "attaches": [
+        "toml_write",
+        "winnow"
+      ],
+      "features": [
+        "default",
+        "dep:toml_write",
+        "dep:winnow",
+        "display",
+        "parse",
+        "toml_write",
+        "winnow"
+      ]
+    }
+  },
+  "toml_write": {
+    "0.1.2": {
+      "attaches": [],
+      "features": [
+        "alloc",
+        "default",
+        "std"
+      ]
+    }
+  },
+  "typenum": {
+    "1.20.1": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
   "unarray": {
     "0.1.4": {
       "attaches": [],
@@ -669,6 +817,14 @@
     "1.26.1": {
       "attaches": [],
       "features": []
+    }
+  },
+  "version_check": {
+    "0.9.5": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
     }
   },
   "wait-timeout": {
@@ -719,6 +875,17 @@
     "0.61.2": {
       "attaches": [],
       "features": []
+    }
+  },
+  "winnow": {
+    "0.7.15": {
+      "attaches": [],
+      "features": [
+        "alloc",
+        "default",
+        "memchr?/std",
+        "std"
+      ]
     }
   },
   "wit-bindgen": {

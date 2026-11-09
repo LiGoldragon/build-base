@@ -2,12 +2,12 @@
 
 Each third-party crate (a crate from a registry) gets one feature set: the
 union of the features each Cargo.nix resolves for it (resolved-features.nix),
-so it has one build in every repository. A feature of the union that would
-attach an optional dependency some Cargo.nix holding the crate does not give
-it is held out of the set, with every feature that implies it, and named
-with the dependency and the repositories that lack it; it waits on a ruling.
-A third-party crate that asks of another, within the set, a feature the
-other's set lacks is reported, and nothing is written.
+so it has one build in every repository. Where a feature of the union
+attaches an optional dependency some Cargo.nix holding the crate does not
+give it, that repository carries the edge: each is named, by repository,
+crate, the features attaching it and the dependency, and the set is written
+whole. A third-party crate that asks of another, within the set, a feature
+the other's set lacks is reported, and nothing is written.
 
     third-party-feature-set <repository>/Cargo.nix ...
 
@@ -71,9 +71,9 @@ def main(paths):
                 crates.setdefault((name, version), {})[repository] = entry
 
     sets = {}
-    held_out = []
+    edges = []
     for (name, version), holders in sorted(crates.items()):
-        union = set().union(*(set(entry["features"]) for entry in holders.values()))
+        features = set().union(*(set(entry["features"]) for entry in holders.values()))
         feature_map = next(iter(holders.values()))["featureMap"]
         given = {
             repository: {dependency["name"] for dependency in entry["dependencies"]}
@@ -84,23 +84,18 @@ def main(paths):
             for entry in holders.values()
             for dependency in entry["dependencies"]
             if dependency["optional"]
-        } | {feature[len("dep:"):] for feature in union if feature.startswith("dep:")}
-        held = {}
-        for dependency in sorted(optional):
-            if not any(enables(feature, dependency) for feature in union):
-                continue
-            lacking = sorted(repository for repository, names in given.items() if dependency not in names)
-            if not lacking:
-                continue
-            for feature in sorted(union):
-                if any(enables(implied, dependency) for implied in expand(feature_map, [feature])):
-                    held[feature] = f"attaches {dependency}, which {' '.join(lacking)} does not give {name}"
-                    held_out.append(f"{name} {version}: {feature} attaches {dependency}, lacking in {' '.join(lacking)}")
-        features = union - set(held)
+        } | {feature[len("dep:"):] for feature in features if feature.startswith("dep:")}
         attaches = sorted(dependency for dependency in optional if any(enables(feature, dependency) for feature in features))
+        for dependency in attaches:
+            attaching = " ".join(
+                feature
+                for feature in sorted(features)
+                if any(enables(implied, dependency) for implied in expand(feature_map, [feature]))
+            )
+            for repository, names in sorted(given.items()):
+                if dependency not in names:
+                    edges.append(f"{repository}: {name} {version} {attaching} attaches {dependency}")
         sets[(name, version)] = {"features": sorted(features), "attaches": attaches}
-        if held:
-            sets[(name, version)]["held"] = dict(sorted(held.items()))
 
     # Within the set, what a crate asks of another is in the other's set, so
     # each crate's set build gives its dependencies their set and no more.
@@ -140,8 +135,10 @@ def main(paths):
         json.dump(document, handle, indent=2, sort_keys=True)
         handle.write("\n")
     print(f"{OUTPUT}: {len(sets)} crates from {len(repositories)} repositories")
-    for line in held_out:
-        print(f"  held out: {line}")
+    if edges:
+        print("Edges each repository carries, in its manifest, lock and Cargo.nix:")
+    for line in edges:
+        print(f"  {line}")
 
 
 main(sys.argv[1:])

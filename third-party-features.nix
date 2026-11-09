@@ -3,10 +3,9 @@
 # crate is the one build every repository on the base shares.
 #
 # For each third-party crate (a crate from a registry) this Cargo.nix
-# resolves (resolved-features.nix), the set holds its version, holds every
-# feature it resolves or holds that feature out pending a ruling, and the
-# optional dependencies the set's features attach are ones this Cargo.nix
-# gives it. Anything else fails the check, naming the crate. The set is
+# resolves (resolved-features.nix), the set holds its version and every
+# feature it resolves, and the optional dependencies the set's features
+# attach are ones this Cargo.nix gives it. Anything else fails the check, naming the crate. The set is
 # written by the base's generator from the active repositories' Cargo.nix:
 #   nix run github:LiGoldragon/build-base#third-party-feature-set -- <repository>/Cargo.nix ...
 context:
@@ -26,9 +25,7 @@ let
           version: entry:
           let
             given = set.${name}.${version} or null;
-            beyond = lib.filter (
-              feature: !(lib.elem feature given.features) && !(given.held or { } ? ${feature})
-            ) entry.features;
+            beyond = lib.filter (feature: !(lib.elem feature given.features)) entry.features;
             names = map (dependency: dependency.name) entry.dependencies;
             lacking = lib.filter (dependency: !(lib.elem dependency names)) given.attaches;
           in

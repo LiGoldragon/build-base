@@ -7,8 +7,8 @@
 # optional dependencies those features attach, and every third-party crate
 # beneath it under its own set, whatever the build that reaches it resolves.
 # A crate the set lacks, or whose resolution in this build asks a feature the
-# set does not hold (a feature held out of it pending a ruling), is built as
-# the build resolves it, over third-party dependencies built from the set.
+# set does not hold (a set not yet regenerated for this workspace), is built
+# as the build resolves it, over third-party dependencies built from the set.
 # The Cargo.nix is imported with the returned function:
 #   generated = import cargoNix { buildRustCrateForPkgs = third-party-builds { inherit generated; buildRustCrateForPkgs = …; }; };
 context:
