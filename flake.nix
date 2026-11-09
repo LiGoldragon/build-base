@@ -68,7 +68,10 @@
         #       some-member = check "some-member" [ "default" "a-feature" ];
         #       untested-member = null;
         #     };
-        #     extraChecks = { pkgs, toolchain, workspace, tests, ... }: { fmt = ...; };
+        #     extraChecks = { pkgs, toolchain, workspace, tests, doc, ... }: {
+        #       fmt = ...;
+        #       doc = doc "some-member" [ "default" ] [ "-D" "warnings" ];
+        #     };
         #   };
         # A flake that composes its own outputs takes one system's workspace,
         # test builds included, from lib.workspace.<system> with the same

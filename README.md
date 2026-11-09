@@ -32,8 +32,12 @@ dependencies' hashes from it.
 
 `memberChecks` and `extraChecks` are functions of the build context (below)
 with `workspace`, the imported Cargo.nix, `tests`, each member's test build,
-and `check`, the base's check of a member under a feature set
-(`check "member" [ "default" "feature" ]`). `memberChecks` gives, by member name, the check that stands in place of
+`check`, the base's check of a member under a feature set
+(`check "member" [ "default" "feature" ]`), and `doc`, rustdoc over a member's
+library under a feature set with rustdoc flags, its dependencies linked as its
+build links them, no cargo involved
+(`doc "member" [ "default" ] [ "-D" "warnings" ]`, the documentation in
+`$out/share/doc`). `memberChecks` gives, by member name, the check that stands in place of
 the base's (a member whose tests need an environment), or null for a member
 that has no check. `extraChecks` returns the repository's own further checks,
 under names no member, `cargo-nix` or `default` has:
@@ -42,7 +46,10 @@ under names no member, `cargo-nix` or `default` has:
 base.lib.workspaceOutputs {
   cargoNix = ./Cargo.nix;
   memberChecks = { pkgs, tests, ... }: { frozen-contract = null; };
-  extraChecks = { pkgs, toolchain, workspace, tests, ... }: { fmt = …; };
+  extraChecks = { pkgs, toolchain, workspace, tests, doc, ... }: {
+    fmt = …;
+    doc = doc "member" [ "default" ] [ "-D" "warnings" ];
+  };
 }
 ```
 

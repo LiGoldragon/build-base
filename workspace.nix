@@ -15,8 +15,9 @@
 # cargoNix is the workspace root's Cargo.nix, where `crate2nix generate`
 # writes it; its directory is the workspace source. memberChecks and
 # extraChecks are functions of the system's build context, with `workspace`
-# the imported Cargo.nix, `tests` the members' test builds and `check` the
-# base's check of a member under a feature set. memberChecks
+# the imported Cargo.nix, `tests` the members' test builds, `check` the
+# base's check of a member under a feature set and `doc` rustdoc over a
+# member's library under a feature set with rustdoc flags. memberChecks
 # returns, by member name, the check that stands in place of the base's, or
 # null for a member that has no check. extraChecks returns more checks, by
 # names no member, cargo-nix or default has.
@@ -168,13 +169,52 @@ let
         touch $out
       '';
 
+  # rustdoc over the member's library under a feature set, its dependencies
+  # on the --extern and -L path as its build links them: the member's crate
+  # build under that feature set, configured as it is, its build script run,
+  # the library documented by rustdoc in place of compiled and no binary
+  # built. The member's own lints hold, uncapped; flags go to rustdoc after
+  # them (doc "member" [ "default" ] [ "-D" "warnings" ]). Compiles nothing
+  # but a build script; the documentation is $out/share/doc.
+  doc =
+    name: features: flags:
+    let
+      packageId = members.${name}.packageId;
+      crates = generated.internal.builtRustCratesWithFeatures {
+        inherit packageId features;
+        buildRustCrateForPkgsFunc = buildWith buildOverrides;
+        runTests = false;
+      };
+    in
+    crates.crates.${packageId}.overrideAttrs (attributes: {
+      name = "doc-${name}";
+      outputs = [ "out" ];
+      outputDev = [ "out" ];
+      preBuild = (attributes.preBuild or "") + ''
+        build_lib() {
+          noisily rustdoc --crate-name "$CRATE_NAME" "$1" -o target/doc \
+            -L dependency=target/deps $LIB_RUSTC_OPTS $BUILD_OUT_DIR $EXTRA_FEATURES \
+            ${lib.escapeShellArgs flags} --color $colors
+        }
+        build_bin() { :; }
+      '';
+      installPhase = ''
+        if [ ! -d target/doc ]; then
+          echo "${name} has no library to document" >&2
+          exit 1
+        fi
+        mkdir -p $out/share
+        cp -r target/doc $out/share/doc
+      '';
+    });
+
   source = dirOf cargoNix;
 
   defaultFeatures = [ "default" ];
   tests = lib.mapAttrs (name: _: testBuild name defaultFeatures) members;
   given = context // {
     workspace = generated;
-    inherit tests check;
+    inherit tests check doc;
   };
 
   repositoryMemberChecks = memberChecks given;
