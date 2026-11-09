@@ -168,7 +168,8 @@
       "0.1.0": ["21c87e960efed9d1d58ffd61009c8357a3aa6bf8"]
     },
     "flow-ethos": {
-      "0.53.1": ["c585ea6792cec66ffd81fb0a24cea3df90efd197"]
+      "0.53.1": ["c585ea6792cec66ffd81fb0a24cea3df90efd197"],
+      "0.53.3": ["d1effd4b53ba895f08949ea5cf32f91f63f909bb"]
     },
     "message-defaults": {
       "0.22.1": ["f46b38e0a9996e1593095f4154cd0597ff3ebe69"]
@@ -201,7 +202,8 @@
     },
     "signal": {
       "10.3.0": ["7afb68bcd19ce774f47d11c5e69f6e10054f78de"],
-      "10.4.0": ["7e6dfe5e7539e0de35d5b568156867356542eb2c"]
+      "10.4.0": ["7e6dfe5e7539e0de35d5b568156867356542eb2c"],
+      "10.4.1": ["d77169d061d0d0d7913415257d0f1c1603260583"]
     },
     "signal-belief-nexus": {
       "0.3.3": ["1a8bef46b0ec5652c13c1ec3f79b109f4cb6febe"]

@@ -166,6 +166,21 @@
             "protos"
           ]
         }
+      },
+      "0.53.3": {
+        "d1effd4b53ba895f08949ea5cf32f91f63f909bb": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "dep:datom-codec",
+            "dep:protos",
+            "protos"
+          ]
+        }
       }
     },
     "message-defaults": {
@@ -351,6 +366,21 @@
       },
       "10.4.0": {
         "7e6dfe5e7539e0de35d5b568156867356542eb2c": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "dep:datom-codec",
+            "dep:protos",
+            "protos"
+          ]
+        }
+      },
+      "10.4.1": {
+        "d77169d061d0d0d7913415257d0f1c1603260583": {
           "attaches": [
             "datom-codec",
             "protos"
