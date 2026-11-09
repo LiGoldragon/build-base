@@ -38,23 +38,6 @@
             "protos/rkyv",
             "rkyv"
           ]
-        },
-        "0bbeb11b692606f85b5c60187b14586802cb4701": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        },
-        "5cd62196d07ab52c69b6ed287510fa310c1838e7": {
-          "attaches": [
-            "rkyv"
-          ],
-          "features": [
-            "default",
-            "dep:rkyv",
-            "protos/rkyv",
-            "rkyv"
-          ]
         }
       }
     },
@@ -69,18 +52,6 @@
       },
       "0.32.3": {
         "09a0526949b043f921b6d3ce115b7f455291f2e2": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        },
-        "0bbeb11b692606f85b5c60187b14586802cb4701": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        },
-        "5cd62196d07ab52c69b6ed287510fa310c1838e7": {
           "attaches": [],
           "features": [
             "default"
@@ -129,13 +100,6 @@
             "datom",
             "default"
           ]
-        },
-        "daa22eea68b5fc8c5b71c5790a77b6473c335108": {
-          "attaches": [],
-          "features": [
-            "datom",
-            "default"
-          ]
         }
       }
     },
@@ -152,21 +116,6 @@
       }
     },
     "flow-ethos": {
-      "0.53.1": {
-        "c585ea6792cec66ffd81fb0a24cea3df90efd197": {
-          "attaches": [
-            "datom-codec",
-            "protos"
-          ],
-          "features": [
-            "datom",
-            "datom-codec",
-            "dep:datom-codec",
-            "dep:protos",
-            "protos"
-          ]
-        }
-      },
       "0.53.3": {
         "d1effd4b53ba895f08949ea5cf32f91f63f909bb": {
           "attaches": [
@@ -204,8 +153,8 @@
       }
     },
     "meta-signal-belief-nexus": {
-      "0.4.1": {
-        "341ea8b1669b525e860301aa04dcd5c872615d2e": {
+      "0.6.0": {
+        "a624c14995c867ef4ecd4e603b61effc2d730bfa": {
           "attaches": [
             "datom-codec",
             "protos"
@@ -218,6 +167,7 @@
             "dep:protos",
             "protos",
             "signal-belief-nexus/datom",
+            "signal/datom",
             "translator/datom"
           ]
         }
@@ -245,8 +195,8 @@
       }
     },
     "meta-signal-herdr-nexus": {
-      "0.3.3": {
-        "c8edfb46e8fa42340da9461dbfaa81a78b43c899": {
+      "0.4.0": {
+        "d00ae37f72032d787c03392eef6e972ff4bae57a": {
           "attaches": [
             "datom-codec",
             "protos"
@@ -295,12 +245,6 @@
             "default",
             "dep:rkyv",
             "rkyv"
-          ]
-        },
-        "4024614f1298bafcce7cb1bf1741005df6b0ef88": {
-          "attaches": [],
-          "features": [
-            "default"
           ]
         },
         "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8": {
@@ -359,27 +303,11 @@
           ]
         }
       },
-      "10.4.0": {
-        "7e6dfe5e7539e0de35d5b568156867356542eb2c": {
+      "11.0.0": {
+        "6d4eb74a238ea4a6149bd12c42a8c06aec01b154": {
           "attaches": [
             "datom-codec",
             "protos"
-          ],
-          "features": [
-            "datom",
-            "datom-codec",
-            "dep:datom-codec",
-            "dep:protos",
-            "protos"
-          ]
-        }
-      },
-      "10.4.1": {
-        "d77169d061d0d0d7913415257d0f1c1603260583": {
-          "attaches": [
-            "datom-codec",
-            "protos",
-            "tokio"
           ],
           "features": [
             "datom",
@@ -387,17 +315,14 @@
             "default",
             "dep:datom-codec",
             "dep:protos",
-            "dep:tokio",
-            "protos",
-            "tokio",
-            "transport"
+            "protos"
           ]
         }
       }
     },
     "signal-belief-nexus": {
-      "0.3.3": {
-        "1a8bef46b0ec5652c13c1ec3f79b109f4cb6febe": {
+      "0.4.1": {
+        "a6d3bda2406c67486c9395c9e9547b84d34407d1": {
           "attaches": [
             "datom-codec",
             "protos"
@@ -409,14 +334,15 @@
             "dep:datom-codec",
             "dep:protos",
             "protos",
+            "signal/datom",
             "translator/datom"
           ]
         }
       }
     },
     "signal-flow": {
-      "53.0.0": {
-        "79eaa70bb6595f7708ea63ca0d11802b0958852e": {
+      "57.0.0": {
+        "3d0a4cdd0364a30e5586eac7db59917faca5072f": {
           "attaches": [
             "datom-codec",
             "protos"
@@ -433,8 +359,8 @@
           ]
         }
       },
-      "57.0.0": {
-        "3d0a4cdd0364a30e5586eac7db59917faca5072f": {
+      "58.0.1": {
+        "6881724d1752058195a770ab8244763151904541": {
           "attaches": [
             "datom-codec",
             "protos"
@@ -453,8 +379,8 @@
       }
     },
     "signal-herdr-nexus": {
-      "0.3.2": {
-        "10de08fe9951417f1c671e5d2da03017001ed317": {
+      "0.4.0": {
+        "10b9d215097504d5c911bb491ef8a5f276a3c683": {
           "attaches": [
             "datom-codec",
             "protos"
@@ -490,32 +416,8 @@
       }
     },
     "translator": {
-      "0.3.2": {
-        "571979d667d8b16171847c3122b7577a2eaa6669": {
-          "attaches": [
-            "datom-codec",
-            "libc",
-            "nix",
-            "protos"
-          ],
-          "features": [
-            "datom",
-            "datom-codec",
-            "default",
-            "dep:datom-codec",
-            "dep:libc",
-            "dep:nix",
-            "dep:protos",
-            "libc",
-            "nix",
-            "protos",
-            "text",
-            "unix"
-          ]
-        }
-      },
-      "0.4.2": {
-        "27da70fda647d78655d755477913a47267eb9c62": {
+      "0.5.0": {
+        "abc89b9cc7469a35700cb222ba31a8f5cb0745e6": {
           "attaches": [
             "datom-codec",
             "libc",
