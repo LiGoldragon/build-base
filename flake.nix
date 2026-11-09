@@ -49,6 +49,11 @@
         inherit systems contexts forSystems;
         # A repository's whole flake output for a Cargo workspace:
         #   outputs = { base, ... }: base.lib.workspaceOutputs { cargoNix = ./Cargo.nix; };
+        # with its own checks, which join checks.default:
+        #   base.lib.workspaceOutputs {
+        #     cargoNix = ./Cargo.nix;
+        #     extraChecks = { pkgs, toolchain, workspace, ... }: { fmt = ...; };
+        #   };
         workspaceOutputs =
           arguments:
           let

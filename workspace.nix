@@ -3,9 +3,20 @@
 #
 # packages.<member>  the member's build;  packages.default  all members.
 # checks.<member>    runs the member's test binaries, compiles nothing;
-# checks.default     every member's check.
+# checks.cargo-nix   the committed Cargo.nix is what the base's crate2nix
+#                    generates from the workspace (cargo-nix.nix);
+# checks.<extra>     each check extraChecks returns;
+# checks.default     every check above: green default is the whole gate.
+#
+# cargoNix is the workspace root's Cargo.nix, where `crate2nix generate`
+# writes it; its directory is the workspace source. extraChecks is a function
+# of the system's build context, with `workspace` the imported Cargo.nix,
+# returning more checks.
 context:
-{ cargoNix }:
+{
+  cargoNix,
+  extraChecks ? _: { },
+}:
 let
   inherit (context) pkgs crate2nix buildRustCrateForPkgs crateOverrides;
   lib = pkgs.lib;
@@ -89,7 +100,17 @@ let
         touch $out
       '';
 
-  checks = lib.mapAttrs (name: _: check name) members;
+  source = dirOf cargoNix;
+
+  memberChecks = lib.mapAttrs (name: _: check name) members;
+  ownChecks = memberChecks // {
+    cargo-nix = import ./cargo-nix.nix context { inherit source cargoNix generated; };
+  };
+  consumerChecks = extraChecks (context // { workspace = generated; });
+  clashes = lib.attrNames (lib.intersectAttrs ownChecks consumerChecks) ++ lib.optional (consumerChecks ? default) "default";
+  checks =
+    assert lib.assertMsg (clashes == [ ]) "extraChecks names checks the base already has: ${toString clashes}";
+    ownChecks // consumerChecks;
 in
 {
   packages = lib.mapAttrs (_: member: member.build) members // {
