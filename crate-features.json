@@ -192,6 +192,14 @@
             "signal/datom"
           ]
         }
+      },
+      "73.0.1": {
+        "a90a889af74d2582ef1b9f36cda73627f975a4a6": {
+          "attaches": [],
+          "features": [
+            "default"
+          ]
+        }
       }
     },
     "meta-signal-herdr-nexus": {
@@ -219,6 +227,24 @@
           "attaches": [],
           "features": [
             "default"
+          ]
+        }
+      },
+      "4.0.0": {
+        "01d5553290428b093552be10cfde21c69ba7054e": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:protos",
+            "protos",
+            "signal-message/datom",
+            "signal/datom"
           ]
         }
       }
@@ -403,6 +429,24 @@
           "attaches": [],
           "features": [
             "default"
+          ]
+        }
+      },
+      "22.0.0": {
+        "2fed7500c915befc8fc42359771e8a27d43a451e": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:protos",
+            "protos",
+            "signal-flow/datom",
+            "signal/datom"
           ]
         }
       }

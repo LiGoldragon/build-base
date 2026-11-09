@@ -180,13 +180,15 @@
       "0.6.1": ["eb43351e8ad155b555842a8ab7e9e46eaf8bf97f"]
     },
     "meta-signal-flow": {
-      "72.0.0": ["27d06b7b4995ad275c2c2c85dd0ffb5499482dd7"]
+      "72.0.0": ["27d06b7b4995ad275c2c2c85dd0ffb5499482dd7"],
+      "73.0.1": ["a90a889af74d2582ef1b9f36cda73627f975a4a6"]
     },
     "meta-signal-herdr-nexus": {
       "0.4.1": ["bf27dc28a781b53aad553398faa27db1524651e6"]
     },
     "meta-signal-message": {
-      "3.0.1": ["4d81b6481292f9212065a83c30f29640de60505e"]
+      "3.0.1": ["4d81b6481292f9212065a83c30f29640de60505e"],
+      "4.0.0": ["01d5553290428b093552be10cfde21c69ba7054e"]
     },
     "protos": {
       "0.32.2": ["15b41da8f2579e73ead59bc0c2b97529b8ac32d3"],
@@ -214,7 +216,8 @@
       "0.4.0": ["10b9d215097504d5c911bb491ef8a5f276a3c683"]
     },
     "signal-message": {
-      "21.0.1": ["998c824c98a1e2f5e32f9e3a69bf09d3a29aff6b"]
+      "21.0.1": ["998c824c98a1e2f5e32f9e3a69bf09d3a29aff6b"],
+      "22.0.0": ["2fed7500c915befc8fc42359771e8a27d43a451e"]
     },
     "signal-sema": {
       "0.2.0": ["4f3a24e6677ab9d200672851016c4c760c1e36e8"]
