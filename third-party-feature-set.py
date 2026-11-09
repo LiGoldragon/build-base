@@ -3,7 +3,7 @@
 Each third-party crate (a crate from a registry) gets one feature set: the
 union of the features each Cargo.nix resolves for it (resolved-features.nix),
 so it has one build in every repository. Where a feature of the union
-attaches an optional dependency some Cargo.nix holding the crate does not
+attaches an optional dependency some Cargo.nix building the crate does not
 give it, that repository carries the edge: each is named, by repository,
 crate, the features attaching it and the dependency, and the set is written
 whole. A third-party crate that asks of another, within the set, a feature
@@ -75,9 +75,12 @@ def main(paths):
     for (name, version), holders in sorted(crates.items()):
         features = set().union(*(set(entry["features"]) for entry in holders.values()))
         feature_map = next(iter(holders.values()))["featureMap"]
+        # A repository that never builds the crate carries no edge for it, as
+        # checks.third-party-features asks nothing of a crate not built.
         given = {
             repository: {dependency["name"] for dependency in entry["dependencies"]}
             for repository, entry in holders.items()
+            if entry["built"]
         }
         optional = {
             dependency["name"]

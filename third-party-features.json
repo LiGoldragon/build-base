@@ -8,11 +8,27 @@
       ]
     }
   },
+  "arrayvec": {
+    "0.7.8": {
+      "attaches": [],
+      "features": []
+    }
+  },
   "autocfg": {
     "1.5.1": {
       "attaches": [],
       "features": [
         "default"
+      ]
+    }
+  },
+  "base64": {
+    "0.22.1": {
+      "attaches": [],
+      "features": [
+        "alloc",
+        "default",
+        "std"
       ]
     }
   },
@@ -39,6 +55,16 @@
     "2.13.2": {
       "attaches": [],
       "features": [
+        "default",
+        "std"
+      ]
+    }
+  },
+  "blake3": {
+    "1.8.7": {
+      "attaches": [],
+      "features": [
+        "constant_time_eq/std",
         "default",
         "std"
       ]
@@ -84,6 +110,14 @@
       ]
     }
   },
+  "cc": {
+    "1.4.6": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
   "cfg-if": {
     "1.0.4": {
       "attaches": [],
@@ -100,8 +134,22 @@
       ]
     }
   },
+  "constant_time_eq": {
+    "0.4.2": {
+      "attaches": [],
+      "features": [
+        "std"
+      ]
+    }
+  },
   "cpufeatures": {
     "0.2.17": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    },
+    "0.3.1": {
       "attaches": [],
       "features": [
         "default"
@@ -112,6 +160,16 @@
     "0.1.7": {
       "attaches": [],
       "features": [
+        "default",
+        "std"
+      ]
+    }
+  },
+  "data-encoding": {
+    "2.11.1": {
+      "attaches": [],
+      "features": [
+        "alloc",
         "default",
         "std"
       ]
@@ -155,6 +213,14 @@
       ]
     }
   },
+  "find-msvc-tools": {
+    "0.1.12": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
   "fnv": {
     "1.0.7": {
       "attaches": [],
@@ -162,6 +228,12 @@
         "default",
         "std"
       ]
+    }
+  },
+  "fsevent-sys": {
+    "4.1.0": {
+      "attaches": [],
+      "features": []
     }
   },
   "futures-core": {
@@ -201,7 +273,9 @@
     },
     "0.4.3": {
       "attaches": [],
-      "features": []
+      "features": [
+        "default"
+      ]
     }
   },
   "hashbrown": {
@@ -210,12 +284,44 @@
       "features": []
     }
   },
+  "http": {
+    "1.5.0": {
+      "attaches": [],
+      "features": [
+        "default",
+        "std"
+      ]
+    }
+  },
+  "httparse": {
+    "1.10.1": {
+      "attaches": [],
+      "features": [
+        "default",
+        "std"
+      ]
+    }
+  },
   "indexmap": {
     "2.14.2": {
       "attaches": [],
       "features": [
         "default",
         "std"
+      ]
+    }
+  },
+  "inotify": {
+    "0.11.5": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "inotify-sys": {
+    "0.1.8": {
+      "attaches": [],
+      "features": [
+        "default"
       ]
     }
   },
@@ -229,6 +335,18 @@
   },
   "js-sys": {
     "0.3.105": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "kqueue": {
+    "1.2.1": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "kqueue-sys": {
+    "1.1.2": {
       "attaches": [],
       "features": []
     }
@@ -251,9 +369,21 @@
         "elf",
         "errno",
         "general",
+        "if_ether",
         "ioctl",
+        "net",
+        "netlink",
         "no_std",
-        "prctl"
+        "prctl",
+        "xdp"
+      ]
+    }
+  },
+  "log": {
+    "0.4.34": {
+      "attaches": [],
+      "features": [
+        "default"
       ]
     }
   },
@@ -271,6 +401,22 @@
       "attaches": [],
       "features": [
         "default"
+      ]
+    }
+  },
+  "mio": {
+    "1.2.3": {
+      "attaches": [
+        "log"
+      ],
+      "features": [
+        "default",
+        "dep:log",
+        "log",
+        "os-ext",
+        "os-poll",
+        "windows-sys/Win32_Security",
+        "windows-sys/Win32_System_Pipes"
       ]
     }
   },
@@ -305,6 +451,27 @@
       ]
     }
   },
+  "notify": {
+    "8.2.0": {
+      "attaches": [
+        "fsevent-sys"
+      ],
+      "features": [
+        "default",
+        "dep:fsevent-sys",
+        "fsevent-sys",
+        "macos_fsevent"
+      ]
+    }
+  },
+  "notify-types": {
+    "2.1.0": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
   "num-traits": {
     "0.2.19": {
       "attaches": [],
@@ -335,7 +502,8 @@
     "0.2.21": {
       "attaches": [],
       "features": [
-        "simd"
+        "simd",
+        "std"
       ]
     }
   },
@@ -444,21 +612,33 @@
   },
   "rand": {
     "0.9.5": {
-      "attaches": [],
+      "attaches": [
+        "rand_chacha"
+      ],
       "features": [
         "alloc",
+        "default",
+        "dep:rand_chacha",
         "os_rng",
+        "rand_chacha",
         "rand_chacha?/std",
         "rand_core/os_rng",
         "rand_core/std",
-        "std"
+        "small_rng",
+        "std",
+        "std_rng",
+        "thread_rng"
       ]
     }
   },
   "rand_chacha": {
     "0.9.0": {
       "attaches": [],
-      "features": []
+      "features": [
+        "ppv-lite86/std",
+        "rand_core/std",
+        "std"
+      ]
     }
   },
   "rand_core": {
@@ -481,6 +661,15 @@
       "attaches": [],
       "features": [
         "default"
+      ]
+    }
+  },
+  "redb": {
+    "4.3.0": {
+      "attaches": [],
+      "features": [
+        "default",
+        "std"
       ]
     }
   },
@@ -559,10 +748,16 @@
         "fs",
         "libc?/std",
         "libc_errno?/std",
+        "linux-raw-sys/if_ether",
+        "linux-raw-sys/net",
+        "linux-raw-sys/netlink",
         "linux-raw-sys/prctl",
+        "linux-raw-sys/xdp",
+        "net",
         "process",
         "rand",
-        "std"
+        "std",
+        "time"
       ]
     }
   },
@@ -581,6 +776,14 @@
         "dep:wait-timeout",
         "timeout",
         "wait-timeout"
+      ]
+    }
+  },
+  "same-file": {
+    "1.0.6": {
+      "attaches": [],
+      "features": [
+        "default"
       ]
     }
   },
@@ -627,12 +830,31 @@
       ]
     }
   },
+  "sha1": {
+    "0.10.7": {
+      "attaches": [],
+      "features": [
+        "default",
+        "digest/std",
+        "std"
+      ]
+    }
+  },
   "sha2": {
     "0.10.9": {
       "attaches": [],
       "features": [
         "default",
         "digest/std",
+        "std"
+      ]
+    }
+  },
+  "shlex": {
+    "2.0.1": {
+      "attaches": [],
+      "features": [
+        "default",
         "std"
       ]
     }
@@ -789,6 +1011,28 @@
       ]
     }
   },
+  "tungstenite": {
+    "0.28.0": {
+      "attaches": [
+        "data-encoding",
+        "http",
+        "httparse",
+        "sha1"
+      ],
+      "features": [
+        "data-encoding",
+        "default",
+        "dep:data-encoding",
+        "dep:http",
+        "dep:httparse",
+        "dep:sha1",
+        "handshake",
+        "http",
+        "httparse",
+        "sha1"
+      ]
+    }
+  },
   "typenum": {
     "1.20.1": {
       "attaches": [],
@@ -807,6 +1051,14 @@
   },
   "unicode-ident": {
     "1.0.24": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
+  "utf-8": {
+    "0.7.6": {
       "attaches": [],
       "features": [
         "default"
@@ -833,6 +1085,20 @@
       "features": [
         "default"
       ]
+    }
+  },
+  "walkdir": {
+    "2.5.0": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
+  "wasi": {
+    "0.11.1+wasi-snapshot-preview1": {
+      "attaches": [],
+      "features": []
     }
   },
   "wasip2": {
@@ -865,6 +1131,12 @@
       "features": []
     }
   },
+  "winapi-util": {
+    "0.1.11": {
+      "attaches": [],
+      "features": []
+    }
+  },
   "windows-link": {
     "0.2.1": {
       "attaches": [],
@@ -872,7 +1144,65 @@
     }
   },
   "windows-sys": {
+    "0.60.2": {
+      "attaches": [],
+      "features": []
+    },
     "0.61.2": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "windows-targets": {
+    "0.53.5": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "windows_aarch64_gnullvm": {
+    "0.53.1": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "windows_aarch64_msvc": {
+    "0.53.1": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "windows_i686_gnu": {
+    "0.53.1": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "windows_i686_gnullvm": {
+    "0.53.1": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "windows_i686_msvc": {
+    "0.53.1": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "windows_x86_64_gnu": {
+    "0.53.1": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "windows_x86_64_gnullvm": {
+    "0.53.1": {
+      "attaches": [],
+      "features": []
+    }
+  },
+  "windows_x86_64_msvc": {
+    "0.53.1": {
       "attaches": [],
       "features": []
     }
