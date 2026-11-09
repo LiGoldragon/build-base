@@ -31,7 +31,11 @@
             # repository, so every repository hashes the crate the same.
             crateOverrides = pkgs.defaultCrateOverrides;
             # The one crate2nix every repository generates its Cargo.nix with.
-            crate2nix = pkgs.crate2nix;
+            # crate2nix 0.15.0, which reads a git crate's hash under its own
+            # revision alone (crate2nix-git-hash-by-rev.patch).
+            crate2nix = pkgs.crate2nix.overrideAttrs (old: {
+              patches = (old.patches or [ ]) ++ [ ./crate2nix-git-hash-by-rev.patch ];
+            });
             buildRustCrateForPkgs =
               p:
               p.buildRustCrate.override {
@@ -88,6 +92,11 @@
             devShells = lib.mapAttrs (_: workspace: { default = workspace.devShell; }) workspaces;
           };
       };
+
+      # The base's own checks.
+      checks = lib.genAttrs systems (system: {
+        crate2nix-git-hash = import ./crate2nix-git-hash.nix contexts.${system};
+      });
 
       packages = lib.genAttrs systems (
         system:

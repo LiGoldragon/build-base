@@ -1,0 +1,17 @@
+diff --git a/src/prefetch.rs b/src/prefetch.rs
+index a6bf535..891127c 100644
+--- a/src/prefetch.rs
++++ b/src/prefetch.rs
+@@ -125,6 +125,12 @@ pub fn prefetch(
+                         .or_else(|| {
+                             // Fallback: match by (name, version) when the package ID
+                             // format differs between the hashes file and cargo metadata.
++                            // Never for a git source: a name and version recur at every
++                            // revision of a repository, so a git hash is looked up under
++                            // its own package ID alone.
++                            if matches!(p.source, ResolvedSource::Git(_)) {
++                                return None;
++                            }
+                             hashes_by_name_version
+                                 .get(&(p.crate_name.clone(), p.version.to_string()))
+                                 .map(|hash| HashWithSource {
