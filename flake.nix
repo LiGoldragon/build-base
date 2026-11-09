@@ -64,7 +64,10 @@
         # checks.default:
         #   base.lib.workspaceOutputs {
         #     cargoNix = ./Cargo.nix;
-        #     memberChecks = { pkgs, tests, ... }: { some-member = ...; untested-member = null; };
+        #     memberChecks = { pkgs, tests, check, ... }: {
+        #       some-member = check "some-member" [ "default" "a-feature" ];
+        #       untested-member = null;
+        #     };
         #     extraChecks = { pkgs, toolchain, workspace, tests, ... }: { fmt = ...; };
         #   };
         # A flake that composes its own outputs takes one system's workspace,

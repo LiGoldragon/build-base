@@ -15,7 +15,8 @@
 # cargoNix is the workspace root's Cargo.nix, where `crate2nix generate`
 # writes it; its directory is the workspace source. memberChecks and
 # extraChecks are functions of the system's build context, with `workspace`
-# the imported Cargo.nix and `tests` the members' test builds. memberChecks
+# the imported Cargo.nix, `tests` the members' test builds and `check` the
+# base's check of a member under a feature set. memberChecks
 # returns, by member name, the check that stands in place of the base's, or
 # null for a member that has no check. extraChecks returns more checks, by
 # names no member, cargo-nix or default has.
@@ -66,17 +67,22 @@ let
       (crateOverrides.${name} or (_: { })) attributes // { src = withoutTests attributes.src; }
     ) members;
 
-  # The member's crate built with its tests, as `cargo test -p` builds it:
-  # its library and binaries plus every test target, the binaries left in
-  # $out/tests unrun. Dependencies are the same derivations as the build's
-  # wherever the dev-dependencies leave their features unchanged.
+  # The member's crate built with its tests under a feature set, as
+  # `cargo test -p <member> --features …` builds it: its library and binaries
+  # plus every test target, the binaries left in $out/tests unrun.
+  # Dependencies are the same derivations as the build's wherever the
+  # feature set and dev-dependencies leave their features unchanged. The
+  # member's [[test]] targets are honoured as cargo honours them: a target
+  # whose required-features the set lacks is left out, and a target with
+  # harness = false is compiled as a plain binary, its own main run by the
+  # check.
   testBuild =
-    name:
+    name: features:
     let
       packageId = members.${name}.packageId;
+      crateName = generated.internal.crates.${packageId}.crateName;
       crates = generated.internal.builtRustCratesWithFeatures {
-        inherit packageId;
-        features = [ "default" ];
+        inherit packageId features;
         buildRustCrateForPkgsFunc = buildWith buildOverrides;
         runTests = true;
       };
@@ -84,12 +90,13 @@ let
     crates.crates.${packageId}.override {
       buildTests = true;
       crateOverrides = crateOverrides // {
-        ${name} =
+        ${crateName} =
           attributes:
           let
-            given = (crateOverrides.${name} or (_: { })) attributes;
+            given = (crateOverrides.${crateName} or (_: { })) attributes;
+            honoured = given // testTargets (attributes // given);
           in
-          given // targetTmpdir (attributes // given);
+          honoured // targetTmpdir (attributes // honoured);
       };
     };
 
@@ -106,12 +113,44 @@ let
     '';
   };
 
-  # Runs every test binary of the member from a writable copy of its source,
-  # the directory cargo runs tests in. Compiles nothing.
-  check =
-    name:
+  # The member's [[test]] targets, as its build's preBuild and postBuild
+  # honour them.
+  testTargets =
+    crate:
     let
-      tests = testBuild name;
+      manifest = builtins.fromTOML (builtins.readFile ((crate.src.origSrc or crate.src) + "/Cargo.toml"));
+      targets = map (target: target // { path = target.path or "tests/${target.name}.rs"; }) (
+        manifest.test or [ ]
+      );
+      enabled = target: lib.all (feature: lib.elem feature crate.features) (target.required-features or [ ]);
+      absent = lib.filter (target: !enabled target) targets;
+      harnessless = lib.filter (target: enabled target && !(target.harness or true)) targets;
+      # Out of the reach of the scan that compiles tests/*.rs with --test,
+      # beside where it stood, so its modules resolve as before.
+      aside = target: "${target.path}.harnessless";
+    in
+    {
+      preBuild =
+        (crate.preBuild or "")
+        + lib.concatMapStrings (target: "rm -f ${lib.escapeShellArg target.path}\n") absent
+        + lib.concatMapStrings (
+          target: "mv ${lib.escapeShellArg target.path} ${lib.escapeShellArg (aside target)}\n"
+        ) harnessless;
+      postBuild =
+        lib.concatMapStrings (target: ''
+          mkdir -p target/bin
+          build_bin ${lib.escapeShellArg target.name} ${lib.escapeShellArg (aside target)} target/bin
+        '') harnessless
+        + (crate.postBuild or "");
+    };
+
+  # Runs every test binary of the member's test build under a feature set
+  # from a writable copy of its source, the directory cargo runs tests in.
+  # Compiles nothing.
+  check =
+    name: features:
+    let
+      tests = testBuild name features;
     in
     pkgs.runCommand "check-${name}"
       {
@@ -131,10 +170,11 @@ let
 
   source = dirOf cargoNix;
 
-  tests = lib.mapAttrs (name: _: testBuild name) members;
+  defaultFeatures = [ "default" ];
+  tests = lib.mapAttrs (name: _: testBuild name defaultFeatures) members;
   given = context // {
     workspace = generated;
-    inherit tests;
+    inherit tests check;
   };
 
   repositoryMemberChecks = memberChecks given;
@@ -142,7 +182,7 @@ let
   memberCheckSet =
     assert lib.assertMsg (unknownMembers == [ ]) "memberChecks names no member: ${toString unknownMembers}";
     lib.filterAttrs (_: value: value != null) (
-      lib.mapAttrs (name: _: check name) members // repositoryMemberChecks
+      lib.mapAttrs (name: _: check name defaultFeatures) members // repositoryMemberChecks
     );
   ownChecks = memberCheckSet // {
     cargo-nix = import ./cargo-nix.nix context { inherit source cargoNix generated; };
