@@ -9,11 +9,18 @@
 # crates vendored from those same checksums and git hashes, and its output
 # must equal the committed Cargo.nix byte for byte. That catches what the lock
 # cannot show: features, targets, editions, build scripts, members.
+#
+# source is the Cargo workspace, holding Cargo.toml and Cargo.lock. cargoNix
+# is the committed Cargo.nix generated from it, at the workspace root or kept
+# apart from it. crateHashes is the crate-hashes.json committed with that
+# Cargo.nix, laid into the source before generation; null when the source
+# holds its own, or has no git dependency.
 context:
 {
   source,
   cargoNix,
-  generated,
+  crateHashes ? null,
+  generated ? import cargoNix { inherit (context) pkgs; },
 }:
 let
   inherit (context) pkgs crate2nix;
@@ -124,7 +131,7 @@ let
         cp -r ${source} "$NIX_BUILD_TOP/source"
         chmod -R u+w "$NIX_BUILD_TOP/source"
         cd "$NIX_BUILD_TOP/source"
-        rm -f Cargo.nix
+        rm -f Cargo.nix${lib.optionalString (crateHashes != null) "\ncp ${crateHashes} crate-hashes.json"}
 
         if ! crate2nix generate >"$NIX_BUILD_TOP/generate.log" 2>&1; then
           cat "$NIX_BUILD_TOP/generate.log" >&2

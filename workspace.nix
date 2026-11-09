@@ -2,19 +2,25 @@
 # crate2nix Cargo.nix, on one system's build context.
 #
 # packages.<member>  the member's build;  packages.default  all members.
-# checks.<member>    runs the member's test binaries, compiles nothing;
+# tests.<member>     the member's test build, its test binaries unrun;
+# checks.<member>    runs the member's test binaries, compiles nothing, or
+#                    the check memberChecks gives in its place;
 # checks.cargo-nix   the committed Cargo.nix is what the base's crate2nix
 #                    generates from the workspace (cargo-nix.nix);
 # checks.<extra>     each check extraChecks returns;
 # checks.default     every check above: green default is the whole gate.
 #
 # cargoNix is the workspace root's Cargo.nix, where `crate2nix generate`
-# writes it; its directory is the workspace source. extraChecks is a function
-# of the system's build context, with `workspace` the imported Cargo.nix,
-# returning more checks.
+# writes it; its directory is the workspace source. memberChecks and
+# extraChecks are functions of the system's build context, with `workspace`
+# the imported Cargo.nix and `tests` the members' test builds. memberChecks
+# returns, by member name, the check that stands in place of the base's, or
+# null for a member that has no check. extraChecks returns more checks, by
+# names no member, cargo-nix or default has.
 context:
 {
   cargoNix,
+  memberChecks ? _: { },
   extraChecks ? _: { },
 }:
 let
@@ -102,17 +108,35 @@ let
 
   source = dirOf cargoNix;
 
-  memberChecks = lib.mapAttrs (name: _: check name) members;
-  ownChecks = memberChecks // {
+  tests = lib.mapAttrs (name: _: testBuild name) members;
+  given = context // {
+    workspace = generated;
+    inherit tests;
+  };
+
+  repositoryMemberChecks = memberChecks given;
+  unknownMembers = lib.attrNames (removeAttrs repositoryMemberChecks (lib.attrNames members));
+  memberCheckSet =
+    assert lib.assertMsg (unknownMembers == [ ]) "memberChecks names no member: ${toString unknownMembers}";
+    lib.filterAttrs (_: value: value != null) (
+      lib.mapAttrs (name: _: check name) members // repositoryMemberChecks
+    );
+  ownChecks = memberCheckSet // {
     cargo-nix = import ./cargo-nix.nix context { inherit source cargoNix generated; };
   };
-  consumerChecks = extraChecks (context // { workspace = generated; });
-  clashes = lib.attrNames (lib.intersectAttrs ownChecks consumerChecks) ++ lib.optional (consumerChecks ? default) "default";
+  consumerChecks = extraChecks given;
+  taken = lib.attrNames members ++ [
+    "cargo-nix"
+    "default"
+  ];
+  clashes = lib.filter (name: lib.elem name taken) (lib.attrNames consumerChecks);
   checks =
     assert lib.assertMsg (clashes == [ ]) "extraChecks names checks the base already has: ${toString clashes}";
     ownChecks // consumerChecks;
 in
 {
+  inherit tests;
+
   packages = lib.mapAttrs (_: member: member.build) members // {
     default = generated.allWorkspaceMembers;
   };

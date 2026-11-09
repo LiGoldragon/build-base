@@ -24,18 +24,38 @@ with those crates vendored, and diffs the result with the committed file.
 Commit `crate-hashes.json` with `Cargo.nix`: the offline generation reads git
 dependencies' hashes from it.
 
-`extraChecks`, a function of the build context (below) with `workspace`, the
-imported Cargo.nix, returns the repository's own checks:
+`memberChecks` and `extraChecks` are functions of the build context (below)
+with `workspace`, the imported Cargo.nix, and `tests`, each member's test
+build. `memberChecks` gives, by member name, the check that stands in place of
+the base's (a member whose tests need an environment), or null for a member
+that has no check. `extraChecks` returns the repository's own further checks,
+under names no member, `cargo-nix` or `default` has:
 
 ```nix
 base.lib.workspaceOutputs {
   cargoNix = ./Cargo.nix;
-  extraChecks = { pkgs, toolchain, workspace, ... }: { fmt = …; };
+  memberChecks = { pkgs, tests, ... }: { frozen-contract = null; };
+  extraChecks = { pkgs, toolchain, workspace, tests, ... }: { fmt = …; };
 }
 ```
 
 `packages.default` is every member and `checks.default` every check, the
 repository's own included, so a green default is the whole gate.
-`lib.contexts.<system>` holds
-`pkgs`, `toolchain`, `crateOverrides`, `crate2nix` and `buildRustCrateForPkgs`
-for a flake that needs more. Cargo stays the local loop: `nix develop`.
+
+A Cargo.nix kept apart from the workspace it was generated from (a pinned
+dependency built per crate) takes the same freshness check from the context:
+
+```nix
+cargoNixCheck {
+  source = <the workspace, holding Cargo.toml and Cargo.lock>;
+  cargoNix = ./nix/dependency/Cargo.nix;
+  crateHashes = ./nix/dependency/crate-hashes.json;
+}
+```
+
+`lib.contexts.<system>` holds `pkgs`, `toolchain`, `crateOverrides`,
+`crate2nix`, `buildRustCrateForPkgs` and `cargoNixCheck` for a flake that needs
+more, and `lib.workspace.<system>`, given the same arguments as
+`workspaceOutputs`, is one system's workspace, `packages`, `tests`, `checks`
+and `devShell`, for a flake that composes its own outputs. Cargo stays the
+local loop: `nix develop`.
