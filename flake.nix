@@ -103,6 +103,18 @@
           third-party-version-set = pkgs.writers.writePython3Bin "third-party-version-set" {
             flakeIgnore = [ "E501" ];
           } (builtins.readFile ./third-party-version-set.py);
+          # Writes third-party-features.json, one feature set per third-party
+          # crate, from what the active repositories' Cargo.nix resolve:
+          #   nix run github:LiGoldragon/build-base#third-party-feature-set -- <repository>/Cargo.nix ...
+          third-party-feature-set =
+            pkgs.writers.writePython3Bin "third-party-feature-set" { flakeIgnore = [ "E501" ]; }
+              (
+                builtins.replaceStrings [ "@resolver@" "@nixpkgs@" "@system@" ] [
+                  "${./resolved-features.nix}"
+                  "${pkgs.path}"
+                  system
+                ] (builtins.readFile ./third-party-feature-set.py)
+              );
         }
       );
     };

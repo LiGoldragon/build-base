@@ -47,6 +47,36 @@ writes `third-party-versions.json` in the working directory from the given
 locks, or, where two locks carry semver-compatible versions of one crate that
 differ, names the crate, each version and its lock, and writes nothing.
 
+The base holds, beside it, one feature set for every third-party crate,
+`third-party-features.json`: by crate and version, the features it is built
+with (`features`), the optional dependencies they attach (`attaches`), and the
+features held out pending a ruling (`held`), each with the dependency it
+would attach and the repositories whose Cargo.nix lack it. Every third-party
+crate the set holds is built with the set's features, its optional
+dependencies those features attach and every third-party crate beneath it
+under its own set, whichever member, test build or repository reaches it
+(`third-party-builds.nix`, the function each Cargo.nix is imported with), so
+it has one store path everywhere; features are additive, so the union of what
+each repository asks builds for all. A crate the set lacks, or whose
+resolution asks a held feature, is built as its build resolves it, over
+third-party dependencies built from the set. `checks.third-party-features`
+refuses a workspace whose Cargo.nix resolves, for a third-party crate, a
+version the set lacks or a feature it neither holds nor holds out, or lacks
+an optional dependency the set's features attach, naming each crate. What a
+Cargo.nix resolves is what crate2nix gives each crate when every member is
+built with all its features and its dev-dependencies
+(`resolved-features.nix`). The set is derived, never written by hand:
+
+```sh
+nix run github:LiGoldragon/build-base#third-party-feature-set -- <repository>/Cargo.nix ...
+```
+
+writes `third-party-features.json` from the given workspaces, each named by
+its directory, as the union of what each resolves; a feature that would
+attach an optional dependency some workspace holding the crate lacks is held
+out with every feature implying it, and named. Where a third-party crate asks
+of another a feature the other's set lacks, it names them and writes nothing.
+
 `memberChecks` and `extraChecks` are functions of the build context (below)
 with `workspace`, the imported Cargo.nix, `tests`, each member's test build,
 `check`, the base's check of a member under a feature set
@@ -63,7 +93,8 @@ nothing but the member compiled
 (`clippy "member" [ "default" ] [ "-D" "warnings" ]`). `memberChecks` gives, by member name, the check that stands in place of
 the base's (a member whose tests need an environment), or null for a member
 that has no check. `extraChecks` returns the repository's own further checks,
-under names no member, `cargo-nix`, `third-party-versions` or `default` has:
+under names no member, `cargo-nix`, `third-party-versions`,
+`third-party-features` or `default` has:
 
 ```nix
 base.lib.workspaceOutputs {
@@ -94,6 +125,9 @@ cargoNixCheck {
 `lib.contexts.<system>` holds `pkgs`, `toolchain`, `crateOverrides`,
 `crate2nix`, `buildRustCrateForPkgs` and `cargoNixCheck` for a flake that needs
 more, and `lib.workspace.<system>`, given the same arguments as
-`workspaceOutputs`, is one system's workspace, `packages`, `tests`, `checks`
-and `devShell`, for a flake that composes its own outputs. Cargo stays the
+`workspaceOutputs`, is one system's workspace, `packages`, `tests`, `checks`,
+`devShell`, and `workspace` and `buildRustCrateForPkgs`, the imported
+Cargo.nix and the function that builds its crates from the feature set, for a
+flake that composes its own outputs; the context's own `buildRustCrateForPkgs`
+knows no Cargo.nix and builds a crate as it is resolved. Cargo stays the
 local loop: `nix develop`.
