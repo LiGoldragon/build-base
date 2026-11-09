@@ -3,8 +3,9 @@
 Each crate a repository takes from another repository gets one feature set:
 the union of the features each Cargo.nix resolves for it
 (resolved-features.nix), so it has one build in every repository. A registry
-crate has one set per name and version, a git crate one per name, version and
-git revision; a workspace member has none. Where a feature of the union
+crate and a git crate each have one set per name and version, whatever
+revisions of a git crate the Cargo.nix files lock (the version set holds one
+revision per version); a workspace member has none. Where a feature of the union
 attaches an optional dependency some Cargo.nix building the crate does not
 give it, that repository carries the edge: each is named, by repository,
 crate, the features attaching it and the dependency, and the set is written
@@ -66,19 +67,23 @@ def main(paths):
         for path in paths
     }
 
-    # A crate is its name, its version and, for a git crate, its revision.
+    # A crate is its name, its version and its kind, registry or git.
     crates = {}
     for repository, resolved in repositories.items():
         for entry in resolved:
-            identity = (entry["name"], entry["version"], entry["revision"])
+            identity = (entry["name"], entry["version"], entry["revision"] is not None)
             crates.setdefault(identity, {})[repository] = entry
 
     sets = {}
     edges = []
-    for (name, version, revision), holders in sorted(crates.items(), key=lambda item: (item[0][0], item[0][1], item[0][2] or "")):
-        label = f"{name} {version}" + (f" {revision[:7]}" if revision else "")
+    for (name, version, is_git), holders in sorted(crates.items()):
+        label = f"{name} {version}" + (" (git)" if is_git else "")
         features = set().union(*(set(entry["features"]) for entry in holders.values()))
-        feature_map = next(iter(holders.values()))["featureMap"]
+        # Revisions of one git crate version may differ in their feature maps.
+        feature_map = {}
+        for entry in holders.values():
+            for feature, implied in entry["featureMap"].items():
+                feature_map[feature] = sorted(set(feature_map.get(feature, [])) | set(implied))
         # A repository that never builds the crate carries no edge for it, as
         # checks.crate-features asks nothing of a crate not built.
         given = {
@@ -102,7 +107,7 @@ def main(paths):
             for repository, names in sorted(given.items()):
                 if dependency not in names:
                     edges.append(f"{repository}: {label} {attaching} attaches {dependency}")
-        sets[(name, version, revision)] = {"features": sorted(features), "attaches": attaches}
+        sets[(name, version, is_git)] = {"features": sorted(features), "attaches": attaches}
 
     # Within the set, what a crate asks of another is in the other's set, so
     # each crate's set build gives its dependencies their set and no more.
@@ -111,10 +116,10 @@ def main(paths):
         for entry in resolved:
             if not entry["built"]:
                 continue
-            name, version, revision = entry["name"], entry["version"], entry["revision"]
-            features = sets[(name, version, revision)]["features"]
+            name, version, is_git = entry["name"], entry["version"], entry["revision"] is not None
+            features = sets[(name, version, is_git)]["features"]
             for dependency in entry["dependencies"]:
-                target = sets.get((dependency["crate"], dependency["version"], dependency["revision"]))
+                target = sets.get((dependency["crate"], dependency["version"], dependency["revision"] is not None))
                 if target is None or not dependency["applies"]:
                     continue
                 if dependency["optional"] and not any(enables(f, dependency["name"]) for f in features):
@@ -126,8 +131,8 @@ def main(paths):
                 missing = asked - set(target["features"])
                 if missing:
                     conflicts.append(
-                        f"{name} {version}{' ' + revision[:7] if revision else ''} asks "
-                        f"{dependency['crate']} {dependency['version']}{' ' + dependency['revision'][:7] if dependency['revision'] else ''} "
+                        f"{name} {version}{' (git)' if is_git else ''} asks "
+                        f"{dependency['crate']} {dependency['version']}{' (git)' if dependency['revision'] else ''} "
                         f"for {' '.join(sorted(missing))} in {repository}"
                     )
     if conflicts:
@@ -137,17 +142,14 @@ def main(paths):
         sys.exit(1)
 
     document = {"registry": {}, "git": {}}
-    for (name, version, revision), entry in sets.items():
-        if revision is None:
-            document["registry"].setdefault(name, {})[version] = entry
-        else:
-            document["git"].setdefault(name, {}).setdefault(version, {})[revision] = entry
+    for (name, version, is_git), entry in sets.items():
+        document["git" if is_git else "registry"].setdefault(name, {})[version] = entry
     with open(OUTPUT, "w") as handle:
         json.dump(document, handle, indent=2, sort_keys=True)
         handle.write("\n")
-    registry = sum(1 for identity in sets if identity[2] is None)
+    git = sum(1 for identity in sets if identity[2])
     print(
-        f"{OUTPUT}: {registry} registry crate versions and {len(sets) - registry} git crate revisions "
+        f"{OUTPUT}: {len(sets) - git} registry crate versions and {git} git crate versions "
         f"from {len(repositories)} repositories"
     )
     if edges:

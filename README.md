@@ -34,12 +34,15 @@ The base holds one version set for every crate a repository takes from another
 repository, `crate-versions.json`: a registry crate (a locked package from a
 registry) by name, the versions locked, one per crate except where the locks
 carry semver-incompatible versions side by side; a git crate (a locked package
-from a git repository) by name and version, the git revisions locked, each the
-full commit after `#` in the lock's source. A workspace member, a path source,
+from a git repository) by name and version, its one git revision, the full
+commit after `#` in the lock's source. A git crate has one revision per
+version, and a version of it semver-compatible with another is refused, as for
+a registry crate. A workspace member, a path source,
 is in no set. `checks.crate-versions` refuses a Cargo.lock that locks a
 registry crate at a version outside the set or a git crate at a revision
 outside it, naming each as `<crate>: lock <version> set <versions>` and
-`<crate>: lock <version> <revision> set <version revision, ...>`. A version or
+`<crate>: lock <version> <revision> set <version revision, ...>`: the set's
+revision for the lock's version, or its versions where it lacks that one. A version or
 a revision moves once, here, and every active repository's lock moves with it.
 The set is derived, never written by hand:
 
@@ -50,14 +53,18 @@ nix run github:LiGoldragon/build-base#crate-version-set -- <Cargo.lock ...>
 writes `crate-versions.json` in the working directory from the given locks.
 Where two locks carry semver-compatible registry versions of one crate that
 differ, it names the crate, each version and its lock, and writes nothing.
-Where the locks carry one git crate at more than one revision, it writes the
-set whole, each revision held, and lists each such crate with the
-repositories at each revision: that list measures the drift between the
-repositories, and each repository follows the set to close it.
+Where the locks carry one git crate at more than one revision of a version, or
+at two semver-compatible versions, it refuses likewise: it writes nothing and
+lists every such crate with each version and revision and the repositories at
+each. That list is the work queue: each repository moves to one revision, and
+the set is generated when the list is empty. `checks.crate-version-set-one-revision`
+proves the refusal on a fixture of two repositories locking one git crate
+version at two revisions.
 
 The base holds, beside it, one feature set for every such crate,
-`crate-features.json`: by crate and version for a registry crate, by crate,
-version and revision for a git crate, the features it is built with
+`crate-features.json`, `{ "registry": …, "git": … }`: by crate and version in
+each map (a git crate has one revision per version, so no revision keys it),
+the union over every revision the given Cargo.nix files lock, the features it is built with
 (`features`) and the optional dependencies they attach (`attaches`). It
 admits no exception: where the union attaches an optional dependency some
 repository builds the crate without, that repository carries the edge, in

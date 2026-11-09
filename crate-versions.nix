@@ -3,8 +3,8 @@
 # so every repository on the base shares one build of it.
 #
 # A crate taken from another repository is a locked package whose source is a
-# registry, held by name and version, or a git repository, held by name,
-# version and locked git revision, the full commit after `#` in the lock's
+# registry, held by name and version, or a git repository, held by name and
+# version with its one git revision, the full commit after `#` in the lock's
 # source. A workspace member, a path source, is held in neither. The lock is
 # compared with the set at evaluation; a departure fails the check, naming
 # each crate with the lock's version (and revision) and the set's. The set is
@@ -34,16 +34,10 @@ let
   registryDepartures = lib.filter (package: !lib.elem package.version (set.registry.${package.name} or [ ])) (
     lib.filter registry packages
   );
-  heldGit =
-    name:
-    lib.concatLists (
-      lib.mapAttrsToList (
-        version: revisions: map (revision: { inherit version revision; }) revisions
-      ) (set.git.${name} or { })
-    );
-  gitDepartures = lib.filter (
-    package: !lib.elem (commit package) (set.git.${package.name}.${package.version} or [ ])
-  ) (lib.filter git packages);
+  heldGit = name: lib.mapAttrsToList (version: revision: { inherit version revision; }) (set.git.${name} or { });
+  gitDepartures = lib.filter (package: (set.git.${package.name}.${package.version} or null) != commit package) (
+    lib.filter git packages
+  );
 
   registryDeparture =
     package:

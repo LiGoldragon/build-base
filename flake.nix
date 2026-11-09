@@ -96,6 +96,9 @@
       # The base's own checks.
       checks = lib.genAttrs systems (system: {
         crate2nix-git-hash = import ./crate2nix-git-hash.nix contexts.${system};
+        crate-version-set-one-revision = import ./crate-version-set-test.nix contexts.${system} {
+          generator = self.packages.${system}.crate-version-set;
+        };
       });
 
       packages = lib.genAttrs systems (
@@ -107,14 +110,15 @@
           toolchain = contexts.${system}.toolchain;
           crate2nix = contexts.${system}.crate2nix;
           # Writes crate-versions.json from the active repositories' locks,
-          # the registry crates and the git crates they take, or names the
-          # registry crates they misalign on:
+          # the registry crates and the git crates they take, one revision per
+          # git crate version, or names the registry and git crates they
+          # misalign on, with each version and revision and the repositories:
           #   nix run github:LiGoldragon/build-base#crate-version-set -- <Cargo.lock ...>
           crate-version-set = pkgs.writers.writePython3Bin "crate-version-set" {
             flakeIgnore = [ "E501" ];
           } (builtins.readFile ./crate-version-set.py);
           # Writes crate-features.json, one feature set per registry crate
-          # version and per git crate revision, from what the active
+          # version and per git crate version, from what the active
           # repositories' Cargo.nix resolve:
           #   nix run github:LiGoldragon/build-base#crate-feature-set -- <repository>/Cargo.nix ...
           crate-feature-set =
