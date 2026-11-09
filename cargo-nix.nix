@@ -6,9 +6,10 @@
 # or the git url and revision. A difference fails the check at once, naming
 # the packages. Only when they agree is the second step built: crate2nix
 # generate runs in the sandbox, offline, over the source with its locked
-# crates vendored from those same checksums and git hashes, and its output
-# must equal the committed Cargo.nix byte for byte. That catches what the lock
-# cannot show: features, targets, editions, build scripts, members.
+# crates vendored from those same checksums and git hashes, each git source
+# apart by its url and commit, and its output must equal the committed
+# Cargo.nix byte for byte. That catches what the lock cannot show: features,
+# targets, editions, build scripts, members.
 #
 # source is the Cargo workspace, holding Cargo.toml and Cargo.lock. cargoNix
 # is the committed Cargo.nix generated from it, at the workspace root or kept
@@ -29,7 +30,8 @@ let
   fix = "nix run github:LiGoldragon/build-base#crate2nix -- generate";
 
   lockFile = source + "/Cargo.lock";
-  locked = (builtins.fromTOML (builtins.readFile lockFile)).package;
+  lock = builtins.fromTOML (builtins.readFile lockFile);
+  locked = lock.package;
 
   # "git+URL?rev=R#COMMIT" -> { url, commit }
   parseGit =
@@ -97,25 +99,71 @@ let
         exit 1
       '';
 
-  # The locked crates, vendored as cargo reads them offline. Registry crates
-  # are fetched under the name Cargo.nix fetches them by, so both share one
-  # store path; git crates take the hash Cargo.nix records.
-  vendor =
-    (pkgs.rustPlatform.importCargoLock.override {
-      fetchurl = arguments: pkgs.fetchurl (arguments // { name = lib.removePrefix "crate-" arguments.name; });
-    })
-      {
-        inherit lockFile;
-        outputHashes = lib.listToAttrs (
-          lib.concatMap (
-            crate:
-            lib.optional (crate ? src && crate.src ? rev) {
-              name = "${crate.crateName}-${crate.version}";
-              value = crate.src.outputHash;
-            }
-          ) (lib.attrValues generated.internal.crates)
-        );
+  # The locked crates, vendored as cargo reads them offline: the registry's
+  # crates in one directory source and each git source, its url, reference
+  # and commit, in a directory source of its own, so two git sources of one
+  # crate name and version stay apart. Registry crates are fetched under the
+  # name Cargo.nix fetches them by, so both share one store path; a git
+  # source takes the hash Cargo.nix records for its url and commit.
+  importCargoLock = pkgs.rustPlatform.importCargoLock.override {
+    fetchurl = arguments: pkgs.fetchurl (arguments // { name = lib.removePrefix "crate-" arguments.name; });
+  };
+
+  # A Cargo.lock holding only the given packages.
+  lockOf =
+    packages:
+    let
+      field = name: value: "${name} = ${builtins.toJSON value}\n";
+    in
+    lib.optionalString (lock ? version) (field "version" lock.version)
+    + lib.concatMapStrings (
+      package:
+      "\n[[package]]\n"
+      + lib.concatStrings (
+        lib.mapAttrsToList field (lib.filterAttrs (name: _: lib.elem name [ "name" "version" "source" "checksum" ]) package)
+      )
+    ) packages;
+
+  isGit = package: lib.hasPrefix "git+" (package.source or "");
+
+  recordedGitHashes = lib.listToAttrs (
+    lib.concatMap (
+      crate:
+      lib.optional (crate ? src && crate.src ? rev) {
+        name = "${crate.src.url} ${crate.src.rev}";
+        value = crate.src.outputHash;
+      }
+    ) (lib.attrValues generated.internal.crates)
+  );
+
+  registryVendor = importCargoLock { lockFileContents = lockOf (lib.filter (package: !isGit package) locked); };
+
+  gitVendors = lib.imap0 (
+    index: packages:
+    let
+      first = lib.head packages;
+      git = parseGit first.source;
+    in
+    {
+      name = "vendored-git-${toString index}";
+      directory = importCargoLock {
+        lockFileContents = lockOf packages;
+        outputHashes."${first.name}-${first.version}" = recordedGitHashes."${git.url} ${git.commit}";
       };
+    }
+  ) (lib.attrValues (lib.groupBy (package: package.source) (lib.filter isGit locked)));
+
+  # Cargo's configuration for the vendored crates: crates.io and each git
+  # source replaced by its directory source. A git source's section is the one
+  # importCargoLock wrote, pointed at that source's own directory.
+  vendorConfig = ''
+    printf '[source.crates-io]\nreplace-with = "vendored-sources"\n\n[source.vendored-sources]\ndirectory = "%s"\n' ${registryVendor}
+  ''
+  + lib.concatMapStrings (vendor: ''
+    awk 'index($0, "[source.\"git+") == 1 { on = 1 } on' ${vendor.directory}/.cargo/config.toml \
+      | sed 's/^replace-with = "vendored-sources"$/replace-with = "${vendor.name}"/'
+    printf '\n[source.${vendor.name}]\ndirectory = "%s"\n' ${vendor.directory}
+  '') gitVendors;
 
   regeneration =
     pkgs.runCommand "cargo-nix"
@@ -126,7 +174,9 @@ let
       ''
         export HOME="$NIX_BUILD_TOP/home" CARGO_HOME="$NIX_BUILD_TOP/cargo-home"
         mkdir -p "$HOME" "$CARGO_HOME"
-        sed 's|^directory = .*|directory = "${vendor}"|' ${vendor}/.cargo/config.toml > "$CARGO_HOME/config.toml"
+        {
+        ${vendorConfig}
+        } > "$CARGO_HOME/config.toml"
 
         cp -r ${source} "$NIX_BUILD_TOP/source"
         chmod -R u+w "$NIX_BUILD_TOP/source"

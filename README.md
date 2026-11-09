@@ -24,7 +24,9 @@ runs. `checks.cargo-nix`
 proves the committed `Cargo.nix` is what this base's crate2nix generates from
 the workspace: it compares Cargo.lock's packages with the crates Cargo.nix
 records, then runs `crate2nix generate` offline in the sandbox over the source
-with those crates vendored, and diffs the result with the committed file.
+with those crates vendored, each git source apart by its url and commit, so two
+git sources of one crate name and version both resolve, and diffs the result
+with the committed file.
 Commit `crate-hashes.json` with `Cargo.nix`: the offline generation reads git
 dependencies' hashes from it.
 
