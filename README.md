@@ -54,7 +54,13 @@ with `workspace`, the imported Cargo.nix, `tests`, each member's test build,
 library under a feature set with rustdoc flags, its dependencies linked as its
 build links them, no cargo involved
 (`doc "member" [ "default" ] [ "-D" "warnings" ]`, the documentation in
-`$out/share/doc`). `memberChecks` gives, by member name, the check that stands in place of
+`$out/share/doc`), and `clippy`, clippy-driver over every target of a member
+under a feature set, as `cargo clippy --all-targets` lints them: the member's
+test build compiled by clippy-driver over the dependencies that build already
+links, the member's `[lints]` (or the workspace's, where it takes them)
+applied uncapped and the given flags after them, no cargo involved and
+nothing but the member compiled
+(`clippy "member" [ "default" ] [ "-D" "warnings" ]`). `memberChecks` gives, by member name, the check that stands in place of
 the base's (a member whose tests need an environment), or null for a member
 that has no check. `extraChecks` returns the repository's own further checks,
 under names no member, `cargo-nix`, `third-party-versions` or `default` has:
@@ -63,9 +69,10 @@ under names no member, `cargo-nix`, `third-party-versions` or `default` has:
 base.lib.workspaceOutputs {
   cargoNix = ./Cargo.nix;
   memberChecks = { pkgs, tests, ... }: { frozen-contract = null; };
-  extraChecks = { pkgs, toolchain, workspace, tests, doc, ... }: {
+  extraChecks = { pkgs, toolchain, workspace, tests, doc, clippy, ... }: {
     fmt = …;
     doc = doc "member" [ "default" ] [ "-D" "warnings" ];
+    clippy = clippy "member" [ "default" ] [ "-D" "warnings" ];
   };
 }
 ```

@@ -19,8 +19,10 @@
 # writes it; its directory is the workspace source. memberChecks and
 # extraChecks are functions of the system's build context, with `workspace`
 # the imported Cargo.nix, `tests` the members' test builds, `check` the
-# base's check of a member under a feature set and `doc` rustdoc over a
-# member's library under a feature set with rustdoc flags. memberChecks
+# base's check of a member under a feature set, `doc` rustdoc over a
+# member's library under a feature set with rustdoc flags and `clippy`
+# clippy-driver over every target of a member under a feature set, its own
+# lints applied, with clippy flags. memberChecks
 # returns, by member name, the check that stands in place of the base's, or
 # null for a member that has no check. extraChecks returns more checks, by
 # names no member, cargo-nix, third-party-versions or default has.
@@ -211,13 +213,45 @@ let
       '';
     });
 
+  # clippy over every target of the member under a feature set, as
+  # `cargo clippy --all-targets --features … -- <flags>` lints them: the
+  # member's test build under that feature set, its library, binaries, unit
+  # tests and test targets compiled by clippy-driver, its dependencies the
+  # test build's own. The member's [lints], or the workspace's where it
+  # takes them, hold uncapped; flags follow them on every clippy-driver
+  # command line (clippy "member" [ "default" ] [ "-D" "warnings" ]). Its
+  # build script is compiled by rustc. Compiles nothing but the member.
+  clippy =
+    name: features: flags:
+    let
+      packageId = members.${name}.packageId;
+      crate = generated.internal.crates.${packageId};
+      manifest = builtins.fromTOML (builtins.readFile ((crate.src.origSrc or crate.src) + "/Cargo.toml"));
+      root = builtins.fromTOML (builtins.readFile (source + "/Cargo.toml"));
+      memberLints = manifest.lints or { };
+      lints = if memberLints.workspace or false then root.workspace.lints or { } else memberLints;
+      linted = (testBuild name features).override {
+        useClippy = true;
+        clippy = context.toolchain;
+        inherit lints;
+        capLints = "forbid";
+      };
+    in
+    linted.overrideAttrs (attributes: {
+      name = "clippy-${name}";
+      preBuild = (attributes.preBuild or "") + ''
+        EXTRA_RUSTC_FLAGS=${lib.escapeShellArg (lib.concatStringsSep " " flags)}
+      '';
+      installPhase = "touch $out";
+    });
+
   source = dirOf cargoNix;
 
   defaultFeatures = [ "default" ];
   tests = lib.mapAttrs (name: _: testBuild name defaultFeatures) members;
   given = context // {
     workspace = generated;
-    inherit tests check doc;
+    inherit tests check doc clippy;
   };
 
   repositoryMemberChecks = memberChecks given;

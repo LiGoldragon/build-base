@@ -68,9 +68,10 @@
         #       some-member = check "some-member" [ "default" "a-feature" ];
         #       untested-member = null;
         #     };
-        #     extraChecks = { pkgs, toolchain, workspace, tests, doc, ... }: {
+        #     extraChecks = { pkgs, toolchain, workspace, tests, doc, clippy, ... }: {
         #       fmt = ...;
         #       doc = doc "some-member" [ "default" ] [ "-D" "warnings" ];
+        #       clippy = clippy "some-member" [ "default" ] [ "-D" "warnings" ];
         #     };
         #   };
         # A flake that composes its own outputs takes one system's workspace,
