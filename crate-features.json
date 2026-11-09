@@ -153,8 +153,8 @@
       }
     },
     "meta-signal-belief-nexus": {
-      "0.6.0": {
-        "a624c14995c867ef4ecd4e603b61effc2d730bfa": {
+      "0.6.1": {
+        "eb43351e8ad155b555842a8ab7e9e46eaf8bf97f": {
           "attaches": [
             "datom-codec",
             "protos"
@@ -195,8 +195,8 @@
       }
     },
     "meta-signal-herdr-nexus": {
-      "0.4.0": {
-        "d00ae37f72032d787c03392eef6e972ff4bae57a": {
+      "0.4.1": {
+        "bf27dc28a781b53aad553398faa27db1524651e6": {
           "attaches": [
             "datom-codec",
             "protos"
@@ -321,8 +321,8 @@
       }
     },
     "signal-belief-nexus": {
-      "0.4.1": {
-        "a6d3bda2406c67486c9395c9e9547b84d34407d1": {
+      "0.4.2": {
+        "011eea2aa83bc07db1fb318b7dcb4d30267e7c2d": {
           "attaches": [
             "datom-codec",
             "protos"

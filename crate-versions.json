@@ -177,13 +177,13 @@
       "0.22.1": ["f46b38e0a9996e1593095f4154cd0597ff3ebe69"]
     },
     "meta-signal-belief-nexus": {
-      "0.6.0": ["a624c14995c867ef4ecd4e603b61effc2d730bfa"]
+      "0.6.1": ["eb43351e8ad155b555842a8ab7e9e46eaf8bf97f"]
     },
     "meta-signal-flow": {
       "72.0.0": ["27d06b7b4995ad275c2c2c85dd0ffb5499482dd7"]
     },
     "meta-signal-herdr-nexus": {
-      "0.4.0": ["d00ae37f72032d787c03392eef6e972ff4bae57a"]
+      "0.4.1": ["bf27dc28a781b53aad553398faa27db1524651e6"]
     },
     "meta-signal-message": {
       "3.0.1": ["4d81b6481292f9212065a83c30f29640de60505e"]
@@ -204,7 +204,7 @@
       "11.0.0": ["6d4eb74a238ea4a6149bd12c42a8c06aec01b154"]
     },
     "signal-belief-nexus": {
-      "0.4.1": ["a6d3bda2406c67486c9395c9e9547b84d34407d1"]
+      "0.4.2": ["011eea2aa83bc07db1fb318b7dcb4d30267e7c2d"]
     },
     "signal-flow": {
       "57.0.0": ["3d0a4cdd0364a30e5586eac7db59917faca5072f"],
