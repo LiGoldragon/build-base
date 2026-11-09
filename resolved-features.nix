@@ -10,7 +10,9 @@
 #   built           whether any member's build on this platform reaches it;
 #   features        the features crate2nix resolves for it, as buildRustCrate
 #                   receives them, the names of optional dependencies they
-#                   attach among them;
+#                   attach among them, over every member;
+#   resolutions     by member, for each member whose build reaches it, the
+#                   features that member's build resolves for it;
 #   featureMap      its [features] table;
 #   dependencies    each crate this Cargo.nix locks for it: the name it is
 #                   depended on under, whether optional, the crate's name,
@@ -30,15 +32,16 @@ let
   held = lib.filterAttrs (_: identity.held) crates;
 
   everyFeature = packageId: [ "default" ] ++ lib.attrNames (crates.${packageId}.features or { });
-  resolutions = map (
-    member:
+  byMember = lib.mapAttrs (
+    _: member:
     internal.mergePackageFeatures {
       packageId = member.packageId;
       features = everyFeature member.packageId;
       inherit target;
       runTests = true;
     }
-  ) (lib.attrValues generated.workspaceMembers);
+  ) generated.workspaceMembers;
+  resolutions = lib.attrValues byMember;
   resolved = packageId: lib.unique (lib.sort lib.lessThan (lib.concatMap (resolution: resolution.${packageId} or [ ]) resolutions));
 
   dependency =
@@ -65,6 +68,9 @@ lib.mapAttrsToList (packageId: crate: {
   revision = identity.revision crate;
   built = lib.any (resolution: resolution ? ${packageId}) resolutions;
   features = resolved packageId;
+  resolutions = lib.mapAttrs (_: resolution: resolution.${packageId}) (
+    lib.filterAttrs (_: resolution: resolution ? ${packageId}) byMember
+  );
   featureMap = crate.features or { };
   dependencies = dependencies packageId crate;
 }) held
