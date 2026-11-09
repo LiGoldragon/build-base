@@ -110,6 +110,14 @@
       ]
     }
   },
+  "caseless": {
+    "0.2.2": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
   "cc": {
     "1.4.6": {
       "attaches": [],
@@ -132,6 +140,12 @@
       "features": [
         "default"
       ]
+    }
+  },
+  "comrak": {
+    "0.59.0": {
+      "attaches": [],
+      "features": []
     }
   },
   "constant_time_eq": {
@@ -191,6 +205,14 @@
       ]
     }
   },
+  "entities": {
+    "1.0.1": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
   "equivalent": {
     "1.0.2": {
       "attaches": [],
@@ -213,11 +235,38 @@
       ]
     }
   },
+  "fearless_simd": {
+    "1.2.0": {
+      "attaches": [],
+      "features": [
+        "default",
+        "std"
+      ]
+    }
+  },
+  "fearless_simd_macros": {
+    "0.1.0": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
   "find-msvc-tools": {
     "0.1.12": {
       "attaches": [],
       "features": [
         "default"
+      ]
+    }
+  },
+  "finl_unicode": {
+    "1.5.1": {
+      "attaches": [],
+      "features": [
+        "categories",
+        "default",
+        "grapheme_clusters"
       ]
     }
   },
@@ -396,6 +445,14 @@
       ]
     }
   },
+  "memchr-n": {
+    "0.1.10": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
   "memoffset": {
     "0.9.1": {
       "attaches": [],
@@ -486,6 +543,42 @@
       "features": [
         "alloc",
         "race",
+        "std"
+      ]
+    }
+  },
+  "phf": {
+    "0.14.0": {
+      "attaches": [],
+      "features": [
+        "default",
+        "phf_shared/std",
+        "serde?/std",
+        "std"
+      ]
+    }
+  },
+  "phf_codegen": {
+    "0.14.0": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
+  "phf_generator": {
+    "0.14.0": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
+    }
+  },
+  "phf_shared": {
+    "0.14.0": {
+      "attaches": [],
+      "features": [
+        "default",
         "std"
       ]
     }
@@ -737,6 +830,15 @@
       ]
     }
   },
+  "rustc-hash": {
+    "2.1.3": {
+      "attaches": [],
+      "features": [
+        "default",
+        "std"
+      ]
+    }
+  },
   "rustix": {
     "1.1.4": {
       "attaches": [],
@@ -865,10 +967,27 @@
       "features": []
     }
   },
+  "siphasher": {
+    "1.0.4": {
+      "attaches": [],
+      "features": [
+        "default",
+        "std"
+      ]
+    }
+  },
   "slab": {
     "0.4.12": {
       "attaches": [],
       "features": []
+    }
+  },
+  "smallvec": {
+    "1.16.5": {
+      "attaches": [],
+      "features": [
+        "default"
+      ]
     }
   },
   "syn": {
@@ -899,6 +1018,7 @@
         "default",
         "dep:quote",
         "derive",
+        "fold",
         "full",
         "parsing",
         "printing",
@@ -940,14 +1060,23 @@
   },
   "tinyvec": {
     "1.13.2": {
-      "attaches": [],
-      "features": []
+      "attaches": [
+        "tinyvec_macros"
+      ],
+      "features": [
+        "alloc",
+        "default",
+        "dep:tinyvec_macros",
+        "tinyvec_macros"
+      ]
     }
   },
   "tinyvec_macros": {
     "0.1.1": {
       "attaches": [],
-      "features": []
+      "features": [
+        "default"
+      ]
     }
   },
   "tokio": {
@@ -1033,6 +1162,15 @@
       ]
     }
   },
+  "typed-arena": {
+    "2.0.2": {
+      "attaches": [],
+      "features": [
+        "default",
+        "std"
+      ]
+    }
+  },
   "typenum": {
     "1.20.1": {
       "attaches": [],
@@ -1054,6 +1192,15 @@
       "attaches": [],
       "features": [
         "default"
+      ]
+    }
+  },
+  "unicode-normalization": {
+    "0.1.26": {
+      "attaches": [],
+      "features": [
+        "default",
+        "std"
       ]
     }
   },
