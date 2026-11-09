@@ -2,7 +2,9 @@
 # crate2nix Cargo.nix, on one system's build context.
 #
 # packages.<member>  the member's build;  packages.default  all members.
-# tests.<member>     the member's test build, its test binaries unrun;
+# tests.<member>     the member's test build, its test binaries unrun, and
+#                    in target-tmpdir the CARGO_TARGET_TMPDIR they were
+#                    compiled with, which a check creates before it runs them;
 # checks.<member>    runs the member's test binaries, compiles nothing, or
 #                    the check memberChecks gives in its place;
 # checks.cargo-nix   the committed Cargo.nix is what the base's crate2nix
@@ -81,8 +83,28 @@ let
     in
     crates.crates.${packageId}.override {
       buildTests = true;
-      crateOverrides = crateOverrides;
+      crateOverrides = crateOverrides // {
+        ${name} =
+          attributes:
+          let
+            given = (crateOverrides.${name} or (_: { })) attributes;
+          in
+          given // targetTmpdir (attributes // given);
+      };
     };
+
+  # Cargo gives a test, at compile time, CARGO_TARGET_TMPDIR: a directory it
+  # may write in when it runs, target/tmp. The test build sets it in its own
+  # target directory and records the path in $out/target-tmpdir; a check
+  # creates that same absolute path before it runs the binaries.
+  targetTmpdir = attributes: {
+    preBuild = (attributes.preBuild or "") + ''
+      export CARGO_TARGET_TMPDIR="$PWD/target/tmp"
+    '';
+    postInstall = (attributes.postInstall or "") + ''
+      echo "$CARGO_TARGET_TMPDIR" > $out/target-tmpdir
+    '';
+  };
 
   # Runs every test binary of the member from a writable copy of its source,
   # the directory cargo runs tests in. Compiles nothing.
@@ -98,6 +120,7 @@ let
       ''
         cp -r ${tests.src} "$NIX_BUILD_TOP/source"
         chmod -R u+w "$NIX_BUILD_TOP/source"
+        mkdir -p "$(cat ${tests}/target-tmpdir)"
         cd "$NIX_BUILD_TOP/source"
         for binary in ${tests}/tests/*; do
           echo "running $(basename "$binary")"
