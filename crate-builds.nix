@@ -3,8 +3,8 @@
 #
 # Given an imported Cargo.nix and the function that builds one crate, returns
 # that function made to build each crate the set holds (a registry crate, by
-# name and version, or a git crate, by name, version and revision; a workspace
-# member is neither) whole: the crate with the set's features, the optional
+# name and version, or a git crate, by name and version; a workspace member is
+# neither) whole: the crate with the set's features, the optional
 # dependencies those features attach, and every crate beneath it under its own
 # set, whatever the build that reaches it resolves. A crate the set lacks, or
 # whose resolution in this build asks a feature the set does not hold (a set

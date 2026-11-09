@@ -2,8 +2,8 @@
 # crate a workspace takes from another repository as its Cargo.nix resolves
 # it, so the crate is the one build every repository on the base shares.
 #
-# For each such crate (a registry crate, by name and version, or a git crate,
-# by name, version and revision; a workspace member is neither) this Cargo.nix
+# For each such crate (a registry crate or a git crate, by name and version; a
+# workspace member is neither) this Cargo.nix
 # resolves (resolved-features.nix), the set holds it and every feature it
 # resolves, and the optional dependencies the set's features attach are ones
 # this Cargo.nix gives it. Anything else fails the check, naming the crate.
@@ -26,8 +26,8 @@ let
         if crate.revision == null then
           set.registry.${crate.name}.${crate.version} or null
         else
-          set.git.${crate.name}.${crate.version}.${crate.revision} or null;
-      label = "${crate.name} ${crate.version}${lib.optionalString (crate.revision != null) " ${builtins.substring 0 7 crate.revision}"}";
+          set.git.${crate.name}.${crate.version} or null;
+      label = "${crate.name} ${crate.version}${lib.optionalString (crate.revision != null) " (git)"}";
       beyond = lib.filter (feature: !(lib.elem feature given.features)) crate.features;
       names = map (dependency: dependency.name) crate.dependencies;
       lacking = lib.filter (dependency: !(lib.elem dependency names)) given.attaches;
