@@ -91,7 +91,7 @@ a vision line places a feature per consumer, a crate holds named sets in place
 of its union, written by hand in `crate-features.json`, each a deliberate entry:
 
 ```json
-"signal": { "10.4.1": { "sets": [
+"signal": { "11.0.0": { "sets": [
   { "name": "plain", "features": [ … ], "attaches": [ … ],
     "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\"" },
   { "name": "datom", "features": [ "datom", … ], "attaches": [ … ], "vision": "…" }
@@ -127,6 +127,19 @@ set of that name lacks, it names them and writes nothing: a crate whose union
 passes a per-consumer feature on takes named sets itself.
 `checks.crate-features-named-sets` proves the check on fixtures: a set not
 listed is refused, a listed second set passes.
+
+A crate handed the same effective features is one derivation
+(`crate-default-features.nix`). `default` names the features it implies, yet
+buildRustCrate passes it to rustc as a feature of its own, so a crate reached
+with and without default features, every implied feature otherwise on, would
+be two builds. Every crate is handed `default` exactly where its [features]
+table declares it and everything it implies is on, each feature in its closure
+and each optional dependency it attaches; otherwise `default` is dropped.
+crate2nix writes no empty `default`, so a crate whose `default` is empty, as
+signal's, is built without it. `checks.crate-default-features` proves it on a
+fixture crate through the base's buildRustCrate: an empty `default` with and
+without default features is one derivation, `std` and `default std` are one,
+and no feature and `std` stay two.
 
 A crate is built from its source without what the build never reads
 (`crate-source.nix`), for a member and for a git crate alike: in each directory

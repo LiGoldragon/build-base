@@ -1,195 +1,78 @@
 {
   "git": {
     "datom-codec": {
-      "0.32.2": {
-        "4dff16b4f7412febc3b71aac8b49680cd20988cb": {
-          "attaches": [
-            "rkyv"
-          ],
-          "features": [
-            "default",
-            "dep:rkyv",
-            "protos/rkyv",
-            "rkyv"
-          ]
-        }
-      },
-      "0.33.0": {
-        "eabead48b31e8d4f429d7fb156dd18548bbd79c1": {
-          "attaches": [
-            "rkyv"
-          ],
-          "features": [
-            "default",
-            "dep:rkyv",
-            "protos/rkyv",
-            "rkyv"
-          ]
-        }
-      },
       "0.33.1": {
-        "09a0526949b043f921b6d3ce115b7f455291f2e2": {
-          "attaches": [
-            "rkyv"
-          ],
-          "features": [
-            "default",
-            "dep:rkyv",
-            "protos/rkyv",
-            "rkyv"
-          ]
-        },
-        "0bbeb11b692606f85b5c60187b14586802cb4701": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        },
-        "5cd62196d07ab52c69b6ed287510fa310c1838e7": {
-          "attaches": [
-            "rkyv"
-          ],
-          "features": [
-            "default",
-            "dep:rkyv",
-            "protos/rkyv",
-            "rkyv"
-          ]
-        }
+        "attaches": [
+          "rkyv"
+        ],
+        "features": [
+          "default",
+          "dep:rkyv",
+          "protos/rkyv",
+          "rkyv"
+        ]
       }
     },
     "datom-codec-derive": {
-      "0.32.0": {
-        "4dff16b4f7412febc3b71aac8b49680cd20988cb": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        }
-      },
       "0.32.3": {
-        "09a0526949b043f921b6d3ce115b7f455291f2e2": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        },
-        "0bbeb11b692606f85b5c60187b14586802cb4701": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        },
-        "5cd62196d07ab52c69b6ed287510fa310c1838e7": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        },
-        "eabead48b31e8d4f429d7fb156dd18548bbd79c1": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        }
+        "attaches": [],
+        "features": [
+          "default"
+        ]
       }
     },
     "ethos-zero": {
-      "16.0.0": {
-        "c2653dd82adbdb1f1f2f654405c6620e0d06fd58": {
-          "attaches": [],
-          "features": [
-            "datom",
-            "default"
-          ]
-        }
-      },
-      "17.0.0": {
-        "07714b0171802787bea1eefe4caa2d826d9c4030": {
-          "attaches": [],
-          "features": [
-            "datom",
-            "default"
-          ]
-        }
-      },
-      "19.2.0": {
-        "5a5daca315ab24460ccbcd5038130c453e853e6e": {
-          "attaches": [],
-          "features": [
-            "datom",
-            "default"
-          ]
-        }
-      },
       "22.0.0": {
-        "1976e45fe1edfd5676cb33919dba1ec20c785a02": {
-          "attaches": [],
-          "features": [
-            "datom",
-            "default"
-          ]
-        },
-        "daa22eea68b5fc8c5b71c5790a77b6473c335108": {
-          "attaches": [],
-          "features": [
-            "datom",
-            "default"
-          ]
-        }
+        "attaches": [],
+        "features": [
+          "datom",
+          "default"
+        ]
       }
     },
     "example-signal": {
       "0.1.0": {
-        "21c87e960efed9d1d58ffd61009c8357a3aa6bf8": {
-          "attaches": [],
-          "features": [
-            "default",
-            "example-word/json",
-            "json"
-          ]
-        }
+        "attaches": [],
+        "features": [
+          "default",
+          "example-word/json",
+          "json"
+        ]
       }
     },
     "flow-ethos": {
-      "0.53.1": {
-        "c585ea6792cec66ffd81fb0a24cea3df90efd197": {
-          "attaches": [
-            "datom-codec",
-            "protos"
-          ],
-          "features": [
-            "datom",
-            "datom-codec",
-            "dep:datom-codec",
-            "dep:protos",
-            "protos"
-          ]
-        }
+      "0.53.3": {
+        "attaches": [
+          "datom-codec",
+          "protos"
+        ],
+        "features": [
+          "datom",
+          "datom-codec",
+          "dep:datom-codec",
+          "dep:protos",
+          "protos"
+        ]
       }
     },
     "message-defaults": {
-      "0.22.1": {
-        "f46b38e0a9996e1593095f4154cd0597ff3ebe69": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        }
+      "0.23.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
       }
     },
     "message-nexus": {
-      "0.22.1": {
-        "f46b38e0a9996e1593095f4154cd0597ff3ebe69": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        }
+      "0.23.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
       }
     },
     "meta-signal-belief-nexus": {
-      "0.4.1": {
+      "0.6.1": {
         "sets": [
           {
             "attaches": [],
@@ -212,6 +95,7 @@
               "dep:protos",
               "protos",
               "signal-belief-nexus/datom",
+              "signal/datom",
               "translator/datom"
             ],
             "name": "datom",
@@ -221,7 +105,7 @@
       }
     },
     "meta-signal-flow": {
-      "72.0.0": {
+      "73.0.2": {
         "sets": [
           {
             "attaches": [],
@@ -254,24 +138,7 @@
       }
     },
     "meta-signal-herdr-nexus": {
-      "0.2.1": {
-        "5b89490efd0b28fc00bbda49cff5314d3bea8762": {
-          "attaches": [
-            "datom-codec",
-            "protos"
-          ],
-          "features": [
-            "datom",
-            "datom-codec",
-            "default",
-            "dep:datom-codec",
-            "dep:protos",
-            "protos",
-            "translator/datom"
-          ]
-        }
-      },
-      "0.3.3": {
+      "0.4.1": {
         "sets": [
           {
             "attaches": [],
@@ -300,147 +167,71 @@
       }
     },
     "meta-signal-message": {
-      "3.0.1": {
-        "4d81b6481292f9212065a83c30f29640de60505e": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        }
+      "4.0.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "protos",
+              "signal-message/datom",
+              "signal/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
       }
     },
     "protos": {
-      "0.32.2": {
-        "15b41da8f2579e73ead59bc0c2b97529b8ac32d3": {
-          "attaches": [
-            "rkyv"
-          ],
-          "features": [
-            "default",
-            "dep:rkyv",
-            "rkyv"
-          ]
-        }
-      },
       "0.33.0": {
-        "3c7ade34010cec6cec153ae694ee335f7fea0193": {
-          "attaches": [
-            "rkyv"
-          ],
-          "features": [
-            "default",
-            "dep:rkyv",
-            "rkyv"
-          ]
-        },
-        "4024614f1298bafcce7cb1bf1741005df6b0ef88": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        },
-        "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8": {
-          "attaches": [
-            "rkyv"
-          ],
-          "features": [
-            "default",
-            "dep:rkyv",
-            "rkyv"
-          ]
-        }
+        "attaches": [
+          "rkyv"
+        ],
+        "features": [
+          "default",
+          "dep:rkyv",
+          "rkyv"
+        ]
       }
     },
     "sema": {
       "0.1.1": {
-        "51d7927c872f0df12791bad8d39a4db6433b01a1": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        }
+        "attaches": [],
+        "features": [
+          "default"
+        ]
       }
     },
     "sema-engine": {
-      "0.18.0": {
-        "9884905ff9c660ad97a35c524e42532d5c7bac90": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        }
-      },
       "0.19.0": {
-        "6a95a0925c9e6a6a144037ffdbad8c7d3cc126f2": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        }
+        "attaches": [],
+        "features": [
+          "default"
+        ]
       }
     },
     "signal": {
-      "10.3.0": {
+      "11.0.0": {
         "sets": [
           {
             "attaches": [],
             "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "10.4.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "10.4.1": {
-        "sets": [
-          {
-            "attaches": [
-              "tokio"
-            ],
-            "features": [
-              "dep:tokio",
-              "tokio",
-              "transport"
-            ],
             "name": "plain",
             "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
           },
@@ -464,7 +255,7 @@
       }
     },
     "signal-belief-nexus": {
-      "0.3.3": {
+      "0.4.2": {
         "sets": [
           {
             "attaches": [],
@@ -486,6 +277,7 @@
               "dep:datom-codec",
               "dep:protos",
               "protos",
+              "signal/datom",
               "translator/datom"
             ],
             "name": "datom",
@@ -495,37 +287,7 @@
       }
     },
     "signal-flow": {
-      "53.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "57.0.0": {
+      "58.0.1": {
         "sets": [
           {
             "attaches": [],
@@ -557,23 +319,7 @@
       }
     },
     "signal-herdr-nexus": {
-      "0.2.0": {
-        "7c724f8d557b9ce8c5ee36a447dbd882aa623187": {
-          "attaches": [
-            "datom-codec",
-            "protos"
-          ],
-          "features": [
-            "datom",
-            "datom-codec",
-            "default",
-            "dep:datom-codec",
-            "dep:protos",
-            "protos"
-          ]
-        }
-      },
-      "0.3.2": {
+      "0.4.0": {
         "sets": [
           {
             "attaches": [],
@@ -602,88 +348,45 @@
       }
     },
     "signal-message": {
-      "21.0.1": {
-        "998c824c98a1e2f5e32f9e3a69bf09d3a29aff6b": {
-          "attaches": [],
-          "features": [
-            "default"
-          ]
-        }
+      "22.0.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "protos",
+              "signal-flow/datom",
+              "signal/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
       }
     },
     "signal-sema": {
       "0.2.0": {
-        "4f3a24e6677ab9d200672851016c4c760c1e36e8": {
-          "attaches": [],
-          "features": []
-        }
+        "attaches": [],
+        "features": []
       }
     },
     "translator": {
-      "0.3.1": {
-        "1b0e38bb9f870855f9d0ff99eb80725ad79f8b9f": {
-          "attaches": [
-            "datom-codec",
-            "libc",
-            "nix",
-            "protos"
-          ],
-          "features": [
-            "datom",
-            "datom-codec",
-            "default",
-            "dep:datom-codec",
-            "dep:libc",
-            "dep:nix",
-            "dep:protos",
-            "libc",
-            "nix",
-            "protos",
-            "text",
-            "unix"
-          ]
-        }
-      },
-      "0.3.2": {
-        "571979d667d8b16171847c3122b7577a2eaa6669": {
-          "attaches": [
-            "datom-codec",
-            "libc",
-            "nix",
-            "protos"
-          ],
-          "features": [
-            "datom",
-            "datom-codec",
-            "default",
-            "dep:datom-codec",
-            "dep:libc",
-            "dep:nix",
-            "dep:protos",
-            "libc",
-            "nix",
-            "protos",
-            "text",
-            "unix"
-          ]
-        }
-      },
-      "0.4.0": {
-        "84353c56826ae8187f11c368ebb1ac25619e3324": {
-          "attaches": [
-            "datom-codec",
-            "protos"
-          ],
-          "features": [
-            "datom",
-            "datom-codec",
-            "dep:datom-codec",
-            "dep:protos",
-            "protos"
-          ]
-        }
-      },
-      "0.4.2": {
+      "0.5.0": {
         "sets": [
           {
             "attaches": [
@@ -691,6 +394,7 @@
               "nix"
             ],
             "features": [
+              "default",
               "dep:libc",
               "dep:nix",
               "libc",

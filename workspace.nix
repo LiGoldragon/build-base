@@ -313,7 +313,7 @@ let
   defaultFeatures = [ "default" ];
   tests = lib.mapAttrs (name: _: testBuild name defaultFeatures) members;
   given = removeAttrs context [ "buildRustCrateForPkgs" ] // {
-    buildRustCrateForPkgsFor = forBuild (fromSet buildRustCrateForPkgs);
+    buildRustCrateForPkgsFor = forBuild builds;
     workspace = generated;
     inherit tests check doc clippy;
   };

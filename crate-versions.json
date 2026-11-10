@@ -150,81 +150,67 @@
   },
   "git": {
     "datom-codec": {
-      "0.32.2": ["4dff16b4f7412febc3b71aac8b49680cd20988cb"],
-      "0.33.0": ["eabead48b31e8d4f429d7fb156dd18548bbd79c1"],
-      "0.33.1": ["09a0526949b043f921b6d3ce115b7f455291f2e2"]
+      "0.33.1": "09a0526949b043f921b6d3ce115b7f455291f2e2"
     },
     "datom-codec-derive": {
-      "0.32.0": ["4dff16b4f7412febc3b71aac8b49680cd20988cb"],
-      "0.32.3": ["09a0526949b043f921b6d3ce115b7f455291f2e2", "eabead48b31e8d4f429d7fb156dd18548bbd79c1"]
+      "0.32.3": "09a0526949b043f921b6d3ce115b7f455291f2e2"
     },
     "ethos-zero": {
-      "16.0.0": ["c2653dd82adbdb1f1f2f654405c6620e0d06fd58"],
-      "17.0.0": ["07714b0171802787bea1eefe4caa2d826d9c4030"],
-      "19.2.0": ["5a5daca315ab24460ccbcd5038130c453e853e6e"],
-      "22.0.0": ["1976e45fe1edfd5676cb33919dba1ec20c785a02"]
+      "22.0.0": "1976e45fe1edfd5676cb33919dba1ec20c785a02"
     },
     "example-signal": {
-      "0.1.0": ["21c87e960efed9d1d58ffd61009c8357a3aa6bf8"]
+      "0.1.0": "21c87e960efed9d1d58ffd61009c8357a3aa6bf8"
     },
     "flow-ethos": {
-      "0.53.3": ["d1effd4b53ba895f08949ea5cf32f91f63f909bb"]
+      "0.53.3": "d1effd4b53ba895f08949ea5cf32f91f63f909bb"
     },
     "message-defaults": {
-      "0.22.1": ["f46b38e0a9996e1593095f4154cd0597ff3ebe69"]
+      "0.23.0": "69a9eb7b2e95fb7ba85f138f58d38f38996f6d70"
     },
     "message-nexus": {
-      "0.22.1": ["f46b38e0a9996e1593095f4154cd0597ff3ebe69"]
+      "0.23.0": "69a9eb7b2e95fb7ba85f138f58d38f38996f6d70"
     },
     "meta-signal-belief-nexus": {
-      "0.6.1": ["eb43351e8ad155b555842a8ab7e9e46eaf8bf97f"]
+      "0.6.1": "eb43351e8ad155b555842a8ab7e9e46eaf8bf97f"
     },
     "meta-signal-flow": {
-      "72.0.0": ["27d06b7b4995ad275c2c2c85dd0ffb5499482dd7"],
-      "73.0.1": ["a90a889af74d2582ef1b9f36cda73627f975a4a6"],
-      "73.0.2": ["8d8a22ed2cacd1e1173459f5e65b16abc855e930"]
+      "73.0.2": "8d8a22ed2cacd1e1173459f5e65b16abc855e930"
     },
     "meta-signal-herdr-nexus": {
-      "0.4.1": ["bf27dc28a781b53aad553398faa27db1524651e6"]
+      "0.4.1": "bf27dc28a781b53aad553398faa27db1524651e6"
     },
     "meta-signal-message": {
-      "3.0.1": ["4d81b6481292f9212065a83c30f29640de60505e"],
-      "4.0.0": ["01d5553290428b093552be10cfde21c69ba7054e"]
+      "4.0.0": "01d5553290428b093552be10cfde21c69ba7054e"
     },
     "protos": {
-      "0.32.2": ["15b41da8f2579e73ead59bc0c2b97529b8ac32d3"],
-      "0.33.0": ["3c7ade34010cec6cec153ae694ee335f7fea0193", "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8"]
+      "0.33.0": "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8"
     },
     "sema": {
-      "0.1.1": ["51d7927c872f0df12791bad8d39a4db6433b01a1"]
+      "0.1.1": "51d7927c872f0df12791bad8d39a4db6433b01a1"
     },
     "sema-engine": {
-      "0.18.0": ["9884905ff9c660ad97a35c524e42532d5c7bac90"],
-      "0.19.0": ["6a95a0925c9e6a6a144037ffdbad8c7d3cc126f2"]
+      "0.19.0": "6a95a0925c9e6a6a144037ffdbad8c7d3cc126f2"
     },
     "signal": {
-      "10.3.0": ["7afb68bcd19ce774f47d11c5e69f6e10054f78de"],
-      "11.0.0": ["6d4eb74a238ea4a6149bd12c42a8c06aec01b154"]
+      "11.0.0": "6d4eb74a238ea4a6149bd12c42a8c06aec01b154"
     },
     "signal-belief-nexus": {
-      "0.4.2": ["011eea2aa83bc07db1fb318b7dcb4d30267e7c2d"]
+      "0.4.2": "011eea2aa83bc07db1fb318b7dcb4d30267e7c2d"
     },
     "signal-flow": {
-      "57.0.0": ["3d0a4cdd0364a30e5586eac7db59917faca5072f"],
-      "58.0.1": ["6881724d1752058195a770ab8244763151904541"]
+      "58.0.1": "6881724d1752058195a770ab8244763151904541"
     },
     "signal-herdr-nexus": {
-      "0.4.0": ["10b9d215097504d5c911bb491ef8a5f276a3c683"]
+      "0.4.0": "10b9d215097504d5c911bb491ef8a5f276a3c683"
     },
     "signal-message": {
-      "21.0.1": ["998c824c98a1e2f5e32f9e3a69bf09d3a29aff6b"],
-      "22.0.0": ["2fed7500c915befc8fc42359771e8a27d43a451e"]
+      "22.0.0": "2fed7500c915befc8fc42359771e8a27d43a451e"
     },
     "signal-sema": {
-      "0.2.0": ["4f3a24e6677ab9d200672851016c4c760c1e36e8"]
+      "0.2.0": "4f3a24e6677ab9d200672851016c4c760c1e36e8"
     },
     "translator": {
-      "0.5.0": ["abc89b9cc7469a35700cb222ba31a8f5cb0745e6"]
+      "0.5.0": "abc89b9cc7469a35700cb222ba31a8f5cb0745e6"
     }
   }
 }

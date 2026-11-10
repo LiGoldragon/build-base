@@ -100,6 +100,7 @@
           generator = self.packages.${system}.crate-version-set;
         };
         crate-features-named-sets = import ./crate-features-test.nix contexts.${system};
+        crate-default-features = import ./crate-default-features-test.nix contexts.${system};
       });
 
       packages = lib.genAttrs systems (

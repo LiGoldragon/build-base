@@ -22,6 +22,30 @@ let
   inherit (context) pkgs;
   lib = pkgs.lib;
 
+  # Every crate handed its features with `default` normalized
+  # (crate-default-features.nix), so the same effective features are one
+  # derivation.
+  declared = lib.listToAttrs (
+    map (crate: lib.nameValuePair "${crate.crateName} ${crate.version}" (crate.features or { })) (
+      lib.attrValues generated.internal.crates
+    )
+  );
+  defaults = import ./crate-default-features.nix { inherit lib; };
+  normalized =
+    attributes:
+    attributes
+    // {
+      features = defaults.normalized (declared."${attributes.crateName} ${attributes.version}" or { }) (
+        attributes.features or [ ]
+      );
+    };
+  # The builder handing every crate its normalized features.
+  normalizing = build: {
+    __functor = _: attributes: build (normalized attributes);
+    override = arguments: normalizing (build.override arguments);
+  };
+  builder = p: normalizing (buildRustCrateForPkgs p);
+
   set = lib.importJSON ./crate-features.json;
   identity = import ./crate-identity.nix { inherit lib; };
 
@@ -63,7 +87,7 @@ let
         (internal.builtRustCratesWithFeatures {
           inherit packageId crateConfigs;
           features = (setOf crates.${packageId}).features;
-          buildRustCrateForPkgsFunc = buildRustCrateForPkgs;
+          buildRustCrateForPkgsFunc = builder;
           runTests = false;
         }).crates.${packageId}
       ) (lib.filterAttrs (_: packageId: setOf crates.${packageId} != null) packageIds);
@@ -88,7 +112,7 @@ let
         override = arguments: through (build.override arguments);
       };
     in
-    through (buildRustCrateForPkgs p);
+    through (builder p);
 
   memo = lib.listToAttrs (map (name: lib.nameValuePair (toString name) (builds name)) names);
 in
