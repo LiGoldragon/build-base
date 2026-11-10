@@ -5,6 +5,8 @@
 # tests.<member>     the member's test build, its test binaries unrun, and
 #                    in target-tmpdir the CARGO_TARGET_TMPDIR they were
 #                    compiled with, which a check creates before it runs them;
+#                    compiled by clippy-driver with lintFlags, so the one
+#                    compilation is the lint gate as well;
 # checks.<member>    runs the member's test binaries, compiles nothing, or
 #                    the check memberChecks gives in its place;
 # checks.cargo-nix   the committed Cargo.nix is what the base's crate2nix
@@ -20,20 +22,20 @@
 # checks.default     every check above: green default is the whole gate.
 #
 # cargoNix is the workspace root's Cargo.nix, where `crate2nix generate`
-# writes it; its directory is the workspace source. memberChecks and
+# writes it; its directory is the workspace source. lintFlags are the flags
+# clippy-driver takes on every test build, `-D warnings` unless given.
+# memberChecks and
 # extraChecks are functions of the system's build context, with `workspace`
 # the imported Cargo.nix, `tests` the members' test builds, `check` the
 # base's check of a member under a feature set, `doc` rustdoc over a
-# member's library under a feature set with rustdoc flags and `clippy`
-# clippy-driver over every target of a member under a feature set, its own
-# lints applied, with clippy flags. memberChecks
+# member's library under a feature set with rustdoc flags. memberChecks
 # returns, by member name, the check that stands in place of the base's, or
 # null for a member that has no check. extraChecks returns more checks, by
 # names no member, cargo-nix, crate-versions, crate-features or default has.
 # Every registry and git crate the set holds is built with the base's feature
-# set for it (crate-builds.nix): each build, a member's, a test build, doc or
-# clippy, takes the first set name whose sets hold what it resolves, and each
-# crate is built with its set of that name or its union.
+# set for it (crate-builds.nix): each build, a member's, a test build or doc,
+# takes the first set name whose sets hold what it resolves, and each crate is
+# built with its set of that name or its union.
 # `buildRustCrateForPkgsFor { packageId; features; runTests; }`, in the build
 # context and in the result, is the function building the crates of the build
 # of packageId with features, with its dev-dependencies where runTests, under
@@ -42,6 +44,10 @@
 context:
 {
   cargoNix,
+  lintFlags ? [
+    "-D"
+    "warnings"
+  ],
   memberChecks ? _: { },
   extraChecks ? _: { },
 }:
@@ -143,7 +149,7 @@ let
   # whose required-features the set lacks is left out, and a target with
   # harness = false is compiled as a plain binary, its own main run by the
   # check.
-  testBuild =
+  plainTestBuild =
     name: features:
     let
       packageId = members.${name}.packageId;
@@ -274,15 +280,14 @@ let
       '';
     });
 
-  # clippy over every target of the member under a feature set, as
-  # `cargo clippy --all-targets --features … -- <flags>` lints them: the
-  # member's test build under that feature set, its library, binaries, unit
-  # tests and test targets compiled by clippy-driver, its dependencies the
-  # test build's own. The member's [lints], or the workspace's where it
+  # The member's test build compiled by clippy-driver over every target, as
+  # `cargo clippy --all-targets --features … -- <flags>` lints them: its
+  # library, binaries, unit tests and test targets, its dependencies the
+  # plain test build's own. The member's [lints], or the workspace's where it
   # takes them, hold uncapped; flags follow them on every clippy-driver
-  # command line (clippy "member" [ "default" ] [ "-D" "warnings" ]). Its
-  # build script is compiled by rustc. Compiles nothing but the member.
-  clippy =
+  # command line. Its build script is compiled by rustc. The test binaries
+  # are those of the plain test build, linted in the one compilation.
+  lintedTestBuild =
     name: features: flags:
     let
       packageId = members.${name}.packageId;
@@ -291,7 +296,7 @@ let
       root = builtins.fromTOML (builtins.readFile (source + "/Cargo.toml"));
       memberLints = manifest.lints or { };
       lints = if memberLints.workspace or false then root.workspace.lints or { } else memberLints;
-      linted = (testBuild name features).override {
+      linted = (plainTestBuild name features).override {
         useClippy = true;
         clippy = context.toolchain;
         inherit lints;
@@ -299,12 +304,15 @@ let
       };
     in
     linted.overrideAttrs (attributes: {
-      name = "clippy-${name}";
       preBuild = (attributes.preBuild or "") + ''
         EXTRA_RUSTC_FLAGS=${lib.escapeShellArg (lib.concatStringsSep " " flags)}
       '';
-      installPhase = "touch $out";
     });
+
+  # Every test build is linted (lintFlags), so the check that runs its
+  # binaries is the lint gate as well and no separate gate compiles the
+  # member again.
+  testBuild = name: features: lintedTestBuild name features lintFlags;
 
   source = dirOf cargoNix;
 
@@ -315,7 +323,7 @@ let
   given = removeAttrs context [ "buildRustCrateForPkgs" ] // {
     buildRustCrateForPkgsFor = forBuild builds;
     workspace = generated;
-    inherit tests check doc clippy;
+    inherit tests check doc;
   };
 
   repositoryMemberChecks = memberChecks given;
