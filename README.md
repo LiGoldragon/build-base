@@ -99,7 +99,7 @@ of its union, written by hand in `crate-features.json`, each a deliberate entry:
 ```
 
 Every crate with named sets lists the same names in the same order. A build,
-a member's, a test build, doc or clippy, takes the first name whose sets hold
+a member's, a test build or doc, takes the first name whose sets hold
 what it resolves for every crate with named sets, and under that name each
 such crate is built with its set of the name and every other crate with its
 union over dependencies built under the same name, so a Nexus's signal and a
@@ -167,13 +167,15 @@ with `workspace`, the imported Cargo.nix, `tests`, each member's test build,
 library under a feature set with rustdoc flags, its dependencies linked as its
 build links them, no cargo involved
 (`doc "member" [ "default" ] [ "-D" "warnings" ]`, the documentation in
-`$out/share/doc`), and `clippy`, clippy-driver over every target of a member
-under a feature set, as `cargo clippy --all-targets` lints them: the member's
-test build compiled by clippy-driver over the dependencies that build already
-links, the member's `[lints]` (or the workspace's, where it takes them)
-applied uncapped and the given flags after them, no cargo involved and
-nothing but the member compiled
-(`clippy "member" [ "default" ] [ "-D" "warnings" ]`). `memberChecks` gives, by member name, the check that stands in place of
+`$out/share/doc`). Every test build is compiled by clippy-driver over every
+target of its member, as `cargo clippy --all-targets` lints them, with the
+member's `[lints]` (or the workspace's, where it takes them) applied uncapped
+and `lintFlags` after them (an argument of `workspaceOutputs`, `[ "-D"
+"warnings" ]` unless given): the one compilation is the lint gate and the test
+build both, and a lint refused fails the member's test build and so its check.
+The feature set a member is linted under is the feature set of its check
+(`memberChecks` gives `check "member" [ "default" "feature" ]` to lint a
+feature-gated line). `memberChecks` gives, by member name, the check that stands in place of
 the base's (a member whose tests need an environment), or null for a member
 that has no check. `extraChecks` returns the repository's own further checks,
 under names no member, `cargo-nix`, `crate-versions`,
@@ -183,10 +185,10 @@ under names no member, `cargo-nix`, `crate-versions`,
 base.lib.workspaceOutputs {
   cargoNix = ./Cargo.nix;
   memberChecks = { pkgs, tests, ... }: { frozen-contract = null; };
-  extraChecks = { pkgs, toolchain, workspace, tests, doc, clippy, ... }: {
+  lintFlags = [ "-D" "warnings" ];
+  extraChecks = { pkgs, toolchain, workspace, tests, doc, ... }: {
     fmt = …;
     doc = doc "member" [ "default" ] [ "-D" "warnings" ];
-    clippy = clippy "member" [ "default" ] [ "-D" "warnings" ];
   };
 }
 ```

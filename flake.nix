@@ -72,10 +72,10 @@
         #       some-member = check "some-member" [ "default" "a-feature" ];
         #       untested-member = null;
         #     };
-        #     extraChecks = { pkgs, toolchain, workspace, tests, doc, clippy, ... }: {
+        #     lintFlags = [ "-D" "warnings" ];   # clippy-driver's, on every test build
+        #     extraChecks = { pkgs, toolchain, workspace, tests, doc, ... }: {
         #       fmt = ...;
         #       doc = doc "some-member" [ "default" ] [ "-D" "warnings" ];
-        #       clippy = clippy "some-member" [ "default" ] [ "-D" "warnings" ];
         #     };
         #   };
         # A flake that composes its own outputs takes one system's workspace,
