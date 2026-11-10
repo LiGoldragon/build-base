@@ -1,12 +1,15 @@
 # A Cargo workspace built one derivation per crate, from its committed
 # crate2nix Cargo.nix, on one system's build context.
 #
-# packages.<member>  the member's build;  packages.default  all members.
+# packages.<member>  the member's build: its binaries, linking its library
+#                    apart, or its library where it has no binary;
+#                    packages.default  all members.
 # tests.<member>     the member's test build, its test binaries unrun, and
 #                    in target-tmpdir the CARGO_TARGET_TMPDIR they were
 #                    compiled with, which a check creates before it runs them;
 #                    compiled by clippy-driver with lintFlags, so the one
-#                    compilation is the lint gate as well;
+#                    compilation is the lint gate as well; its test targets
+#                    link the member's library and binaries;
 # checks.<member>    runs the member's test binaries, compiles nothing, or
 #                    the check memberChecks gives in its place;
 # checks.cargo-nix   the committed Cargo.nix is what the base's crate2nix
@@ -28,7 +31,8 @@
 # extraChecks are functions of the system's build context, with `workspace`
 # the imported Cargo.nix, `tests` the members' test builds, `check` the
 # base's check of a member under a feature set, `doc` rustdoc over a
-# member's library under a feature set with rustdoc flags. memberChecks
+# member's library under a feature set with rustdoc flags, `binaries` a
+# member's build under a feature set. memberChecks
 # returns, by member name, the check that stands in place of the base's, or
 # null for a member that has no check. extraChecks returns more checks, by
 # names no member, cargo-nix, crate-versions, crate-features or default has.
@@ -40,7 +44,9 @@
 # context and in the result, is the function building the crates of the build
 # of packageId with features, with its dev-dependencies where runTests, under
 # the name that build takes; `workspace`, the imported Cargo.nix, builds its
-# members under the first name.
+# members under the first name. A member reached through either is its
+# library alone where its library is apart; `binaries`, in the context and
+# in the result, gives its binaries.
 context:
 {
   cargoNix,
@@ -104,11 +110,117 @@ let
       packageId = members.${name}.packageId;
       inherit features runTests;
     };
-  memberBuild = name: (generatedUnder (builds.nameOf {
-    packageId = members.${name}.packageId;
-    features = [ "default" ];
-    runTests = false;
-  })).workspaceMembers.${name}.build;
+  # The member's build under a feature set, as `cargo build -p <member>
+  # --features …` builds it: its binaries, linking its library apart
+  # (binariesOf), or its library where it has no binary, or the crate whole
+  # where its library is not apart. Overridable as crate2nix's member build is
+  # (`.override (old: { features; crateOverrides; })`, the features the
+  # member's own, re-resolved). The member's package is its build under its
+  # default features.
+  binariesFor =
+    name: features:
+    let
+      packageId = members.${name}.packageId;
+      crate = generated.internal.crates.${packageId};
+      library =
+        (generatedUnder (builds.nameOf {
+          inherit packageId features;
+          runTests = false;
+        })).workspaceMembers.${name}.build.override
+          { inherit features; };
+    in
+    if apart crate && (crate.crateBin or [ ]) != [ ] then binariesOf crate library else library;
+  memberBuild = name: binariesFor name [ "default" ];
+
+  # A member's library is built apart from its binaries and its tests
+  # (`apart`): the crate is built with no binary, as a git dependency is, so
+  # the member and the same commit taken as a git dependency are one build,
+  # and every member, test build and binary depending on it links that one
+  # library. A member with a library has it apart unless it is a proc-macro
+  # or of another crate type than lib.
+  apart =
+    crate:
+    !(identity.held crate)
+    && members ? ${crate.crateName}
+    && !(crate.procMacro or false)
+    && lib.all (type: lib.elem type [ "lib" "rlib" ]) (crate.type or [ "lib" ])
+    && builtins.pathExists ((crate.src.origSrc or crate.src) + "/${crate.libPath or "src/lib.rs"}");
+  # The buildRustCrate arguments that make a library what it is. A build or a
+  # test build linking a member's library apart is overridable as a crate
+  # build is (`.override { features; dependencies; crateOverrides; … }`), and
+  # these arguments go to the library it links as well, so the two never
+  # disagree.
+  libraryArguments =
+    arguments:
+    lib.getAttrs (lib.filter (name: arguments ? ${name}) [
+      "features"
+      "dependencies"
+      "crateOverrides"
+    ]) arguments;
+  # The arguments a crate build starts from, so `.override (old: …)` finds them.
+  startingArguments = {
+    features = [ ];
+    crateOverrides = buildOverrides;
+  };
+  # Crate overrides with `extra` (attributes: attributes) laid over the
+  # crate's own.
+  layered =
+    overrides: crateName: extra:
+    overrides
+    // {
+      ${crateName} =
+        attributes:
+        let
+          given = (overrides.${crateName} or (_: { })) attributes;
+        in
+        given // extra (attributes // given);
+    };
+
+  # A member's binaries, linking its library apart: the crate built with its
+  # binaries and the library's own compilation left out, each binary taking
+  # the library's build as the crate's library, and the library's build
+  # script output (its .opt and OUT_DIR, kept in the library's lib output) in
+  # place of running the build script again. `binaries` lays this over a
+  # crate's overrides; `binariesOf` builds them from the member's build, and
+  # is overridable as that build is (`.override (old: { features; crateOverrides; })`),
+  # the library and binaries overridden together.
+  binaries =
+    crate: library: overrides:
+    layered overrides crate.crateName (attributes: {
+      crateBin = crate.crateBin;
+      build = "";
+      preConfigure = (attributes.preConfigure or "") + ''
+        rm -f build.rs
+      '';
+      preBuild = (attributes.preBuild or "") + ''
+        build_lib() {
+          EXTRA_LIB=" --extern $CRATE_NAME=${lib.getLib library}/lib/lib$CRATE_NAME-${library.metadata}.rlib"
+        }
+        built=${lib.getLib library}/lib/${crate.crateName}
+        if [ -e "$built.opt" ]; then
+          export OUT_DIR="$built.out"
+          BUILD_OUT_DIR="-L $OUT_DIR"
+          EXTRA_BUILD=$(sed -n "s/^cargo::\{0,1\}rustc-flags=\(.*\)/\1/p" "$built.opt" | tr '\n' ' ' | sort -u)
+          EXTRA_FEATURES=$(sed -n "s/^cargo::\{0,1\}rustc-cfg=\(.*\)/--cfg \1/p" "$built.opt" | tr '\n' ' ')
+          EXTRA_LINK_ARGS=$(sed -n "s/^cargo::\{0,1\}rustc-link-arg=\(.*\)/-C link-arg=\1/p" "$built.opt" | tr '\n' ' ')
+          EXTRA_LINK_ARGS_BINS=$(sed -n "s/^cargo::\{0,1\}rustc-link-arg-bins=\(.*\)/-C link-arg=\1/p" "$built.opt" | tr '\n' ' ')
+          EXTRA_LINK_LIBS=$(sed -n "s/^cargo::\{0,1\}rustc-link-lib=\(.*\)/\1/p" "$built.opt" | tr '\n' ' ')
+          EXTRA_LINK_SEARCH=$(sed -n "s/^cargo::\{0,1\}rustc-link-search=\(.*\)/\1/p" "$built.opt" \
+            | sed "s#[^ =]*/target/build/#${lib.getLib library}/lib/#g" | tr '\n' ' ' | sort -u)
+          while IFS= read -r variable; do
+            export "$variable"
+          done < <(sed -n "s/^cargo::\{0,1\}rustc-env=\(.*\)/\1/p" "$built.opt")
+        fi
+      '';
+    });
+  # Named apart from the library's build: rust_<crate>-<version>-bin.
+  named = build: build.overrideAttrs (attributes: { name = "${attributes.name}-bin"; });
+  binariesOf =
+    crate: library:
+    named (library.override (old: { crateOverrides = binaries crate library old.crateOverrides; }))
+    // {
+      override = arguments: binariesOf crate (library.override arguments);
+    };
 
   # A crate is built from its own crate directory without what the build never
   # reads (crate-source.nix): a member's, and a git crate's, cut from its
@@ -132,40 +244,134 @@ let
         src = packaged attributes;
         workspace_member = ".";
       }
+      # A git crate is built as a library, and so is a member's library
+      # apart (`apart`): no binary, so the two are one build.
+      // lib.optionalAttrs (identity.isGit attributes || apart attributes) { crateBin = [ ]; }
     );
 
   # The member's crate built with its tests under a feature set, as
-  # `cargo test -p <member> --features …` builds it: its library and binaries
-  # plus every test target, the binaries left in $out/tests unrun.
-  # Dependencies are the same derivations as the build's wherever the
-  # feature set and dev-dependencies leave their features unchanged. The
-  # member's [[test]] targets are honoured as cargo honours them: a target
-  # whose required-features the set lacks is left out, and a target with
+  # `cargo test -p <member> --features …` builds it: its unit tests and every
+  # test target, the binaries left in $out/tests unrun, and every target
+  # linted where the test build is (lintedTestBuild). Dependencies are the
+  # same derivations as the build's wherever the feature set and
+  # dev-dependencies leave their features unchanged. The member's [[test]]
+  # targets are honoured as cargo honours them: a target whose
+  # required-features the set lacks is left out, and a target with
   # harness = false is compiled as a plain binary, its own main run by the
-  # check.
+  # check. A member whose library is apart (`apart`) has its library and its
+  # binaries linked, not compiled again, where its test build's library is
+  # the library its build under the same feature set links: every test
+  # target links that library, a test target running a binary
+  # (CARGO_BIN_EXE_<name>) runs the binaries' build linking it, and the
+  # library and binaries are checked by the linter alone (--emit=metadata, as
+  # cargo clippy checks them). Where dev-dependencies make the test build's
+  # library another (a feature or an optional dependency they turn on), no
+  # build shares it, and the test build compiles it and the binaries itself.
+  # The library's unit tests and each binary's are compiled here, as they
+  # must be: a unit test is the target compiled again under cfg(test).
   plainTestBuild =
     name: features:
     let
       packageId = members.${name}.packageId;
-      crateName = generated.internal.crates.${packageId}.crateName;
+      crate = generated.internal.crates.${packageId};
+      crateName = crate.crateName;
       crates = generated.internal.builtRustCratesWithFeatures {
         inherit packageId features;
         buildRustCrateForPkgsFunc = buildCrateFor name features true;
         runTests = true;
       };
+      built = crates.crates.${packageId};
+      # The library the member's build under the same feature set links.
+      library =
+        (generated.internal.builtRustCratesWithFeatures {
+          inherit packageId features;
+          buildRustCrateForPkgsFunc = buildCrateFor name features false;
+          runTests = false;
+        }).crates.${packageId};
+      honouring =
+        attributes:
+        let
+          honoured = attributes // testTargets attributes;
+        in
+        honoured // targetTmpdir honoured;
     in
-    crates.crates.${packageId}.override {
-      buildTests = true;
-      crateOverrides = crateOverrides // {
-        ${crateName} =
-          attributes:
-          let
-            given = (crateOverrides.${crateName} or (_: { })) attributes;
-            honoured = given // testTargets (attributes // given);
-          in
-          honoured // targetTmpdir (attributes // honoured);
+    if apart crate then
+      lib.makeOverridable (
+        arguments:
+        let
+          own = built.override (libraryArguments arguments);
+          # Linked where the test build's library is the build's own; where
+          # dev-dependencies make it another, it is compiled here, as before.
+          linked = own.drvPath == (library.override (libraryArguments arguments)).drvPath;
+          hasBinaries = (crate.crateBin or [ ]) != [ ];
+          # A test target runs the binaries only where there are test targets.
+          run = hasBinaries && builtins.pathExists ((crate.src.origSrc or crate.src) + "/tests");
+          binariesBuild = named (own.override { crateOverrides = binaries crate own (arguments.crateOverrides or buildOverrides); });
+        in
+        own.override (
+          arguments
+          // {
+            buildTests = true;
+            crateOverrides = layered (arguments.crateOverrides or buildOverrides) crateName (
+              attributes:
+              honouring (
+                attributes
+                // {
+                  # The test build reads the member's whole crate directory.
+                  inherit (crate) src;
+                  crateBin = crate.crateBin or [ ];
+                }
+                // lib.optionalAttrs linked {
+                  preBuild = (attributes.preBuild or "") + ''
+                    # The library is ${own.name}'s and the binaries
+                    # ${if run then binariesBuild.name + "'s" else "are not run by a test"}: each is
+                    # linted here, --emit=metadata, and linked from there.
+                    eval "$(declare -f build_lib | sed '1s/^build_lib/compile_lib/')"
+                    eval "$(declare -f build_bin | sed '1s/^build_bin/compile_bin/')"
+                    build_lib() {
+                      case " $EXTRA_RUSTC_FLAGS " in
+                        *" --test "*)
+                          # The unit tests: the library compiled again, under
+                          # cfg(test); the test targets still link the library's.
+                          local linked="$EXTRA_LIB"
+                          compile_lib "$@"
+                          EXTRA_LIB="$linked"
+                          ;;
+                        *)
+                          EXTRA_RUSTC_FLAGS="--emit=metadata $EXTRA_RUSTC_FLAGS" compile_lib "$@"
+                          EXTRA_LIB=" --extern $CRATE_NAME=${lib.getLib own}/lib/lib$CRATE_NAME-${own.metadata}.rlib"
+                          ;;
+                      esac
+                    }
+                    build_bin() {
+                      case " $EXTRA_RUSTC_FLAGS " in
+                        *" --test "*) compile_bin "$@" ;;
+                        *)
+                          if [ "''${3:-}" = target/cargo-bin-exe ]; then
+                            mkdir -p target/lint
+                            EXTRA_RUSTC_FLAGS="--emit=metadata $EXTRA_RUSTC_FLAGS" compile_bin "''${1//-/_}" "$2" target/lint
+                            ${lib.optionalString run ''ln -s ${binariesBuild}/bin/"$1" target/cargo-bin-exe/"$1"''}
+                          else
+                            compile_bin "$@"
+                          fi
+                          ;;
+                      esac
+                    }
+                    export -f compile_lib compile_bin
+                  '';
+                }
+              )
+            );
+          }
+        )
+      ) startingArguments
+    else
+      built.override {
+        buildTests = true;
+        crateOverrides = crateOverrides // {
+          ${crateName} = attributes: honouring (attributes // (crateOverrides.${crateName} or (_: { })) attributes);
+        };
       };
-    };
 
   # Cargo gives a test, at compile time, CARGO_TARGET_TMPDIR: a directory it
   # may write in when it runs, target/tmp. The test build sets it in its own
@@ -318,6 +524,7 @@ let
     buildRustCrateForPkgsFor = forBuild builds;
     workspace = generated;
     inherit tests check doc;
+    binaries = binariesFor;
   };
 
   repositoryMemberChecks = memberChecks given;
@@ -346,6 +553,9 @@ let
 in
 {
   inherit tests;
+  # The member's build under a feature set, its binaries linking its library
+  # apart: binaries "member" [ "default" "feature" ].
+  binaries = binariesFor;
   # The imported Cargo.nix, and the function building the crates of one build
   # from the set, each registry and git crate under the set name that build
   # takes, for a flake that builds more of it:
