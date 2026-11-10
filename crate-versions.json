@@ -181,7 +181,8 @@
     },
     "meta-signal-flow": {
       "72.0.0": ["27d06b7b4995ad275c2c2c85dd0ffb5499482dd7"],
-      "73.0.1": ["a90a889af74d2582ef1b9f36cda73627f975a4a6"]
+      "73.0.1": ["a90a889af74d2582ef1b9f36cda73627f975a4a6"],
+      "73.0.2": ["8d8a22ed2cacd1e1173459f5e65b16abc855e930"]
     },
     "meta-signal-herdr-nexus": {
       "0.4.1": ["bf27dc28a781b53aad553398faa27db1524651e6"]

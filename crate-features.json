@@ -195,6 +195,25 @@
       },
       "73.0.1": {
         "a90a889af74d2582ef1b9f36cda73627f975a4a6": {
+          "attaches": [
+            "datom-codec",
+            "protos"
+          ],
+          "features": [
+            "datom",
+            "datom-codec",
+            "default",
+            "dep:datom-codec",
+            "dep:protos",
+            "flow-ethos/datom",
+            "protos",
+            "signal-flow/datom",
+            "signal/datom"
+          ]
+        }
+      },
+      "73.0.2": {
+        "8d8a22ed2cacd1e1173459f5e65b16abc855e930": {
           "attaches": [],
           "features": [
             "default"
