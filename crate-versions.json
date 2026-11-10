@@ -162,25 +162,25 @@
       "0.1.0": "21c87e960efed9d1d58ffd61009c8357a3aa6bf8"
     },
     "flow-ethos": {
-      "0.53.3": "d1effd4b53ba895f08949ea5cf32f91f63f909bb"
+      "0.54.0": "5c61d66648a17a218147f3ec11dd995847c8303d"
     },
     "message-defaults": {
-      "0.23.0": "69a9eb7b2e95fb7ba85f138f58d38f38996f6d70"
+      "0.23.1": "c3d519d1494a534fe573c2749a5309b95bfa91ab"
     },
     "message-nexus": {
-      "0.23.0": "69a9eb7b2e95fb7ba85f138f58d38f38996f6d70"
+      "0.23.1": "c3d519d1494a534fe573c2749a5309b95bfa91ab"
     },
     "meta-signal-belief-nexus": {
       "0.6.1": "eb43351e8ad155b555842a8ab7e9e46eaf8bf97f"
     },
     "meta-signal-flow": {
-      "73.0.2": "8d8a22ed2cacd1e1173459f5e65b16abc855e930"
+      "73.0.3": "5f90d4ccd84391777815247192028b6a094f6759"
     },
     "meta-signal-herdr-nexus": {
       "0.4.1": "bf27dc28a781b53aad553398faa27db1524651e6"
     },
     "meta-signal-message": {
-      "4.0.0": "01d5553290428b093552be10cfde21c69ba7054e"
+      "4.0.1": "b9b6a5b60c0e97ddc78244cfc9e99539619a1e4a"
     },
     "protos": {
       "0.33.0": "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8"
@@ -198,13 +198,13 @@
       "0.4.2": "011eea2aa83bc07db1fb318b7dcb4d30267e7c2d"
     },
     "signal-flow": {
-      "58.0.1": "6881724d1752058195a770ab8244763151904541"
+      "58.0.2": "15790be9d6549e03912afa9603f9b4098622ba2e"
     },
     "signal-herdr-nexus": {
       "0.4.0": "10b9d215097504d5c911bb491ef8a5f276a3c683"
     },
     "signal-message": {
-      "22.0.0": "2fed7500c915befc8fc42359771e8a27d43a451e"
+      "22.0.1": "29992527e8da25b1f659c8827101f2a8b047f313"
     },
     "signal-sema": {
       "0.2.0": "4f3a24e6677ab9d200672851016c4c760c1e36e8"
