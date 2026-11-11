@@ -174,7 +174,8 @@
       "0.6.1": "eb43351e8ad155b555842a8ab7e9e46eaf8bf97f"
     },
     "meta-signal-flow": {
-      "73.0.3": "5f90d4ccd84391777815247192028b6a094f6759"
+      "73.0.3": "5f90d4ccd84391777815247192028b6a094f6759",
+      "74.0.0": "c8fb38adb647203420c2f588e7f3433bccd0fe30"
     },
     "meta-signal-herdr-nexus": {
       "0.4.1": "bf27dc28a781b53aad553398faa27db1524651e6"
@@ -198,7 +199,8 @@
       "0.4.2": "011eea2aa83bc07db1fb318b7dcb4d30267e7c2d"
     },
     "signal-flow": {
-      "58.0.2": "15790be9d6549e03912afa9603f9b4098622ba2e"
+      "58.0.2": "15790be9d6549e03912afa9603f9b4098622ba2e",
+      "59.0.0": "fd66b4e0259745e846c22e10b76b884de30d7fa8"
     },
     "signal-herdr-nexus": {
       "0.4.0": "10b9d215097504d5c911bb491ef8a5f276a3c683"
