@@ -74,10 +74,22 @@
         "features": [
           "default"
         ]
+      },
+      "0.24.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
       }
     },
     "message-nexus": {
       "0.23.1": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      },
+      "0.24.0": {
         "attaches": [],
         "features": [
           "default"

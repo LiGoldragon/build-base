@@ -166,10 +166,12 @@
       "0.54.3": "062ef9e14abbf6552b257e9ce7e1c22f5bc00c27"
     },
     "message-defaults": {
-      "0.23.1": "c3d519d1494a534fe573c2749a5309b95bfa91ab"
+      "0.23.1": "c3d519d1494a534fe573c2749a5309b95bfa91ab",
+      "0.24.0": "71b5ac0dbab577cd25d3d22fb9d789463162c19d"
     },
     "message-nexus": {
-      "0.23.1": "c3d519d1494a534fe573c2749a5309b95bfa91ab"
+      "0.23.1": "c3d519d1494a534fe573c2749a5309b95bfa91ab",
+      "0.24.0": "71b5ac0dbab577cd25d3d22fb9d789463162c19d"
     },
     "meta-signal-belief-nexus": {
       "0.6.1": "eb43351e8ad155b555842a8ab7e9e46eaf8bf97f"
