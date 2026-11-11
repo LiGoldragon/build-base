@@ -183,7 +183,8 @@
       "0.4.1": "bf27dc28a781b53aad553398faa27db1524651e6"
     },
     "meta-signal-message": {
-      "4.0.1": "b9b6a5b60c0e97ddc78244cfc9e99539619a1e4a"
+      "4.0.1": "b9b6a5b60c0e97ddc78244cfc9e99539619a1e4a",
+      "4.0.2": "73b7a8213656f64da64fcc95bdbedc8f98d492c0"
     },
     "protos": {
       "0.33.0": "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8"
