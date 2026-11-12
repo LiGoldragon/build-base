@@ -129,6 +129,37 @@
         ]
       }
     },
+    "meta-signal-energy-nexus": {
+      "0.5.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "protos",
+              "signal-energy-nexus/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
+      }
+    },
     "meta-signal-flow": {
       "73.0.3": {
         "sets": [
@@ -458,6 +489,37 @@
               "protos",
               "signal/datom",
               "translator/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
+      }
+    },
+    "signal-energy-nexus": {
+      "0.5.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "protos",
+              "signal-flow/datom"
             ],
             "name": "datom",
             "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
