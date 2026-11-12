@@ -66,6 +66,19 @@
           "dep:protos",
           "protos"
         ]
+      },
+      "0.55.0": {
+        "attaches": [
+          "datom-codec",
+          "protos"
+        ],
+        "features": [
+          "datom",
+          "datom-codec",
+          "dep:datom-codec",
+          "dep:protos",
+          "protos"
+        ]
       }
     },
     "message-defaults": {
