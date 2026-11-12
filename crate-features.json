@@ -222,6 +222,37 @@
             "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
           }
         ]
+      },
+      "76.0.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "flow-ethos/datom",
+              "protos",
+              "signal-flow/datom",
+              "signal/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
       }
     },
     "meta-signal-herdr-nexus": {
