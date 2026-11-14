@@ -187,6 +187,9 @@
     "memory": {
       "0.2.0": "e78519c2fc8f213246328bf28f9e38f9a216f76e"
     },
+    "memory-engine": {
+      "0.20.0": "32610884907461dc58c6c143f6f9fec0f13695fc"
+    },
     "message-defaults": {
       "0.23.1": "c3d519d1494a534fe573c2749a5309b95bfa91ab",
       "0.24.0": "71b5ac0dbab577cd25d3d22fb9d789463162c19d"
@@ -219,8 +222,11 @@
       "4.0.2": "73b7a8213656f64da64fcc95bdbedc8f98d492c0",
       "4.0.3": "b245d111396e3ef509c8c9263f9ee1ab61bda384"
     },
+    "meta-signal-orchestrate": {
+      "6.0.0": "463ff8b2eddeab63488f12162d32274421ae66cb"
+    },
     "nexus": {
-      "0.5.0": "ec097e315a3b0b99bc215a72f6c3f6d8b2b060cf"
+      "0.5.0": "69946db066bb70bdbc1fd7dbf5e6c88dcf05c363"
     },
     "protos": {
       "0.33.0": "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8"
@@ -259,8 +265,14 @@
       "23.0.0": "6d82783e35393c9037283cbfd9f98053d22e1b46",
       "24.0.0": "97bb3a87b3747e99a244e12f470ef547bce64337"
     },
+    "signal-orchestrate": {
+      "6.0.0": "2b17beab3a79e937b73bc506f457fa342505de5f"
+    },
     "signal-sema": {
       "0.2.0": "4f3a24e6677ab9d200672851016c4c760c1e36e8"
+    },
+    "signal-transport": {
+      "0.1.0": "035fb7fbac8de5e493cdb42ed50fefd94bfb569b"
     },
     "translator": {
       "0.5.0": "abc89b9cc7469a35700cb222ba31a8f5cb0745e6"
