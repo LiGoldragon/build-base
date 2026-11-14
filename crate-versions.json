@@ -172,7 +172,8 @@
       "0.32.3": "09a0526949b043f921b6d3ce115b7f455291f2e2"
     },
     "ethos-zero": {
-      "22.0.0": "1976e45fe1edfd5676cb33919dba1ec20c785a02"
+      "22.0.0": "1976e45fe1edfd5676cb33919dba1ec20c785a02",
+      "27.0.0": "8c95310c4c372cfe115cdebc3e85021b98cf2974"
     },
     "example-signal": {
       "0.1.0": "21c87e960efed9d1d58ffd61009c8357a3aa6bf8"
