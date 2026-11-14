@@ -1071,6 +1071,51 @@
             "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
           }
         ]
+      },
+      "0.6.0": {
+        "sets": [
+          {
+            "attaches": [
+              "libc",
+              "nix"
+            ],
+            "features": [
+              "default",
+              "dep:libc",
+              "dep:nix",
+              "libc",
+              "nix",
+              "unix"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "libc",
+              "nix",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:libc",
+              "dep:nix",
+              "dep:protos",
+              "libc",
+              "nix",
+              "protos",
+              "signal/datom",
+              "text",
+              "unix"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
       }
     }
   },
