@@ -183,7 +183,11 @@ let
   # place of running the build script again. `binaries` lays this over a
   # crate's overrides; `binariesOf` builds them from the member's build, and
   # is overridable as that build is (`.override (old: { features; crateOverrides; })`),
-  # the library and binaries overridden together.
+  # the library and binaries overridden together. `.overrideBinaries (old:
+  # { features; crateOverrides; crateBin; })` overrides the binaries alone:
+  # they link this same library, which no argument there changes, so a
+  # binary built with a feature or an input the library never reads is
+  # compiled alone, and crateBin, where given, names the binaries it builds.
   binaries =
     crate: library: overrides:
     layered overrides crate.crateName (attributes: {
@@ -220,6 +224,21 @@ let
     named (library.override (old: { crateOverrides = binaries crate library old.crateOverrides; }))
     // {
       override = arguments: binariesOf crate (library.override arguments);
+      overrideBinaries =
+        change:
+        named (
+          library.override (
+            old:
+            let
+              given = change (old // { crateBin = crate.crateBin or [ ]; });
+              built = crate // lib.optionalAttrs (given ? crateBin) { inherit (given) crateBin; };
+            in
+            removeAttrs given [ "crateBin" ]
+            // {
+              crateOverrides = binaries built library (given.crateOverrides or old.crateOverrides);
+            }
+          )
+        );
     };
 
   # A crate is built from its own crate directory without what the build never
