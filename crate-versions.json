@@ -201,6 +201,9 @@
     "meta-signal-belief-nexus": {
       "0.6.1": "eb43351e8ad155b555842a8ab7e9e46eaf8bf97f"
     },
+    "meta-signal-capsule-nexus": {
+      "0.4.1": "b8fde9e2be92f75945a208208d4b93d6e5fd7e69"
+    },
     "meta-signal-energy-nexus": {
       "0.5.0": "3264d6f36013ca823b60bdfbc3e10c5f6370f482"
     },
@@ -244,6 +247,9 @@
     },
     "signal-belief-nexus": {
       "0.4.2": "011eea2aa83bc07db1fb318b7dcb4d30267e7c2d"
+    },
+    "signal-capsule-nexus": {
+      "0.4.0": "dc941e72a31f7084f80b6fa8fe9aa49963acb4a1"
     },
     "signal-curriculum-nexus": {
       "0.1.0": "4202d8bade73179be646b588498ae55e5687d1e8"
