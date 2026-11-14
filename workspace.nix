@@ -327,8 +327,14 @@ let
       withoutDevOnly =
         build:
         build.override (old: {
-          dependencies = lib.filter (dependency: !(lib.elem dependency.drvPath devOnlyPaths)) (
-            old.dependencies or [ ]
+          # A crate named as both a normal and a dev dependency is one
+          # compiled dependency. Keep its first position, as Cargo does, so
+          # multiplicity alone cannot make the test library another build.
+          dependencies = lib.foldl' (
+            kept: dependency:
+            if lib.any (held: held.drvPath == dependency.drvPath) kept then kept else kept ++ [ dependency ]
+          ) [ ] (
+            lib.filter (dependency: !(lib.elem dependency.drvPath devOnlyPaths)) (old.dependencies or [ ])
           );
           crateRenames = lib.filterAttrs (_: renames: renames != [ ]) (
             lib.mapAttrs (_: lib.filter (rename: !(lib.elem rename devOnlyRenames))) (old.crateRenames or { })
