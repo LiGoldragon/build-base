@@ -264,9 +264,11 @@ let
   # target links that library, a test target running a binary
   # (CARGO_BIN_EXE_<name>) runs the binaries' build linking it, and the
   # library and binaries are checked by the linter alone (--emit=metadata, as
-  # cargo clippy checks them). Where dev-dependencies make the test build's
-  # library another (a feature or an optional dependency they turn on), no
-  # build shares it, and the test build compiles it and the binaries itself.
+  # cargo clippy checks them). A crate the member takes as a dev-dependency
+  # alone is the test targets', never the library's, so it leaves the library
+  # what it is. Where dev-dependencies make the test build's library another
+  # (a feature or an optional dependency they turn on), no build shares it,
+  # and the test build compiles it and the binaries itself.
   # The library's unit tests and each binary's are compiled here, as they
   # must be: a unit test is the target compiled again under cfg(test).
   plainTestBuild =
@@ -281,6 +283,38 @@ let
         runTests = true;
       };
       built = crates.crates.${packageId};
+      # The crates the member takes as dev-dependencies alone: in the test
+      # build, never in its library's build.
+      normalIds = map (dependency: dependency.packageId) (crate.dependencies or [ ]);
+      devOnly = lib.filter (dependency: !(lib.elem dependency.packageId normalIds)) (
+        crate.devDependencies or [ ]
+      );
+      devOnlyPaths = map (
+        dependency:
+        (
+          if generated.internal.crates.${dependency.packageId}.procMacro or false then
+            crates.build.crates
+          else
+            crates.crates
+        ).${dependency.packageId}.drvPath
+      ) devOnly;
+      devOnlyRenames = map (dependency: {
+        inherit (dependency) rename;
+        inherit (generated.internal.crates.${dependency.packageId}) version;
+      }) (lib.filter (dependency: dependency ? rename) devOnly);
+      # A library of the test build with its dev-only crates taken off: what
+      # its library is built from, the features and the derivations of its
+      # dependencies, dev-dependencies' unification on them included.
+      withoutDevOnly =
+        build:
+        build.override (old: {
+          dependencies = lib.filter (dependency: !(lib.elem dependency.drvPath devOnlyPaths)) (
+            old.dependencies or [ ]
+          );
+          crateRenames = lib.filterAttrs (_: renames: renames != [ ]) (
+            lib.mapAttrs (_: lib.filter (rename: !(lib.elem rename devOnlyRenames))) (old.crateRenames or { })
+          );
+        });
       # The library the member's build under the same feature set links.
       library =
         (generated.internal.builtRustCratesWithFeatures {
@@ -300,13 +334,17 @@ let
         arguments:
         let
           own = built.override (libraryArguments arguments);
-          # Linked where the test build's library is the build's own; where
-          # dev-dependencies make it another, it is compiled here, as before.
-          linked = own.drvPath == (library.override (libraryArguments arguments)).drvPath;
+          # The library the member's build links, under the same arguments.
+          shared = library.override (libraryArguments arguments);
+          # Linked where the test build's library, its dev-only crates taken
+          # off, is the build's own; where dev-dependencies make it another
+          # (a feature or an optional dependency they turn on), it is
+          # compiled here.
+          linked = (withoutDevOnly own).drvPath == shared.drvPath;
           hasBinaries = (crate.crateBin or [ ]) != [ ];
           # A test target runs the binaries only where there are test targets.
           run = hasBinaries && builtins.pathExists ((crate.src.origSrc or crate.src) + "/tests");
-          binariesBuild = named (own.override { crateOverrides = binaries crate own (arguments.crateOverrides or buildOverrides); });
+          binariesBuild = named (shared.override { crateOverrides = binaries crate shared (arguments.crateOverrides or buildOverrides); });
         in
         own.override (
           arguments
@@ -323,7 +361,7 @@ let
                 }
                 // lib.optionalAttrs linked {
                   preBuild = (attributes.preBuild or "") + ''
-                    # The library is ${own.name}'s and the binaries
+                    # The library is ${shared.name}'s and the binaries
                     # ${if run then binariesBuild.name + "'s" else "are not run by a test"}: each is
                     # linted here, --emit=metadata, and linked from there.
                     eval "$(declare -f build_lib | sed '1s/^build_lib/compile_lib/')"
@@ -339,7 +377,7 @@ let
                           ;;
                         *)
                           EXTRA_RUSTC_FLAGS="--emit=metadata $EXTRA_RUSTC_FLAGS" compile_lib "$@"
-                          EXTRA_LIB=" --extern $CRATE_NAME=${lib.getLib own}/lib/lib$CRATE_NAME-${own.metadata}.rlib"
+                          EXTRA_LIB=" --extern $CRATE_NAME=${lib.getLib shared}/lib/lib$CRATE_NAME-${shared.metadata}.rlib"
                           ;;
                       esac
                     }
