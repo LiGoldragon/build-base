@@ -231,6 +231,9 @@
     "signal-belief-nexus": {
       "0.4.2": "011eea2aa83bc07db1fb318b7dcb4d30267e7c2d"
     },
+    "signal-curriculum-nexus": {
+      "0.1.0": "3e8b5b9a8cb7523ab205a74c9bbe828dc9f31cdc"
+    },
     "signal-energy-nexus": {
       "0.5.0": "7ca10ebccdc674bbd96489ceff3e2a43d32d6ec3"
     },
