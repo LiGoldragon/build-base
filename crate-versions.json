@@ -210,7 +210,8 @@
     },
     "meta-signal-message": {
       "4.0.1": "b9b6a5b60c0e97ddc78244cfc9e99539619a1e4a",
-      "4.0.2": "73b7a8213656f64da64fcc95bdbedc8f98d492c0"
+      "4.0.2": "73b7a8213656f64da64fcc95bdbedc8f98d492c0",
+      "4.0.3": "b245d111396e3ef509c8c9263f9ee1ab61bda384"
     },
     "nexus": {
       "0.5.0": "ec097e315a3b0b99bc215a72f6c3f6d8b2b060cf"
