@@ -42,6 +42,13 @@
           "datom",
           "default"
         ]
+      },
+      "29.0.0": {
+        "attaches": [],
+        "features": [
+          "datom",
+          "default"
+        ]
       }
     },
     "example-signal": {
