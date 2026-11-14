@@ -408,6 +408,14 @@
         ]
       }
     },
+    "nexus": {
+      "0.5.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
     "protos": {
       "0.33.0": {
         "attaches": [
@@ -1001,6 +1009,24 @@
         ]
       }
     },
+    "downcast-rs": {
+      "2.0.2": {
+        "attaches": [],
+        "features": [
+          "default",
+          "std",
+          "sync"
+        ]
+      }
+    },
+    "dyn-clone": {
+      "1.0.20": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
     "entities": {
       "1.0.1": {
         "attaches": [],
@@ -1018,7 +1044,11 @@
     "errno": {
       "0.3.14": {
         "attaches": [],
-        "features": []
+        "features": [
+          "default",
+          "libc/std",
+          "std"
+        ]
       }
     },
     "fastrand": {
@@ -1081,22 +1111,140 @@
         "features": []
       }
     },
+    "futures": {
+      "0.3.34": {
+        "attaches": [
+          "futures-executor"
+        ],
+        "features": [
+          "alloc",
+          "async-await",
+          "default",
+          "executor",
+          "futures-channel/alloc",
+          "futures-core/alloc",
+          "futures-core/std",
+          "futures-executor",
+          "futures-executor/std",
+          "futures-io/std",
+          "futures-sink/alloc",
+          "futures-sink/std",
+          "futures-task/alloc",
+          "futures-task/std",
+          "futures-util/alloc",
+          "futures-util/async-await",
+          "futures-util/async-await-macro",
+          "futures-util/channel",
+          "futures-util/io",
+          "futures-util/std",
+          "std"
+        ]
+      }
+    },
+    "futures-channel": {
+      "0.3.34": {
+        "attaches": [
+          "futures-sink"
+        ],
+        "features": [
+          "alloc",
+          "dep:futures-sink",
+          "futures-core/alloc",
+          "futures-core/std",
+          "futures-sink",
+          "sink",
+          "std"
+        ]
+      }
+    },
     "futures-core": {
       "0.3.34": {
         "attaches": [],
+        "features": [
+          "alloc",
+          "std"
+        ]
+      }
+    },
+    "futures-executor": {
+      "0.3.34": {
+        "attaches": [],
+        "features": [
+          "futures-core/std",
+          "futures-task/std",
+          "futures-util/std",
+          "std"
+        ]
+      }
+    },
+    "futures-io": {
+      "0.3.34": {
+        "attaches": [],
+        "features": [
+          "std"
+        ]
+      }
+    },
+    "futures-macro": {
+      "0.3.34": {
+        "attaches": [],
         "features": []
+      }
+    },
+    "futures-sink": {
+      "0.3.34": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "std"
+        ]
       }
     },
     "futures-task": {
       "0.3.34": {
         "attaches": [],
-        "features": []
+        "features": [
+          "alloc",
+          "std"
+        ]
       }
     },
     "futures-util": {
       "0.3.34": {
-        "attaches": [],
-        "features": []
+        "attaches": [
+          "futures-channel",
+          "futures-io",
+          "futures-macro",
+          "futures-sink",
+          "memchr",
+          "slab"
+        ],
+        "features": [
+          "alloc",
+          "async-await",
+          "async-await-macro",
+          "channel",
+          "dep:futures-channel",
+          "dep:futures-io",
+          "dep:futures-macro",
+          "dep:futures-sink",
+          "dep:memchr",
+          "dep:slab",
+          "futures-channel",
+          "futures-core/alloc",
+          "futures-core/std",
+          "futures-io",
+          "futures-macro",
+          "futures-sink",
+          "futures-task/alloc",
+          "futures-task/std",
+          "io",
+          "memchr",
+          "sink",
+          "slab",
+          "slab/std",
+          "std"
+        ]
       }
     },
     "generic-array": {
@@ -1127,6 +1275,14 @@
       "0.17.1": {
         "attaches": [],
         "features": []
+      }
+    },
+    "heck": {
+      "0.5.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
       }
     },
     "http": {
@@ -1184,6 +1340,31 @@
         "features": []
       }
     },
+    "kameo": {
+      "0.22.2": {
+        "attaches": [
+          "kameo_macros",
+          "tracing"
+        ],
+        "features": [
+          "default",
+          "dep:kameo_macros",
+          "dep:tracing",
+          "kameo_macros",
+          "macros",
+          "tokio/tracing",
+          "tracing"
+        ]
+      }
+    },
+    "kameo_macros": {
+      "0.21.1": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
     "kqueue": {
       "1.2.1": {
         "attaches": [],
@@ -1237,6 +1418,7 @@
         "attaches": [],
         "features": [
           "alloc",
+          "default",
           "std"
         ]
       }
@@ -1266,6 +1448,7 @@
           "default",
           "dep:log",
           "log",
+          "net",
           "os-ext",
           "os-poll",
           "windows-sys/Win32_Security",
@@ -1338,6 +1521,7 @@
         "attaches": [],
         "features": [
           "alloc",
+          "default",
           "race",
           "std"
         ]
@@ -1757,6 +1941,14 @@
         ]
       }
     },
+    "signal-hook-registry": {
+      "1.4.8": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
     "simdutf8": {
       "0.1.5": {
         "attaches": [],
@@ -1775,13 +1967,24 @@
     "slab": {
       "0.4.12": {
         "attaches": [],
-        "features": []
+        "features": [
+          "std"
+        ]
       }
     },
     "smallvec": {
       "1.16.5": {
         "attaches": [],
         "features": [
+          "default"
+        ]
+      }
+    },
+    "socket2": {
+      "0.6.5": {
+        "attaches": [],
+        "features": [
+          "all",
           "default"
         ]
       }
@@ -1796,13 +1999,15 @@
           "default",
           "dep:quote",
           "derive",
+          "extra-traits",
           "full",
           "parsing",
           "printing",
           "proc-macro",
           "proc-macro2/proc-macro",
           "quote",
-          "quote?/proc-macro"
+          "quote?/proc-macro",
+          "visit-mut"
         ]
       },
       "3.0.5": {
@@ -1879,17 +2084,47 @@
       "1.53.1": {
         "attaches": [
           "bytes",
-          "tokio-macros"
+          "libc",
+          "mio",
+          "signal-hook-registry",
+          "socket2",
+          "tokio-macros",
+          "tracing",
+          "windows-sys"
         ],
         "features": [
           "bytes",
           "default",
           "dep:bytes",
+          "dep:libc",
+          "dep:signal-hook-registry",
+          "dep:socket2",
           "dep:tokio-macros",
+          "dep:tracing",
           "io-util",
+          "libc",
           "macros",
+          "mio",
+          "mio/net",
+          "mio/os-ext",
+          "mio/os-poll",
+          "net",
           "rt",
-          "tokio-macros"
+          "rt-multi-thread",
+          "signal",
+          "signal-hook-registry",
+          "socket2",
+          "sync",
+          "time",
+          "tokio-macros",
+          "tracing",
+          "windows-sys",
+          "windows-sys/Win32_Foundation",
+          "windows-sys/Win32_Security",
+          "windows-sys/Win32_Storage_FileSystem",
+          "windows-sys/Win32_System_Console",
+          "windows-sys/Win32_System_Pipes",
+          "windows-sys/Win32_System_SystemServices"
         ]
       }
     },
@@ -1932,6 +2167,41 @@
         "features": [
           "alloc",
           "default",
+          "std"
+        ]
+      }
+    },
+    "tracing": {
+      "0.1.44": {
+        "attaches": [
+          "tracing-attributes"
+        ],
+        "features": [
+          "attributes",
+          "default",
+          "dep:tracing-attributes",
+          "std",
+          "tracing-attributes",
+          "tracing-core/std"
+        ]
+      }
+    },
+    "tracing-attributes": {
+      "0.1.31": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "tracing-core": {
+      "0.1.36": {
+        "attaches": [
+          "once_cell"
+        ],
+        "features": [
+          "dep:once_cell",
+          "once_cell",
           "std"
         ]
       }
