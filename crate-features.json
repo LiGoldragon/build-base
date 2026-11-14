@@ -1165,7 +1165,8 @@
               "default",
               "dep:datom-codec",
               "dep:protos",
-              "protos"
+              "protos",
+              "signal/datom"
             ],
             "name": "datom",
             "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""

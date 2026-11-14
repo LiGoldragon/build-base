@@ -224,7 +224,7 @@
       "4.0.3": "b245d111396e3ef509c8c9263f9ee1ab61bda384"
     },
     "meta-signal-orchestrate": {
-      "6.0.0": "463ff8b2eddeab63488f12162d32274421ae66cb"
+      "6.0.0": "c571dd68c27331c13dd8c7ac4579820d625c0a68"
     },
     "nexus": {
       "0.5.0": "69946db066bb70bdbc1fd7dbf5e6c88dcf05c363"
@@ -267,7 +267,7 @@
       "24.0.0": "97bb3a87b3747e99a244e12f470ef547bce64337"
     },
     "signal-orchestrate": {
-      "6.0.0": "2b17beab3a79e937b73bc506f457fa342505de5f"
+      "6.0.0": "29bd345925a40786a407454e88e8199b93b8d917"
     },
     "signal-sema": {
       "0.2.0": "4f3a24e6677ab9d200672851016c4c760c1e36e8"
