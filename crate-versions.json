@@ -175,7 +175,8 @@
       "22.0.0": "1976e45fe1edfd5676cb33919dba1ec20c785a02",
       "27.0.0": "8c95310c4c372cfe115cdebc3e85021b98cf2974",
       "28.0.0": "970459d100ddee5f62a76c05642ecfabefba6329",
-      "29.0.0": "f23eacf338a90ce4a6dea011554724fa6488fcc9"
+      "29.0.0": "f23eacf338a90ce4a6dea011554724fa6488fcc9",
+      "30.0.0": "b97d9526909a1ecebf61339f5723eaca53de5dca"
     },
     "example-signal": {
       "0.1.0": "21c87e960efed9d1d58ffd61009c8357a3aa6bf8"
@@ -202,7 +203,9 @@
       "0.6.1": "eb43351e8ad155b555842a8ab7e9e46eaf8bf97f"
     },
     "meta-signal-capsule-nexus": {
-      "0.4.1": "b8fde9e2be92f75945a208208d4b93d6e5fd7e69"
+      "0.4.1": "b8fde9e2be92f75945a208208d4b93d6e5fd7e69",
+      "1.0.0": "0a9e3e0a91836ac178f489d633ea9ee288975ba4",
+      "1.0.1": "76b4235650b6b1940478c30fc992d17c6e0e0459"
     },
     "meta-signal-energy-nexus": {
       "0.5.0": "3264d6f36013ca823b60bdfbc3e10c5f6370f482"
@@ -235,7 +238,8 @@
       "6.0.0": "c571dd68c27331c13dd8c7ac4579820d625c0a68"
     },
     "nexus": {
-      "0.5.0": "69946db066bb70bdbc1fd7dbf5e6c88dcf05c363"
+      "0.5.0": "69946db066bb70bdbc1fd7dbf5e6c88dcf05c363",
+      "0.8.0": "4765dd629126d31db8e13bdd338b55682fef2011"
     },
     "protos": {
       "0.33.0": "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8"
@@ -247,13 +251,18 @@
       "0.19.0": "6a95a0925c9e6a6a144037ffdbad8c7d3cc126f2"
     },
     "signal": {
-      "11.0.0": "6d4eb74a238ea4a6149bd12c42a8c06aec01b154"
+      "11.0.0": "6d4eb74a238ea4a6149bd12c42a8c06aec01b154",
+      "11.1.0": "b145ddb40c73d2545697fd9c8e049e562978a3ac",
+      "11.2.0": "4f5cbb9322ecae7a8821439179e778d495d7804a"
     },
     "signal-belief-nexus": {
       "0.4.2": "011eea2aa83bc07db1fb318b7dcb4d30267e7c2d"
     },
     "signal-capsule-nexus": {
-      "0.4.0": "dc941e72a31f7084f80b6fa8fe9aa49963acb4a1"
+      "0.4.0": "dc941e72a31f7084f80b6fa8fe9aa49963acb4a1",
+      "1.0.0": "537fd4eb51034237d28d700706b3214a658f3d13",
+      "1.0.1": "d57c6f1d7cdd16f1d81349352c60dda86be337a2",
+      "2.0.0": "49b4ab138e006e9ee0dc06f7c9850bd003a6b138"
     },
     "signal-curriculum-nexus": {
       "0.1.0": "4202d8bade73179be646b588498ae55e5687d1e8",
@@ -290,6 +299,8 @@
     },
     "translator": {
       "0.5.0": "abc89b9cc7469a35700cb222ba31a8f5cb0745e6",
+      "0.5.1": "2310db311e8bd3cbbda308fbc3d8ac76c14049c7",
+      "0.5.2": "29601a3485bf8b726e7a2da7b3fa73a8a8bce58d",
       "0.6.0": "6892a15b11653a2ef8932a4390b34f5e81583744"
     }
   }
