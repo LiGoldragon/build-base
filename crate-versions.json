@@ -224,7 +224,8 @@
       "83.0.0": "06fff39fe3e9a3d65720433a1c27abf83a85db74",
       "84.0.0": "a43cf1c5dff4ba612dfc229aef47df12a2c9c8cd",
       "86.0.0": "37e370c0796215566d525abe32a151b9ce3c3140",
-      "87.0.0": "51008bc150ddae5db7d6ab2b4ceb692aa4cdf92b"
+      "87.0.0": "51008bc150ddae5db7d6ab2b4ceb692aa4cdf92b",
+      "88.0.0": "462e0c850310228676ad919a66359fd400adebf5"
     },
     "meta-signal-herdr-nexus": {
       "0.4.1": "bf27dc28a781b53aad553398faa27db1524651e6"
@@ -302,7 +303,8 @@
       "0.5.0": "abc89b9cc7469a35700cb222ba31a8f5cb0745e6",
       "0.5.1": "2310db311e8bd3cbbda308fbc3d8ac76c14049c7",
       "0.5.2": "29601a3485bf8b726e7a2da7b3fa73a8a8bce58d",
-      "0.6.0": "6892a15b11653a2ef8932a4390b34f5e81583744"
+      "0.6.0": "6892a15b11653a2ef8932a4390b34f5e81583744",
+      "0.6.1": "2706d87843ff3e0bddbf9deb7d6e5d2c00098b5f"
     }
   }
 }
