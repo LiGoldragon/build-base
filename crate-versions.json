@@ -219,7 +219,8 @@
       "81.0.0": "cf65bbd7a3829d0f18438b8538128ca7242f659f",
       "82.0.0": "570b173cbd943001b611439606a439d194a3b824",
       "83.0.0": "06fff39fe3e9a3d65720433a1c27abf83a85db74",
-      "84.0.0": "a43cf1c5dff4ba612dfc229aef47df12a2c9c8cd"
+      "84.0.0": "a43cf1c5dff4ba612dfc229aef47df12a2c9c8cd",
+      "86.0.0": "37e370c0796215566d525abe32a151b9ce3c3140"
     },
     "meta-signal-herdr-nexus": {
       "0.4.1": "bf27dc28a781b53aad553398faa27db1524651e6"
