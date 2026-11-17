@@ -1503,7 +1503,7 @@
     "memo-map": {
       "0.3.4": {
         "attaches": [],
-        "features": []
+        "features": [ "default" ]
       }
     },
     "minijinja": {
@@ -1512,6 +1512,7 @@
           "aho-corasick"
         ],
         "features": [
+          "aho-corasick",
           "custom_syntax",
           "dep:aho-corasick",
           "loader",
