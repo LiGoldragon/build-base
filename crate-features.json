@@ -97,6 +97,14 @@
         ]
       }
     },
+    "memory-engine": {
+      "0.20.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
     "message-defaults": {
       "0.23.1": {
         "attaches": [],
@@ -713,6 +721,37 @@
         ]
       }
     },
+    "meta-signal-orchestrate": {
+      "6.0.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "protos",
+              "signal-orchestrate/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
+      }
+    },
     "nexus": {
       "0.5.0": {
         "attaches": [],
@@ -896,6 +935,34 @@
         ]
       },
       "0.3.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "protos"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
+      },
+      "0.4.0": {
         "sets": [
           {
             "attaches": [],
@@ -1288,10 +1355,49 @@
         ]
       }
     },
+    "signal-orchestrate": {
+      "6.0.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "protos",
+              "signal/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
+      }
+    },
     "signal-sema": {
       "0.2.0": {
         "attaches": [],
         "features": []
+      }
+    },
+    "signal-transport": {
+      "0.1.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
       }
     },
     "translator": {
@@ -1385,87 +1491,15 @@
           }
         ]
       }
-    },
-    "memory-engine": {
-      "0.20.0": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
-    "meta-signal-orchestrate": {
-      "6.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal-orchestrate/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "signal-orchestrate": {
-      "6.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "signal-transport": {
-      "0.1.0": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
     }
   },
   "registry": {
+    "aho-corasick": {
+      "1.1.5": {
+        "attaches": [],
+        "features": []
+      }
+    },
     "anyhow": {
       "1.0.104": {
         "attaches": [],
@@ -2094,11 +2128,30 @@
         ]
       }
     },
+    "memo-map": {
+      "0.3.4": {
+        "attaches": [],
+        "features": []
+      }
+    },
     "memoffset": {
       "0.9.1": {
         "attaches": [],
         "features": [
           "default"
+        ]
+      }
+    },
+    "minijinja": {
+      "2.24.0": {
+        "attaches": [
+          "aho-corasick"
+        ],
+        "features": [
+          "custom_syntax",
+          "dep:aho-corasick",
+          "loader",
+          "multi_template"
         ]
       }
     },
