@@ -256,7 +256,8 @@
     },
     "signal-capsule-nexus": {
       "0.4.0": "dc941e72a31f7084f80b6fa8fe9aa49963acb4a1",
-      "1.0.0": "537fd4eb51034237d28d700706b3214a658f3d13"
+      "1.0.0": "537fd4eb51034237d28d700706b3214a658f3d13",
+      "1.0.1": "d57c6f1d7cdd16f1d81349352c60dda86be337a2"
     },
     "signal-curriculum-nexus": {
       "0.1.0": "4202d8bade73179be646b588498ae55e5687d1e8",
@@ -294,6 +295,7 @@
     "translator": {
       "0.5.0": "abc89b9cc7469a35700cb222ba31a8f5cb0745e6",
       "0.5.1": "2310db311e8bd3cbbda308fbc3d8ac76c14049c7",
+      "0.5.2": "29601a3485bf8b726e7a2da7b3fa73a8a8bce58d",
       "0.6.0": "6892a15b11653a2ef8932a4390b34f5e81583744"
     }
   }
