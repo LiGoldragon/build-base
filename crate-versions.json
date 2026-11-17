@@ -236,7 +236,8 @@
       "6.0.0": "c571dd68c27331c13dd8c7ac4579820d625c0a68"
     },
     "nexus": {
-      "0.5.0": "69946db066bb70bdbc1fd7dbf5e6c88dcf05c363"
+      "0.5.0": "69946db066bb70bdbc1fd7dbf5e6c88dcf05c363",
+      "0.8.0": "4765dd629126d31db8e13bdd338b55682fef2011"
     },
     "protos": {
       "0.33.0": "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8"
@@ -258,7 +259,8 @@
     "signal-capsule-nexus": {
       "0.4.0": "dc941e72a31f7084f80b6fa8fe9aa49963acb4a1",
       "1.0.0": "537fd4eb51034237d28d700706b3214a658f3d13",
-      "1.0.1": "d57c6f1d7cdd16f1d81349352c60dda86be337a2"
+      "1.0.1": "d57c6f1d7cdd16f1d81349352c60dda86be337a2",
+      "2.0.0": "49b4ab138e006e9ee0dc06f7c9850bd003a6b138"
     },
     "signal-curriculum-nexus": {
       "0.1.0": "4202d8bade73179be646b588498ae55e5687d1e8",
