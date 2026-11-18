@@ -289,7 +289,8 @@
       "11.2.0": "4f5cbb9322ecae7a8821439179e778d495d7804a"
     },
     "signal-belief-nexus": {
-      "0.4.2": "011eea2aa83bc07db1fb318b7dcb4d30267e7c2d"
+      "0.4.2": "011eea2aa83bc07db1fb318b7dcb4d30267e7c2d",
+      "1.0.0": "c8542d3ac380130190f3d2592b9c1c2f342e3ffa"
     },
     "signal-capsule-nexus": {
       "0.4.0": "dc941e72a31f7084f80b6fa8fe9aa49963acb4a1",
