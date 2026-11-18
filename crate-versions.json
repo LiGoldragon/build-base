@@ -219,7 +219,8 @@
     },
     "meta-signal-codex-harness-nexus": {
       "0.2.0": "8a504bc80b12d7f75860c276f64e06f387df3ba0",
-      "0.2.1": "84e596322c49483af7f181b18a8221fce84a2778"
+      "0.2.1": "84e596322c49483af7f181b18a8221fce84a2778",
+      "0.3.0": "30e24bf549ab07d17bf413b7c952a3373bf1f781"
     },
     "meta-signal-energy-nexus": {
       "0.5.0": "3264d6f36013ca823b60bdfbc3e10c5f6370f482"
