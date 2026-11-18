@@ -1159,7 +1159,9 @@
         "sets": [
           {
             "attaches": [],
-            "features": [],
+            "features": [
+              "default"
+            ],
             "name": "plain",
             "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
           },
