@@ -2337,6 +2337,21 @@
           "protos",
           "shared-translator/datom"
         ]
+      },
+      "0.3.0": {
+        "attaches": [
+          "datom-codec",
+          "protos"
+        ],
+        "features": [
+          "datom",
+          "datom-codec",
+          "dep:datom-codec",
+          "dep:protos",
+          "nexus-exchange/datom",
+          "protos",
+          "shared-translator/datom"
+        ]
       }
     },
     "translator-serving": {
@@ -2373,6 +2388,38 @@
         ]
       },
       "0.2.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "nexus-exchange/datom",
+              "protos",
+              "shared-translator/datom",
+              "shared-translator/text",
+              "text"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
+      },
+      "0.3.0": {
         "sets": [
           {
             "attaches": [],

@@ -344,11 +344,13 @@
     },
     "translator-client": {
       "0.1.1": "8e744a4503f13dd748e7e222f5f7aa5443b28961",
-      "0.2.0": "0b44de796a984e02d2ee96bdd4729bf8acd2a79b"
+      "0.2.0": "0b44de796a984e02d2ee96bdd4729bf8acd2a79b",
+      "0.3.0": "2739d586e1455a001661fc85a8a61b6219aa99df"
     },
     "translator-serving": {
       "0.1.1": "8e744a4503f13dd748e7e222f5f7aa5443b28961",
-      "0.2.0": "0b44de796a984e02d2ee96bdd4729bf8acd2a79b"
+      "0.2.0": "0b44de796a984e02d2ee96bdd4729bf8acd2a79b",
+      "0.3.0": "2739d586e1455a001661fc85a8a61b6219aa99df"
     }
   }
 }
