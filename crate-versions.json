@@ -335,10 +335,10 @@
       "0.6.0": "6892a15b11653a2ef8932a4390b34f5e81583744"
     },
     "translator-client": {
-      "0.1.0": "fc037957ca0887165fee69abbc0eea5169b5980a"
+      "0.1.1": "8e744a4503f13dd748e7e222f5f7aa5443b28961"
     },
     "translator-serving": {
-      "0.1.0": "fc037957ca0887165fee69abbc0eea5169b5980a"
+      "0.1.1": "8e744a4503f13dd748e7e222f5f7aa5443b28961"
     }
   }
 }
