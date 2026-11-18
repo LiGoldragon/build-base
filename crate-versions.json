@@ -211,7 +211,7 @@
     },
     "meta-signal-belief-nexus": {
       "0.6.1": "eb43351e8ad155b555842a8ab7e9e46eaf8bf97f",
-      "0.7.0": "fcca5ea0c7fccfc77e9dad0d2528830d88c92c08"
+      "0.7.0": "f865b1a3ce4272f444221a0d75c462f0ca261965"
     },
     "meta-signal-capsule-nexus": {
       "0.4.1": "b8fde9e2be92f75945a208208d4b93d6e5fd7e69",
@@ -292,7 +292,7 @@
     },
     "signal-belief-nexus": {
       "0.4.2": "011eea2aa83bc07db1fb318b7dcb4d30267e7c2d",
-      "0.5.0": "e8acf79eecb584296bc24fa56aa0044877080c57"
+      "0.5.0": "43e7f344257dab136097ca4233086d850ce20fdc"
     },
     "signal-capsule-nexus": {
       "0.4.0": "dc941e72a31f7084f80b6fa8fe9aa49963acb4a1",
