@@ -333,6 +333,12 @@
       "0.5.1": "2310db311e8bd3cbbda308fbc3d8ac76c14049c7",
       "0.5.2": "29601a3485bf8b726e7a2da7b3fa73a8a8bce58d",
       "0.6.0": "6892a15b11653a2ef8932a4390b34f5e81583744"
+    },
+    "translator-client": {
+      "0.1.0": "fc037957ca0887165fee69abbc0eea5169b5980a"
+    },
+    "translator-serving": {
+      "0.1.0": "fc037957ca0887165fee69abbc0eea5169b5980a"
     }
   }
 }
