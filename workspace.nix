@@ -413,7 +413,15 @@ let
                           if [ "''${3:-}" = target/cargo-bin-exe ]; then
                             mkdir -p target/lint
                             EXTRA_RUSTC_FLAGS="--emit=metadata $EXTRA_RUSTC_FLAGS" compile_bin "''${1//-/_}" "$2" target/lint
-                            ${lib.optionalString run ''ln -s ${binariesBuild}/bin/"$1" target/cargo-bin-exe/"$1"''}
+                            ${
+                              if run then
+                                ''ln -s ${binariesBuild}/bin/"$1" target/cargo-bin-exe/"$1"''
+                              else
+                                # No test target runs it, so nothing is
+                                # placed where the install copies the
+                                # binaries a test runs from.
+                                "rmdir target/cargo-bin-exe"
+                            }
                           else
                             compile_bin "$@"
                           fi
