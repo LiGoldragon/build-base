@@ -218,7 +218,8 @@
       "1.0.1": "76b4235650b6b1940478c30fc992d17c6e0e0459"
     },
     "meta-signal-codex-harness-nexus": {
-      "0.2.0": "8a504bc80b12d7f75860c276f64e06f387df3ba0"
+      "0.2.0": "8a504bc80b12d7f75860c276f64e06f387df3ba0",
+      "0.2.1": "84e596322c49483af7f181b18a8221fce84a2778"
     },
     "meta-signal-energy-nexus": {
       "0.5.0": "3264d6f36013ca823b60bdfbc3e10c5f6370f482"
@@ -290,7 +291,8 @@
       "3.0.0": "c0194987e9133126e3c8b2d4530e247ec437ee67"
     },
     "signal-codex-harness-nexus": {
-      "0.2.0": "8bd9dc670b8103adcabf447b70d3a4fc195df7a5"
+      "0.2.0": "8bd9dc670b8103adcabf447b70d3a4fc195df7a5",
+      "0.2.1": "6a6fd1c53a2186689ee31e849203e7dd67f76c99"
     },
     "signal-curriculum-nexus": {
       "0.1.0": "4202d8bade73179be646b588498ae55e5687d1e8",
