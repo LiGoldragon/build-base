@@ -185,6 +185,7 @@
               "shared-translator/text",
               "signal-codex-harness-nexus/datom",
               "text",
+              "translator-client/datom",
               "translator-serving/text"
             ],
             "name": "datom",
