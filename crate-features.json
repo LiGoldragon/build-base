@@ -1136,7 +1136,7 @@
       }
     },
     "nexus-exchange": {
-      "0.1.0": {
+      "0.1.1": {
         "sets": [
           {
             "attaches": [],
@@ -1168,13 +1168,13 @@
       }
     },
     "nexus-querying": {
-      "0.1.0": {
+      "0.1.1": {
         "attaches": [],
         "features": []
       }
     },
     "nexus-serving": {
-      "0.1.0": {
+      "0.1.1": {
         "attaches": [],
         "features": []
       }
