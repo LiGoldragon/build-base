@@ -300,7 +300,8 @@
     },
     "signal-codex-harness-nexus": {
       "0.2.0": "8bd9dc670b8103adcabf447b70d3a4fc195df7a5",
-      "0.2.1": "6a6fd1c53a2186689ee31e849203e7dd67f76c99"
+      "0.2.1": "6a6fd1c53a2186689ee31e849203e7dd67f76c99",
+      "0.3.0": "68dafec69a6f733cbee74a7a990b9aeffd0c4873"
     },
     "signal-curriculum-nexus": {
       "0.1.0": "4202d8bade73179be646b588498ae55e5687d1e8",

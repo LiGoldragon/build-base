@@ -409,6 +409,38 @@
             "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
           }
         ]
+      },
+      "0.3.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "flow/datom",
+              "harness/datom",
+              "nexus-exchange/datom",
+              "protos",
+              "signal/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
       }
     },
     "memory": {
