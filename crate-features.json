@@ -143,7 +143,9 @@
               "flow/datom",
               "harness/datom",
               "meta-signal-codex-harness-nexus/datom",
+              "nexus-exchange/datom",
               "protos",
+              "shared-translator/datom",
               "signal-codex-harness-nexus/datom",
               "signal/datom"
             ],
@@ -178,8 +180,12 @@
               "dep:protos",
               "flow/datom",
               "harness/datom",
+              "meta-signal-codex-harness-nexus/datom",
               "protos",
-              "signal-codex-harness-nexus/datom"
+              "shared-translator/text",
+              "signal-codex-harness-nexus/datom",
+              "text",
+              "translator-serving/text"
             ],
             "name": "datom",
             "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
