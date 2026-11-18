@@ -211,7 +211,8 @@
     },
     "meta-signal-belief-nexus": {
       "0.6.1": "eb43351e8ad155b555842a8ab7e9e46eaf8bf97f",
-      "1.0.0": "d85f795e64eecef44c7a91e3372528c98717a87e"
+      "1.0.0": "d85f795e64eecef44c7a91e3372528c98717a87e",
+      "1.1.0": "d983bc02f0c631807eeb62eb8c496deccff7f258"
     },
     "meta-signal-capsule-nexus": {
       "0.4.1": "b8fde9e2be92f75945a208208d4b93d6e5fd7e69",
