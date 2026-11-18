@@ -261,15 +261,18 @@
     },
     "nexus-exchange": {
       "0.1.1": "63a2d477ca194913c847d15f227637d84fbe9aeb",
-      "0.2.0": "fb3441f952ecba19dd3e9f288a39e7275f8ae700"
+      "0.2.0": "fb3441f952ecba19dd3e9f288a39e7275f8ae700",
+      "0.3.0": "a4bc0113c10c34ec9d92cde2d650eca9324144db"
     },
     "nexus-querying": {
       "0.1.1": "63a2d477ca194913c847d15f227637d84fbe9aeb",
-      "0.2.0": "fb3441f952ecba19dd3e9f288a39e7275f8ae700"
+      "0.2.0": "fb3441f952ecba19dd3e9f288a39e7275f8ae700",
+      "0.3.0": "a4bc0113c10c34ec9d92cde2d650eca9324144db"
     },
     "nexus-serving": {
       "0.1.1": "63a2d477ca194913c847d15f227637d84fbe9aeb",
-      "0.2.0": "fb3441f952ecba19dd3e9f288a39e7275f8ae700"
+      "0.2.0": "fb3441f952ecba19dd3e9f288a39e7275f8ae700",
+      "0.3.0": "a4bc0113c10c34ec9d92cde2d650eca9324144db"
     },
     "protos": {
       "0.33.0": "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8"
