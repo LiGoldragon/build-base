@@ -166,10 +166,10 @@
   },
   "git": {
     "codex-harness-nexus": {
-      "0.1.0": "88daba6b924581f057630ce957a242c279a73262"
+      "0.1.0": "db16ba3682a1820a1365899edd42edb5a07aedbb"
     },
     "codex-harness-translator": {
-      "0.1.0": "88daba6b924581f057630ce957a242c279a73262"
+      "0.1.0": "db16ba3682a1820a1365899edd42edb5a07aedbb"
     },
     "datom-codec": {
       "0.33.1": "09a0526949b043f921b6d3ce115b7f455291f2e2"
