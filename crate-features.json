@@ -1719,8 +1719,10 @@
             "name": "datom",
             "features": [
               "datom",
+              "datom-codec",
               "dep:datom-codec",
-              "dep:protos"
+              "dep:protos",
+              "protos"
             ],
             "attaches": [
               "datom-codec",
