@@ -2127,8 +2127,10 @@
             "name": "datom",
             "features": [
               "datom",
+              "datom-codec",
               "dep:datom-codec",
               "nexus/datom",
+              "signal/datom",
               "translator/datom"
             ],
             "attaches": [
