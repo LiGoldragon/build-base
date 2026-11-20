@@ -2011,6 +2011,83 @@
           }
         ]
       }
+    },
+    "codex-harness-nexus": {
+      "0.1.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "flow/datom",
+              "harness/datom",
+              "meta-signal-codex-harness-nexus/datom",
+              "nexus-exchange/datom",
+              "nexus/datom",
+              "protos",
+              "shared-translator/datom",
+              "signal-codex-harness-nexus/datom",
+              "signal/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
+      }
+    },
+    "codex-harness-translator": {
+      "0.1.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [
+              "default"
+            ],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "features": [
+              "codex-harness-nexus/datom",
+              "datom",
+              "datom-codec",
+              "default",
+              "dep:datom-codec",
+              "dep:protos",
+              "flow/datom",
+              "harness/datom",
+              "meta-signal-codex-harness-nexus/datom",
+              "protos",
+              "shared-translator/text",
+              "signal-codex-harness-nexus/datom",
+              "text",
+              "translator-client/datom",
+              "translator-serving/text"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
+      }
     }
   },
   "registry": {
