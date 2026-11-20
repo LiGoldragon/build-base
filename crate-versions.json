@@ -306,6 +306,30 @@
     },
     "nexus-client": {
       "0.1.0": "24804e89416fd64644355527ee219d7a40d3462e"
+    },
+    "harness-nexus-library": {
+      "0.1.0": "3613d63d0994de7841bcf6f070c83bebb0ddfa5a"
+    },
+    "meta-signal-codex-harness-nexus": {
+      "0.4.0": "b6039b70491a2b4b778af4b094c3b5782da2964e"
+    },
+    "nexus-exchange": {
+      "0.3.0": "a4bc0113c10c34ec9d92cde2d650eca9324144db"
+    },
+    "nexus-querying": {
+      "0.3.0": "a4bc0113c10c34ec9d92cde2d650eca9324144db"
+    },
+    "nexus-serving": {
+      "0.3.0": "a4bc0113c10c34ec9d92cde2d650eca9324144db"
+    },
+    "signal-codex-harness-nexus": {
+      "0.3.0": "68dafec69a6f733cbee74a7a990b9aeffd0c4873"
+    },
+    "translator-client": {
+      "0.3.0": "2739d586e1455a001661fc85a8a61b6219aa99df"
+    },
+    "translator-serving": {
+      "0.3.0": "2739d586e1455a001661fc85a8a61b6219aa99df"
     }
   }
 }
