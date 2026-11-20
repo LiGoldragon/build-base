@@ -671,6 +671,12 @@
     },
     "listener-library": {
       "0.1.0": "3549987a7fa5eaab826f21521d5d6a3a23a7d8d7"
+    },
+    "signal-listener": {
+      "1.0.0": "57f69f061b797bdbdcce3d831b9d3a85513b835f"
+    },
+    "meta-signal-listener": {
+      "1.0.0": "b85ed9632e1483234b56ece0c0e675cb69b7990e"
     }
   }
 }
