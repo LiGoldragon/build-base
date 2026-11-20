@@ -668,6 +668,9 @@
     },
     "codex-harness-translator": {
       "0.1.0": "e5201e0d3f316977486138127fd305712c1e1266"
+    },
+    "listener-library": {
+      "0.1.0": "b27994f937d5658712dc82ad9cd36c8b059a6467"
     }
   }
 }

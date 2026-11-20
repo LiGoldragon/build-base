@@ -2113,6 +2113,31 @@
           }
         ]
       }
+    },
+    "listener-library": {
+      "0.1.0": {
+        "sets": [
+          {
+            "name": "plain",
+            "features": [],
+            "attaches": [],
+            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "name": "datom",
+            "features": [
+              "datom",
+              "dep:datom-codec",
+              "nexus/datom",
+              "translator/datom"
+            ],
+            "attaches": [
+              "datom-codec"
+            ],
+            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
+      }
     }
   },
   "registry": {
