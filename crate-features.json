@@ -1706,6 +1706,29 @@
             "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
           }
         ]
+      },
+      "0.2.0": {
+        "sets": [
+          {
+            "name": "plain",
+            "features": [],
+            "attaches": [],
+            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "name": "datom",
+            "features": [
+              "datom",
+              "dep:datom-codec",
+              "dep:protos"
+            ],
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
+            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
       }
     },
     "memory-engine": {
