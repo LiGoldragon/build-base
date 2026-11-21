@@ -2193,6 +2193,33 @@
           }
         ]
       }
+    },
+    "listener-memory": {
+      "0.1.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [],
+            "name": "plain",
+            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "dep:datom-codec",
+              "listener-library/datom",
+              "meta-signal-listener/datom",
+              "signal-listener/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
+      }
     }
   },
   "registry": {

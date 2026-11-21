@@ -677,6 +677,9 @@
     },
     "meta-signal-listener": {
       "1.0.0": "b85ed9632e1483234b56ece0c0e675cb69b7990e"
+    },
+    "listener-memory": {
+      "0.1.0": "405fe7a53af72ea5f7cd32575b6198c558aec80a"
     }
   }
 }
