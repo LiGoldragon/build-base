@@ -1491,7 +1491,7 @@
       }
     },
     "sema": {
-      "0.1.1": {
+      "0.1.2": {
         "attaches": [],
         "features": [
           "default"
@@ -1499,7 +1499,7 @@
       }
     },
     "sema-engine": {
-      "0.19.0": {
+      "0.19.1": {
         "attaches": [],
         "features": [
           "default"
