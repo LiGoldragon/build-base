@@ -570,7 +570,7 @@
     "nexus": {
       "0.5.0": "69946db066bb70bdbc1fd7dbf5e6c88dcf05c363",
       "0.8.0": "4765dd629126d31db8e13bdd338b55682fef2011",
-      "0.9.0": "ea4db5a51083f114c624fc23c023c7a255376846"
+      "0.9.0": "681a99ba307acd9cce6d5c120846072f1cedd814"
     },
     "protos": {
       "0.33.0": "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8"
@@ -637,7 +637,7 @@
       "0.2.0": "8d26df34e13291f34fcda85513c86e6f7c271405"
     },
     "nexus-client": {
-      "0.1.0": "ea4db5a51083f114c624fc23c023c7a255376846"
+      "0.1.0": "681a99ba307acd9cce6d5c120846072f1cedd814"
     },
     "harness-nexus-library": {
       "0.1.0": "3613d63d0994de7841bcf6f070c83bebb0ddfa5a"
