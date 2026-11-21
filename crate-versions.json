@@ -634,7 +634,7 @@
       "0.5.1": "2310db311e8bd3cbbda308fbc3d8ac76c14049c7",
       "0.5.2": "29601a3485bf8b726e7a2da7b3fa73a8a8bce58d",
       "0.6.0": "6892a15b11653a2ef8932a4390b34f5e81583744",
-      "0.2.0": "8d26df34e13291f34fcda85513c86e6f7c271405"
+      "0.2.0": "77ecf05ff43d2063cf4336287dd4bf281ca2e69f"
     },
     "nexus-client": {
       "0.1.0": "681a99ba307acd9cce6d5c120846072f1cedd814"
@@ -664,10 +664,10 @@
       "0.3.0": "2739d586e1455a001661fc85a8a61b6219aa99df"
     },
     "codex-harness-nexus": {
-      "0.1.0": "e5201e0d3f316977486138127fd305712c1e1266"
+      "0.1.0": "4a4e26465e0fcbe68ba772fa56eacc71afa379e6"
     },
     "codex-harness-translator": {
-      "0.1.0": "e5201e0d3f316977486138127fd305712c1e1266"
+      "0.1.0": "4a4e26465e0fcbe68ba772fa56eacc71afa379e6"
     },
     "listener-library": {
       "0.1.0": "3549987a7fa5eaab826f21521d5d6a3a23a7d8d7"
