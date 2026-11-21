@@ -2919,6 +2919,23 @@
         ]
       }
     },
+    "fallible-iterator": {
+      "0.3.0": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "default"
+        ]
+      }
+    },
+    "fallible-streaming-iterator": {
+      "0.1.9": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
     "fastrand": {
       "2.5.0": {
         "attaches": [],
@@ -2971,6 +2988,12 @@
           "default",
           "std"
         ]
+      }
+    },
+    "foldhash": {
+      "0.1.5": {
+        "attaches": [],
+        "features": []
       }
     },
     "fsevent-sys": {
@@ -3140,9 +3163,28 @@
       }
     },
     "hashbrown": {
+      "0.15.5": {
+        "attaches": [
+          "foldhash"
+        ],
+        "features": [
+          "default-hasher",
+          "dep:foldhash",
+          "foldhash",
+          "inline-more"
+        ]
+      },
       "0.17.1": {
         "attaches": [],
         "features": []
+      }
+    },
+    "hashlink": {
+      "0.10.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
       }
     },
     "heck": {
@@ -3252,6 +3294,27 @@
           "default",
           "extra_traits",
           "std"
+        ]
+      }
+    },
+    "libsqlite3-sys": {
+      "0.35.0": {
+        "attaches": [
+          "cc",
+          "pkg-config",
+          "vcpkg"
+        ],
+        "features": [
+          "bundled",
+          "bundled_bindings",
+          "cc",
+          "default",
+          "dep:cc",
+          "dep:pkg-config",
+          "dep:vcpkg",
+          "min_sqlite_version_3_14_0",
+          "pkg-config",
+          "vcpkg"
         ]
       }
     },
@@ -3433,6 +3496,14 @@
     },
     "pin-project-lite": {
       "0.2.17": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "pkg-config": {
+      "0.3.34": {
         "attaches": [],
         "features": [
           "default"
@@ -3675,6 +3746,18 @@
         "attaches": [],
         "features": [
           "bytecheck"
+        ]
+      }
+    },
+    "rusqlite": {
+      "0.37.0": {
+        "attaches": [],
+        "features": [
+          "bundled",
+          "default",
+          "libsqlite3-sys/bundled",
+          "libsqlite3-sys/bundled_bindings",
+          "modern_sqlite"
         ]
       }
     },
@@ -4152,6 +4235,14 @@
       "1.26.1": {
         "attaches": [],
         "features": []
+      }
+    },
+    "vcpkg": {
+      "0.2.15": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
       }
     },
     "version_check": {
