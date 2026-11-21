@@ -314,6 +314,9 @@
       "2.0.0": "49b4ab138e006e9ee0dc06f7c9850bd003a6b138",
       "3.0.0": "c0194987e9133126e3c8b2d4530e247ec437ee67"
     },
+    "signal-claude-prepare": {
+      "0.1.0": "1c1b040f545d4368451894e988073449b4591299"
+    },
     "signal-codex-harness-nexus": {
       "0.2.0": "8bd9dc670b8103adcabf447b70d3a4fc195df7a5",
       "0.2.1": "6a6fd1c53a2186689ee31e849203e7dd67f76c99",
@@ -336,6 +339,9 @@
       "63.0.0": "4982eeb6f8b2ef8a86a0070dc02acaf0f2088272",
       "64.0.0": "83c04fefc087cf76dd3ca04792ff38b53b283b74",
       "67.0.0": "a536862f00704f0ea2a805484d2a61f9e5dd382a"
+    },
+    "signal-harness": {
+      "0.1.0": "eea28159303e9b51e4e211151aba0a3ceb686a32"
     },
     "signal-herdr-nexus": {
       "0.4.0": "10b9d215097504d5c911bb491ef8a5f276a3c683"
