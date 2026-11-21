@@ -507,7 +507,6 @@
       "27.0.0": "8c95310c4c372cfe115cdebc3e85021b98cf2974",
       "28.0.0": "970459d100ddee5f62a76c05642ecfabefba6329",
       "29.0.0": "f23eacf338a90ce4a6dea011554724fa6488fcc9",
-      "30.0.0": "b97d9526909a1ecebf61339f5723eaca53de5dca",
       "30.0.1": "2999292dc67c8608e54d32c333c550b29153cbff"
     },
     "example-signal": {
@@ -679,7 +678,7 @@
       "1.0.0": "0cf47f03e4c99ab424f5db6171875dd9f929161a"
     },
     "listener-memory": {
-      "0.1.0": "405fe7a53af72ea5f7cd32575b6198c558aec80a"
+      "0.1.0": "7b16d0e4379563bcc0276bf47d5a18b89c52c394"
     }
   }
 }

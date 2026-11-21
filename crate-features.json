@@ -50,13 +50,6 @@
           "default"
         ]
       },
-      "30.0.0": {
-        "attaches": [],
-        "features": [
-          "datom",
-          "default"
-        ]
-      },
       "30.0.1": {
         "attaches": [],
         "features": [
