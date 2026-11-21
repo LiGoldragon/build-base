@@ -330,7 +330,8 @@
     },
     "signal-curriculum-nexus": {
       "0.1.0": "4202d8bade73179be646b588498ae55e5687d1e8",
-      "0.2.0": "8e63176cb1c0f1429a9797412391b4035a25cc68"
+      "0.2.0": "8e63176cb1c0f1429a9797412391b4035a25cc68",
+      "0.3.0": "0712f352d8e31ea0f8b009fff07a7f62e2d88db9"
     },
     "signal-energy-nexus": {
       "0.5.0": "7ca10ebccdc674bbd96489ceff3e2a43d32d6ec3"
