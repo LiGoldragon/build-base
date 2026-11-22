@@ -198,7 +198,8 @@
     },
     "flow-ethos": {
       "0.54.0": "5c61d66648a17a218147f3ec11dd995847c8303d",
-      "0.54.3": "062ef9e14abbf6552b257e9ce7e1c22f5bc00c27"
+      "0.54.3": "062ef9e14abbf6552b257e9ce7e1c22f5bc00c27",
+      "0.56.2": "d13304b67d55bb11ec07cc4603081826d0eded33"
     },
     "harness-nexus-library": {
       "0.1.0": "3613d63d0994de7841bcf6f070c83bebb0ddfa5a",
