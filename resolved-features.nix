@@ -41,6 +41,16 @@ let
       runTests = true;
     }
   ) generated.workspaceMembers;
+  # The mandatory, feature-minimal package graph for each root. No
+  # dev-dependency or extra root feature is needed to establish exclusion.
+  minimumByMember = lib.mapAttrs (
+    _: member: internal.mergePackageFeatures {
+      packageId = member.packageId;
+      features = [ ];
+      target = target // { test = false; };
+      runTests = false;
+    }
+  ) generated.workspaceMembers;
   resolutions = lib.attrValues byMember;
   resolved = packageId: lib.unique (lib.sort lib.lessThan (lib.concatMap (resolution: resolution.${packageId} or [ ]) resolutions));
 
@@ -70,6 +80,9 @@ lib.mapAttrsToList (packageId: crate: {
   features = resolved packageId;
   resolutions = lib.mapAttrs (_: resolution: resolution.${packageId}) (
     lib.filterAttrs (_: resolution: resolution ? ${packageId}) byMember
+  );
+  minimumResolutions = lib.mapAttrs (_: resolution: resolution.${packageId}) (
+    lib.filterAttrs (_: resolution: resolution ? ${packageId}) minimumByMember
   );
   featureMap = crate.features or { };
   dependencies = dependencies packageId crate;

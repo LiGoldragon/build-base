@@ -239,6 +239,19 @@ def main(paths):
     # Within the set, under each set name, what a crate asks of another is in
     # the other's set of that name, so each crate's build under a name gives
     # its dependencies their features under it and no more.
+    minimum = {}
+    for identity, holders in crates.items():
+        if identity in named:
+            for repository, entry in holders.items():
+                for member, features in entry["minimumResolutions"].items():
+                    minimum.setdefault((repository, member), {})[identity] = set(features)
+
+    def possible(repository, member, name):
+        return all(
+            features <= set(under(identity, name)["features"])
+            for identity, features in minimum.get((repository, member), {}).items()
+        )
+
     conflicts = []
     for repository, resolved in repositories.items():
         for entry in resolved:
@@ -246,6 +259,10 @@ def main(paths):
                 continue
             identity = (entry["name"], entry["version"], entry["revision"] is not None)
             for name in names:
+                # A root's mandatory features may rule out a set. The widest
+                # resolution still tracks optional paths that could reach this crate.
+                if not any(possible(repository, member, name) for member in entry["resolutions"]):
+                    continue
                 features = under(identity, name)["features"]
                 for dependency in entry["dependencies"]:
                     target_identity = (dependency["crate"], dependency["version"], dependency["revision"] is not None)
