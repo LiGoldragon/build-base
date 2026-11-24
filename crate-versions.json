@@ -1,499 +1,163 @@
 {
   "registry": {
-    "anyhow": [
-      "1.0.104"
-    ],
-    "arrayvec": [
-      "0.7.8"
-    ],
-    "autocfg": [
-      "1.5.1"
-    ],
-    "base64": [
-      "0.22.1"
-    ],
-    "bit-set": [
-      "0.8.0"
-    ],
-    "bit-vec": [
-      "0.8.0"
-    ],
-    "bitflags": [
-      "2.13.2"
-    ],
-    "blake3": [
-      "1.8.7"
-    ],
-    "block-buffer": [
-      "0.10.4"
-    ],
-    "bumpalo": [
-      "3.20.3"
-    ],
-    "bytecheck": [
-      "0.8.3"
-    ],
-    "bytecheck_derive": [
-      "0.8.3"
-    ],
-    "bytes": [
-      "1.12.1"
-    ],
-    "caseless": [
-      "0.2.2"
-    ],
-    "cc": [
-      "1.4.6"
-    ],
-    "cfg-if": [
-      "1.0.4"
-    ],
-    "cfg_aliases": [
-      "0.2.2"
-    ],
-    "comrak": [
-      "0.59.0"
-    ],
-    "constant_time_eq": [
-      "0.4.2"
-    ],
-    "cpufeatures": [
-      "0.2.17",
-      "0.3.1"
-    ],
-    "crypto-common": [
-      "0.1.7"
-    ],
-    "data-encoding": [
-      "2.11.1"
-    ],
-    "digest": [
-      "0.10.7"
-    ],
-    "downcast-rs": [
-      "2.0.2"
-    ],
-    "dyn-clone": [
-      "1.0.20"
-    ],
-    "entities": [
-      "1.0.1"
-    ],
-    "equivalent": [
-      "1.0.2"
-    ],
-    "errno": [
-      "0.3.14"
-    ],
-    "fastrand": [
-      "2.5.0"
-    ],
-    "fearless_simd": [
-      "1.2.0"
-    ],
-    "fearless_simd_macros": [
-      "0.1.0"
-    ],
-    "find-msvc-tools": [
-      "0.1.12"
-    ],
-    "finl_unicode": [
-      "1.5.1"
-    ],
-    "fnv": [
-      "1.0.7"
-    ],
-    "fsevent-sys": [
-      "4.1.0"
-    ],
-    "futures": [
-      "0.3.34"
-    ],
-    "futures-channel": [
-      "0.3.34"
-    ],
-    "futures-core": [
-      "0.3.34"
-    ],
-    "futures-executor": [
-      "0.3.34"
-    ],
-    "futures-io": [
-      "0.3.34"
-    ],
-    "futures-macro": [
-      "0.3.34"
-    ],
-    "futures-sink": [
-      "0.3.34"
-    ],
-    "futures-task": [
-      "0.3.34"
-    ],
-    "futures-util": [
-      "0.3.34"
-    ],
-    "generic-array": [
-      "0.14.7"
-    ],
-    "getrandom": [
-      "0.3.4",
-      "0.4.3"
-    ],
-    "hashbrown": [
-      "0.17.1"
-    ],
-    "heck": [
-      "0.5.0"
-    ],
-    "http": [
-      "1.5.0"
-    ],
-    "httparse": [
-      "1.10.1"
-    ],
-    "indexmap": [
-      "2.14.2"
-    ],
-    "inotify": [
-      "0.11.5"
-    ],
-    "inotify-sys": [
-      "0.1.8"
-    ],
-    "itoa": [
-      "1.0.19"
-    ],
-    "js-sys": [
-      "0.3.105"
-    ],
-    "kameo": [
-      "0.22.2"
-    ],
-    "kameo_macros": [
-      "0.21.1"
-    ],
-    "kqueue": [
-      "1.2.1"
-    ],
-    "kqueue-sys": [
-      "1.1.2"
-    ],
-    "libc": [
-      "0.2.189"
-    ],
-    "linux-raw-sys": [
-      "0.12.1"
-    ],
-    "log": [
-      "0.4.34"
-    ],
-    "memchr": [
-      "2.8.3"
-    ],
-    "memchr-n": [
-      "0.1.10"
-    ],
-    "memoffset": [
-      "0.9.1"
-    ],
-    "mio": [
-      "1.2.3"
-    ],
-    "munge": [
-      "0.4.7"
-    ],
-    "munge_macro": [
-      "0.4.7"
-    ],
-    "nix": [
-      "0.30.1"
-    ],
-    "notify": [
-      "8.2.0"
-    ],
-    "notify-types": [
-      "2.1.0"
-    ],
-    "num-traits": [
-      "0.2.19"
-    ],
-    "once_cell": [
-      "1.21.4"
-    ],
-    "phf": [
-      "0.14.0"
-    ],
-    "phf_codegen": [
-      "0.14.0"
-    ],
-    "phf_generator": [
-      "0.14.0"
-    ],
-    "phf_shared": [
-      "0.14.0"
-    ],
-    "pin-project-lite": [
-      "0.2.17"
-    ],
-    "ppv-lite86": [
-      "0.2.21"
-    ],
-    "prettyplease": [
-      "0.3.0"
-    ],
-    "proc-macro2": [
-      "1.0.107"
-    ],
-    "proptest": [
-      "1.11.0"
-    ],
-    "ptr_meta": [
-      "0.3.2"
-    ],
-    "ptr_meta_derive": [
-      "0.3.2"
-    ],
-    "quick-error": [
-      "1.2.3"
-    ],
-    "quote": [
-      "1.0.47"
-    ],
-    "r-efi": [
-      "5.3.0",
-      "6.0.0"
-    ],
-    "rancor": [
-      "0.1.3"
-    ],
-    "rand": [
-      "0.9.5"
-    ],
-    "rand_chacha": [
-      "0.9.0"
-    ],
-    "rand_core": [
-      "0.9.5"
-    ],
-    "rand_xorshift": [
-      "0.4.0"
-    ],
-    "redb": [
-      "4.3.0"
-    ],
-    "regex-syntax": [
-      "0.8.11"
-    ],
-    "rend": [
-      "0.5.4"
-    ],
-    "rkyv": [
-      "0.8.18"
-    ],
-    "rkyv_derive": [
-      "0.8.18"
-    ],
-    "rustc-hash": [
-      "2.1.3"
-    ],
-    "rustix": [
-      "1.1.4"
-    ],
-    "rustversion": [
-      "1.0.23"
-    ],
-    "rusty-fork": [
-      "0.3.1"
-    ],
-    "same-file": [
-      "1.0.6"
-    ],
-    "serde": [
-      "1.0.229"
-    ],
-    "serde_core": [
-      "1.0.229"
-    ],
-    "serde_derive": [
-      "1.0.229"
-    ],
-    "serde_json": [
-      "1.0.154"
-    ],
-    "sha1": [
-      "0.10.7"
-    ],
-    "sha2": [
-      "0.10.9"
-    ],
-    "shlex": [
-      "2.0.1"
-    ],
-    "signal-hook-registry": [
-      "1.4.8"
-    ],
-    "simdutf8": [
-      "0.1.5"
-    ],
-    "siphasher": [
-      "1.0.4"
-    ],
-    "slab": [
-      "0.4.12"
-    ],
-    "smallvec": [
-      "1.16.5"
-    ],
-    "socket2": [
-      "0.6.5"
-    ],
-    "syn": [
-      "2.0.119",
-      "3.0.5"
-    ],
-    "tempfile": [
-      "3.27.0"
-    ],
-    "thiserror": [
-      "2.0.21"
-    ],
-    "thiserror-impl": [
-      "2.0.21"
-    ],
-    "tinyvec": [
-      "1.13.2"
-    ],
-    "tinyvec_macros": [
-      "0.1.1"
-    ],
-    "tokio": [
-      "1.53.1"
-    ],
-    "tokio-macros": [
-      "2.7.2"
-    ],
-    "toml_datetime": [
-      "0.6.11"
-    ],
-    "toml_edit": [
-      "0.22.27"
-    ],
-    "toml_write": [
-      "0.1.2"
-    ],
-    "tracing": [
-      "0.1.44"
-    ],
-    "tracing-attributes": [
-      "0.1.31"
-    ],
-    "tracing-core": [
-      "0.1.36"
-    ],
-    "tungstenite": [
-      "0.28.0"
-    ],
-    "typed-arena": [
-      "2.0.2"
-    ],
-    "typenum": [
-      "1.20.1"
-    ],
-    "unarray": [
-      "0.1.4"
-    ],
-    "unicode-ident": [
-      "1.0.24"
-    ],
-    "unicode-normalization": [
-      "0.1.26"
-    ],
-    "utf-8": [
-      "0.7.6"
-    ],
-    "uuid": [
-      "1.26.1"
-    ],
-    "version_check": [
-      "0.9.5"
-    ],
-    "wait-timeout": [
-      "0.2.1"
-    ],
-    "walkdir": [
-      "2.5.0"
-    ],
-    "wasi": [
-      "0.11.1+wasi-snapshot-preview1"
-    ],
-    "wasip2": [
-      "1.0.1+wasi-0.2.4"
-    ],
-    "wasm-bindgen": [
-      "0.2.128"
-    ],
-    "wasm-bindgen-macro": [
-      "0.2.128"
-    ],
-    "wasm-bindgen-macro-support": [
-      "0.2.128"
-    ],
-    "wasm-bindgen-shared": [
-      "0.2.128"
-    ],
-    "winapi-util": [
-      "0.1.11"
-    ],
-    "windows-link": [
-      "0.2.1"
-    ],
-    "windows-sys": [
-      "0.60.2",
-      "0.61.2"
-    ],
-    "windows-targets": [
-      "0.53.5"
-    ],
-    "windows_aarch64_gnullvm": [
-      "0.53.1"
-    ],
-    "windows_aarch64_msvc": [
-      "0.53.1"
-    ],
-    "windows_i686_gnu": [
-      "0.53.1"
-    ],
-    "windows_i686_gnullvm": [
-      "0.53.1"
-    ],
-    "windows_i686_msvc": [
-      "0.53.1"
-    ],
-    "windows_x86_64_gnu": [
-      "0.53.1"
-    ],
-    "windows_x86_64_gnullvm": [
-      "0.53.1"
-    ],
-    "windows_x86_64_msvc": [
-      "0.53.1"
-    ],
-    "winnow": [
-      "0.7.15"
-    ],
-    "wit-bindgen": [
-      "0.46.0"
-    ],
-    "zerocopy": [
-      "0.8.57"
-    ],
-    "zerocopy-derive": [
-      "0.8.57"
-    ],
-    "zmij": [
-      "1.0.23"
-    ]
+    "async-broadcast": ["0.7.2"],
+    "async-channel": ["2.5.0"],
+    "async-io": ["2.6.0"],
+    "async-lock": ["3.4.2"],
+    "async-process": ["2.5.0"],
+    "async-recursion": ["1.1.1"],
+    "async-signal": ["0.2.14"],
+    "async-task": ["4.7.1"],
+    "async-trait": ["0.1.92"],
+    "atomic-waker": ["1.1.2"],
+    "autocfg": ["1.5.1"],
+    "base64": ["0.22.1", "0.23.1"],
+    "bitflags": ["2.13.2"],
+    "block-buffer": ["0.10.4"],
+    "blocking": ["1.7.0"],
+    "bumpalo": ["3.20.3"],
+    "bytecheck": ["0.8.3"],
+    "bytecheck_derive": ["0.8.3"],
+    "bytes": ["1.12.1"],
+    "cc": ["1.4.6"],
+    "cfg-if": ["1.0.4"],
+    "cfg_aliases": ["0.2.2"],
+    "concurrent-queue": ["2.5.0"],
+    "cpufeatures": ["0.2.17"],
+    "crossbeam-utils": ["0.8.23"],
+    "crypto-common": ["0.1.7"],
+    "digest": ["0.10.7"],
+    "endi": ["1.1.1"],
+    "enumflags2": ["0.7.12"],
+    "enumflags2_derive": ["0.7.12"],
+    "equivalent": ["1.0.2"],
+    "errno": ["0.3.14"],
+    "event-listener": ["5.4.2"],
+    "event-listener-strategy": ["0.5.4"],
+    "fastrand": ["2.5.0"],
+    "find-msvc-tools": ["0.1.12"],
+    "futures-channel": ["0.3.34"],
+    "futures-core": ["0.3.34"],
+    "futures-io": ["0.3.34"],
+    "futures-lite": ["2.6.1"],
+    "futures-macro": ["0.3.34"],
+    "futures-sink": ["0.3.34"],
+    "futures-task": ["0.3.34"],
+    "futures-util": ["0.3.34"],
+    "generic-array": ["0.14.7"],
+    "getrandom": ["0.2.17", "0.4.3"],
+    "hashbrown": ["0.17.1"],
+    "hermit-abi": ["0.5.3"],
+    "hex": ["0.4.3"],
+    "http": ["1.5.0"],
+    "httparse": ["1.10.1"],
+    "indexmap": ["2.14.2"],
+    "itoa": ["1.0.19"],
+    "js-sys": ["0.3.105"],
+    "libc": ["0.2.189"],
+    "linux-raw-sys": ["0.12.1"],
+    "log": ["0.4.34"],
+    "memchr": ["2.8.3"],
+    "memoffset": ["0.9.1"],
+    "mio": ["1.2.3"],
+    "munge": ["0.4.7"],
+    "munge_macro": ["0.4.7"],
+    "nix": ["0.29.0", "0.30.1"],
+    "once_cell": ["1.21.4"],
+    "ordered-stream": ["0.2.0"],
+    "parking": ["2.2.1"],
+    "percent-encoding": ["2.3.2"],
+    "pin-project-lite": ["0.2.17"],
+    "piper": ["0.2.5"],
+    "pkg-config": ["0.3.34"],
+    "polling": ["3.11.0"],
+    "ppv-lite86": ["0.2.21"],
+    "prettyplease": ["0.3.0"],
+    "proc-macro-crate": ["3.5.0"],
+    "proc-macro2": ["1.0.107"],
+    "ptr_meta": ["0.3.2"],
+    "ptr_meta_derive": ["0.3.2"],
+    "quote": ["1.0.47"],
+    "r-efi": ["6.0.0"],
+    "rancor": ["0.1.3"],
+    "rand": ["0.8.8"],
+    "rand_chacha": ["0.3.1"],
+    "rand_core": ["0.6.4"],
+    "redb": ["4.3.0"],
+    "rend": ["0.5.4"],
+    "ring": ["0.17.14"],
+    "rkyv": ["0.8.18"],
+    "rkyv_derive": ["0.8.18"],
+    "rustix": ["1.1.4"],
+    "rustls": ["0.23.46"],
+    "rustls-pki-types": ["1.16.0"],
+    "rustls-webpki": ["0.103.16"],
+    "rustversion": ["1.0.23"],
+    "serde": ["1.0.229"],
+    "serde_core": ["1.0.229"],
+    "serde_derive": ["1.0.229"],
+    "serde_json": ["1.0.154"],
+    "serde_repr": ["0.1.21"],
+    "sha1": ["0.10.7"],
+    "shlex": ["2.0.1"],
+    "signal-hook-registry": ["1.4.8"],
+    "simdutf8": ["0.1.5"],
+    "slab": ["0.4.12"],
+    "socket2": ["0.6.5"],
+    "static_assertions": ["1.1.0"],
+    "subtle": ["2.6.1"],
+    "syn": ["2.0.119", "3.0.5"],
+    "tempfile": ["3.27.0"],
+    "thiserror": ["2.0.21"],
+    "thiserror-impl": ["2.0.21"],
+    "tinyvec": ["1.13.2"],
+    "tinyvec_macros": ["0.1.1"],
+    "tokio": ["1.53.1"],
+    "tokio-macros": ["2.7.2"],
+    "toml_datetime": ["1.1.1+spec-1.1.0"],
+    "toml_edit": ["0.25.15+spec-1.1.0"],
+    "toml_parser": ["1.1.3+spec-1.1.0"],
+    "tracing": ["0.1.44"],
+    "tracing-attributes": ["0.1.31"],
+    "tracing-core": ["0.1.36"],
+    "typenum": ["1.20.1"],
+    "uds_windows": ["1.2.1"],
+    "unicode-ident": ["1.0.24"],
+    "untrusted": ["0.9.0"],
+    "ureq": ["3.5.1"],
+    "ureq-proto": ["0.7.1"],
+    "utf8-zero": ["0.8.1"],
+    "uuid": ["1.26.1"],
+    "version_check": ["0.9.5"],
+    "wasi": ["0.11.1+wasi-snapshot-preview1"],
+    "wasm-bindgen": ["0.2.128"],
+    "wasm-bindgen-macro": ["0.2.128"],
+    "wasm-bindgen-macro-support": ["0.2.128"],
+    "wasm-bindgen-shared": ["0.2.128"],
+    "webpki-roots": ["1.0.12"],
+    "windows-link": ["0.2.1"],
+    "windows-sys": ["0.52.0", "0.59.0", "0.61.2"],
+    "windows-targets": ["0.52.6"],
+    "windows_aarch64_gnullvm": ["0.52.6"],
+    "windows_aarch64_msvc": ["0.52.6"],
+    "windows_i686_gnu": ["0.52.6"],
+    "windows_i686_gnullvm": ["0.52.6"],
+    "windows_i686_msvc": ["0.52.6"],
+    "windows_x86_64_gnu": ["0.52.6"],
+    "windows_x86_64_gnullvm": ["0.52.6"],
+    "windows_x86_64_msvc": ["0.52.6"],
+    "winnow": ["1.0.4"],
+    "xdg-home": ["1.3.0"],
+    "zbus": ["4.4.0"],
+    "zbus_macros": ["4.4.0"],
+    "zbus_names": ["3.0.0"],
+    "zerocopy": ["0.8.57"],
+    "zerocopy-derive": ["0.8.57"],
+    "zeroize": ["1.9.1"],
+    "zmij": ["1.0.23"],
+    "zvariant": ["4.2.0"],
+    "zvariant_derive": ["4.2.0"],
+    "zvariant_utils": ["2.1.0"]
   },
   "git": {
     "datom-codec": {
@@ -504,181 +168,37 @@
     },
     "ethos-zero": {
       "22.0.0": "1976e45fe1edfd5676cb33919dba1ec20c785a02",
-      "27.0.0": "8c95310c4c372cfe115cdebc3e85021b98cf2974",
-      "28.0.0": "970459d100ddee5f62a76c05642ecfabefba6329",
-      "29.0.0": "f23eacf338a90ce4a6dea011554724fa6488fcc9",
       "30.0.1": "2999292dc67c8608e54d32c333c550b29153cbff"
     },
-    "example-signal": {
-      "0.1.0": "21c87e960efed9d1d58ffd61009c8357a3aa6bf8"
-    },
-    "flow-ethos": {
-      "0.54.0": "5c61d66648a17a218147f3ec11dd995847c8303d",
-      "0.54.3": "062ef9e14abbf6552b257e9ce7e1c22f5bc00c27"
+    "listener-library": {
+      "0.1.0": "9233d4df04a95f0ddeadcea6133bc9593ff4b541"
     },
     "memory": {
       "0.2.0": "e78519c2fc8f213246328bf28f9e38f9a216f76e"
     },
-    "memory-engine": {
-      "0.20.0": "32610884907461dc58c6c143f6f9fec0f13695fc"
-    },
-    "message-defaults": {
-      "0.23.1": "c3d519d1494a534fe573c2749a5309b95bfa91ab",
-      "0.24.0": "71b5ac0dbab577cd25d3d22fb9d789463162c19d"
-    },
-    "message-nexus": {
-      "0.23.1": "c3d519d1494a534fe573c2749a5309b95bfa91ab",
-      "0.24.0": "71b5ac0dbab577cd25d3d22fb9d789463162c19d"
-    },
-    "meta-signal-belief-nexus": {
-      "0.6.1": "eb43351e8ad155b555842a8ab7e9e46eaf8bf97f"
-    },
-    "meta-signal-capsule-nexus": {
-      "0.4.1": "b8fde9e2be92f75945a208208d4b93d6e5fd7e69",
-      "1.0.0": "0a9e3e0a91836ac178f489d633ea9ee288975ba4",
-      "1.0.1": "76b4235650b6b1940478c30fc992d17c6e0e0459"
-    },
-    "meta-signal-energy-nexus": {
-      "0.5.0": "3264d6f36013ca823b60bdfbc3e10c5f6370f482"
-    },
-    "meta-signal-flow": {
-      "73.0.3": "5f90d4ccd84391777815247192028b6a094f6759",
-      "74.0.0": "41063a9509183e9c319451f4ccc042993bb08945",
-      "75.0.0": "e192c0d4338cf3b2381bb37ecb3a177283373db5",
-      "76.0.0": "3b1f6f0bfa77acd751c17a490db6a24cba728520",
-      "77.0.0": "e72f5552816477e1acfaab6cd7515bc5f807edff",
-      "78.0.0": "ac7db8a44c78c77df373e80fdf7d4d9ca5ad3048",
-      "79.0.0": "cdb4e7df3e52065c8c28c6f936e2f6f6fa285c9b",
-      "80.0.0": "1c7597e107304740b922ec5a36c011c40fffe676",
-      "81.0.0": "cf65bbd7a3829d0f18438b8538128ca7242f659f",
-      "82.0.0": "570b173cbd943001b611439606a439d194a3b824",
-      "83.0.0": "06fff39fe3e9a3d65720433a1c27abf83a85db74",
-      "84.0.0": "a43cf1c5dff4ba612dfc229aef47df12a2c9c8cd"
-    },
-    "meta-signal-herdr-nexus": {
-      "0.4.1": "bf27dc28a781b53aad553398faa27db1524651e6"
-    },
-    "meta-signal-message": {
-      "4.0.1": "b9b6a5b60c0e97ddc78244cfc9e99539619a1e4a",
-      "4.0.2": "73b7a8213656f64da64fcc95bdbedc8f98d492c0",
-      "4.0.3": "b245d111396e3ef509c8c9263f9ee1ab61bda384"
-    },
-    "meta-signal-orchestrate": {
-      "6.0.0": "c571dd68c27331c13dd8c7ac4579820d625c0a68"
+    "meta-signal-listener": {
+      "1.0.0": "95f5bb95dce3beff77464165b023966706cc7b38"
     },
     "nexus": {
-      "0.5.0": "69946db066bb70bdbc1fd7dbf5e6c88dcf05c363",
-      "0.8.0": "4765dd629126d31db8e13bdd338b55682fef2011",
       "0.9.0": "681a99ba307acd9cce6d5c120846072f1cedd814"
-    },
-    "protos": {
-      "0.33.0": "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8"
-    },
-    "sema": {
-      "0.1.1": "51d7927c872f0df12791bad8d39a4db6433b01a1"
-    },
-    "sema-engine": {
-      "0.19.0": "6a95a0925c9e6a6a144037ffdbad8c7d3cc126f2"
-    },
-    "signal": {
-      "11.0.0": "6d4eb74a238ea4a6149bd12c42a8c06aec01b154",
-      "11.1.0": "b145ddb40c73d2545697fd9c8e049e562978a3ac",
-      "11.2.0": "4f5cbb9322ecae7a8821439179e778d495d7804a"
-    },
-    "signal-belief-nexus": {
-      "0.4.2": "011eea2aa83bc07db1fb318b7dcb4d30267e7c2d"
-    },
-    "signal-capsule-nexus": {
-      "0.4.0": "dc941e72a31f7084f80b6fa8fe9aa49963acb4a1",
-      "1.0.0": "537fd4eb51034237d28d700706b3214a658f3d13",
-      "1.0.1": "d57c6f1d7cdd16f1d81349352c60dda86be337a2",
-      "2.0.0": "49b4ab138e006e9ee0dc06f7c9850bd003a6b138",
-      "3.0.0": "c0194987e9133126e3c8b2d4530e247ec437ee67"
-    },
-    "signal-curriculum-nexus": {
-      "0.1.0": "4202d8bade73179be646b588498ae55e5687d1e8",
-      "0.2.0": "8e63176cb1c0f1429a9797412391b4035a25cc68"
-    },
-    "signal-energy-nexus": {
-      "0.5.0": "7ca10ebccdc674bbd96489ceff3e2a43d32d6ec3"
-    },
-    "signal-flow": {
-      "58.0.2": "15790be9d6549e03912afa9603f9b4098622ba2e",
-      "59.0.0": "d2a4ca5979e2c3d76161996f6b8054008f62fa77",
-      "60.0.0": "04a72fd35345f63a06352c17f46f997d7fdafaee",
-      "61.0.0": "4871bb81c1119fe72dc76168a97e1e576411b831",
-      "62.0.0": "37e99d39128a1554f4873d541a1b5d50545667e4",
-      "63.0.0": "4982eeb6f8b2ef8a86a0070dc02acaf0f2088272",
-      "64.0.0": "83c04fefc087cf76dd3ca04792ff38b53b283b74"
-    },
-    "signal-herdr-nexus": {
-      "0.4.0": "10b9d215097504d5c911bb491ef8a5f276a3c683"
-    },
-    "signal-message": {
-      "22.0.1": "29992527e8da25b1f659c8827101f2a8b047f313",
-      "23.0.0": "6d82783e35393c9037283cbfd9f98053d22e1b46",
-      "24.0.0": "97bb3a87b3747e99a244e12f470ef547bce64337"
-    },
-    "signal-orchestrate": {
-      "6.0.0": "29bd345925a40786a407454e88e8199b93b8d917"
-    },
-    "signal-sema": {
-      "0.2.0": "4f3a24e6677ab9d200672851016c4c760c1e36e8"
-    },
-    "signal-transport": {
-      "0.1.0": "035fb7fbac8de5e493cdb42ed50fefd94bfb569b"
-    },
-    "translator": {
-      "0.5.0": "abc89b9cc7469a35700cb222ba31a8f5cb0745e6",
-      "0.5.1": "2310db311e8bd3cbbda308fbc3d8ac76c14049c7",
-      "0.5.2": "29601a3485bf8b726e7a2da7b3fa73a8a8bce58d",
-      "0.6.0": "6892a15b11653a2ef8932a4390b34f5e81583744",
-      "0.2.0": "77ecf05ff43d2063cf4336287dd4bf281ca2e69f"
     },
     "nexus-client": {
       "0.1.0": "681a99ba307acd9cce6d5c120846072f1cedd814"
     },
-    "harness-nexus-library": {
-      "0.1.0": "3613d63d0994de7841bcf6f070c83bebb0ddfa5a"
+    "protos": {
+      "0.33.0": "c93b598025984f8a73e70aa18b8e8a6fdfdfdfd8"
     },
-    "meta-signal-codex-harness-nexus": {
-      "0.4.0": "b6039b70491a2b4b778af4b094c3b5782da2964e"
-    },
-    "nexus-exchange": {
-      "0.3.0": "a4bc0113c10c34ec9d92cde2d650eca9324144db"
-    },
-    "nexus-querying": {
-      "0.3.0": "a4bc0113c10c34ec9d92cde2d650eca9324144db"
-    },
-    "nexus-serving": {
-      "0.3.0": "a4bc0113c10c34ec9d92cde2d650eca9324144db"
-    },
-    "signal-codex-harness-nexus": {
-      "0.3.0": "68dafec69a6f733cbee74a7a990b9aeffd0c4873"
-    },
-    "translator-client": {
-      "0.3.0": "2739d586e1455a001661fc85a8a61b6219aa99df"
-    },
-    "translator-serving": {
-      "0.3.0": "2739d586e1455a001661fc85a8a61b6219aa99df"
-    },
-    "codex-harness-nexus": {
-      "0.1.0": "4a4e26465e0fcbe68ba772fa56eacc71afa379e6"
-    },
-    "codex-harness-translator": {
-      "0.1.0": "4a4e26465e0fcbe68ba772fa56eacc71afa379e6"
-    },
-    "listener-library": {
-      "0.1.0": "d0f571a18e0aa5fb8ecd6454fc5bf813a52edf96"
+    "signal": {
+      "11.2.0": "4f5cbb9322ecae7a8821439179e778d495d7804a"
     },
     "signal-listener": {
-      "1.0.0": "df64d2d6e4ca497980a750c4a9229354c126c330"
+      "1.0.0": "df61083c75e7e622c29fe75290a9114ad29dfe03"
     },
-    "meta-signal-listener": {
-      "1.0.0": "0cf47f03e4c99ab424f5db6171875dd9f929161a"
+    "translator": {
+      "0.2.0": "cb4f6f4e5b3ef07f41d749e669dda58a6bcbf585"
     },
-    "listener-memory": {
-      "0.1.0": "7b16d0e4379563bcc0276bf47d5a18b89c52c394"
+    "translator-runtime": {
+      "0.1.0": "cb4f6f4e5b3ef07f41d749e669dda58a6bcbf585"
     }
   }
 }

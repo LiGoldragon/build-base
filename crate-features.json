@@ -29,27 +29,6 @@
           "default"
         ]
       },
-      "27.0.0": {
-        "attaches": [],
-        "features": [
-          "datom",
-          "default"
-        ]
-      },
-      "28.0.0": {
-        "attaches": [],
-        "features": [
-          "datom",
-          "default"
-        ]
-      },
-      "29.0.0": {
-        "attaches": [],
-        "features": [
-          "datom",
-          "default"
-        ]
-      },
       "30.0.1": {
         "attaches": [],
         "features": [
@@ -58,41 +37,30 @@
         ]
       }
     },
-    "example-signal": {
+    "listener-library": {
       "0.1.0": {
-        "attaches": [],
-        "features": [
-          "default",
-          "example-word/json",
-          "json"
-        ]
-      }
-    },
-    "flow-ethos": {
-      "0.54.0": {
-        "attaches": [
-          "datom-codec",
-          "protos"
-        ],
-        "features": [
-          "datom",
-          "datom-codec",
-          "dep:datom-codec",
-          "dep:protos",
-          "protos"
-        ]
-      },
-      "0.54.3": {
-        "attaches": [
-          "datom-codec",
-          "protos"
-        ],
-        "features": [
-          "datom",
-          "datom-codec",
-          "dep:datom-codec",
-          "dep:protos",
-          "protos"
+        "sets": [
+          {
+            "attaches": [],
+            "features": [],
+            "name": "plain",
+            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [
+              "datom-codec"
+            ],
+            "features": [
+              "datom",
+              "datom-codec",
+              "dep:datom-codec",
+              "nexus/datom",
+              "signal/datom",
+              "translator/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
+          }
         ]
       }
     },
@@ -104,689 +72,34 @@
         ]
       }
     },
-    "message-defaults": {
-      "0.23.1": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      },
-      "0.24.0": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
-    "message-nexus": {
-      "0.23.1": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      },
-      "0.24.0": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
-    "meta-signal-belief-nexus": {
-      "0.6.1": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal-belief-nexus/datom",
-              "signal/datom",
-              "translator/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "meta-signal-capsule-nexus": {
-      "0.4.1": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "translator/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
+    "meta-signal-listener": {
       "1.0.0": {
         "sets": [
           {
             "attaches": [],
             "features": [],
             "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
           },
           {
             "attaches": [
-              "datom-codec",
-              "protos"
+              "datom-codec"
             ],
             "features": [
               "datom",
               "datom-codec",
-              "default",
               "dep:datom-codec",
-              "dep:protos",
-              "protos",
+              "listener-library/datom",
+              "signal/datom",
               "translator/datom"
             ],
             "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "1.0.1": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "translator/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "meta-signal-energy-nexus": {
-      "0.5.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal-energy-nexus/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "meta-signal-flow": {
-      "73.0.3": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "74.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "75.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "76.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "77.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "78.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "79.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "80.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "81.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "82.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "83.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "84.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "meta-signal-herdr-nexus": {
-      "0.4.1": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "translator/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "meta-signal-message": {
-      "4.0.1": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal-message/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "4.0.2": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal-message/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "4.0.3": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal-message/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
           }
         ]
       }
     },
     "nexus": {
-      "0.5.0": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      },
-      "0.8.0": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      },
       "0.9.0": {
         "sets": [
           {
@@ -814,6 +127,28 @@
         ]
       }
     },
+    "nexus-client": {
+      "0.1.0": {
+        "sets": [
+          {
+            "attaches": [],
+            "features": [],
+            "name": "plain",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          },
+          {
+            "attaches": [],
+            "features": [
+              "datom",
+              "default",
+              "nexus/datom"
+            ],
+            "name": "datom",
+            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
+          }
+        ]
+      }
+    },
     "protos": {
       "0.33.0": {
         "attaches": [
@@ -826,75 +161,7 @@
         ]
       }
     },
-    "sema": {
-      "0.1.1": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
-    "sema-engine": {
-      "0.19.0": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
     "signal": {
-      "11.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "11.1.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
       "11.2.0": {
         "sets": [
           {
@@ -922,1229 +189,19 @@
         ]
       }
     },
-    "signal-belief-nexus": {
-      "0.4.2": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal/datom",
-              "translator/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "signal-capsule-nexus": {
-      "0.4.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "1.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "1.0.1": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "2.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "3.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "signal-curriculum-nexus": {
-      "0.1.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "0.2.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "signal-energy-nexus": {
-      "0.5.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal-flow/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "signal-flow": {
-      "58.0.2": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "59.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "60.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "61.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "62.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "63.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "64.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow-ethos/datom",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "signal-herdr-nexus": {
-      "0.4.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "signal-message": {
-      "22.0.1": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "23.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "24.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal-flow/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "signal-sema": {
-      "0.2.0": {
-        "attaches": [],
-        "features": []
-      }
-    },
-    "translator": {
-      "0.5.0": {
-        "sets": [
-          {
-            "attaches": [
-              "libc",
-              "nix"
-            ],
-            "features": [
-              "default",
-              "dep:libc",
-              "dep:nix",
-              "libc",
-              "nix",
-              "unix"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "libc",
-              "nix",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:libc",
-              "dep:nix",
-              "dep:protos",
-              "libc",
-              "nix",
-              "protos",
-              "signal/datom",
-              "text",
-              "unix"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "0.5.1": {
-        "sets": [
-          {
-            "attaches": [
-              "libc",
-              "nix"
-            ],
-            "features": [
-              "default",
-              "dep:libc",
-              "dep:nix",
-              "libc",
-              "nix",
-              "unix"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "libc",
-              "nix",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:libc",
-              "dep:nix",
-              "dep:protos",
-              "libc",
-              "nix",
-              "protos",
-              "signal/datom",
-              "text",
-              "unix"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "0.6.0": {
-        "sets": [
-          {
-            "attaches": [
-              "libc",
-              "nix"
-            ],
-            "features": [
-              "default",
-              "dep:libc",
-              "dep:nix",
-              "libc",
-              "nix",
-              "unix"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "libc",
-              "nix",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:libc",
-              "dep:nix",
-              "dep:protos",
-              "libc",
-              "nix",
-              "protos",
-              "signal/datom",
-              "text",
-              "unix"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "0.5.2": {
-        "sets": [
-          {
-            "attaches": [
-              "libc",
-              "nix"
-            ],
-            "features": [
-              "default",
-              "dep:libc",
-              "dep:nix",
-              "libc",
-              "nix",
-              "unix"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "libc",
-              "nix",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:libc",
-              "dep:nix",
-              "dep:protos",
-              "libc",
-              "nix",
-              "protos",
-              "signal/datom",
-              "text",
-              "unix"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      },
-      "0.2.0": {
-        "sets": [
-          {
-            "name": "plain",
-            "features": [],
-            "attaches": [],
-            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "name": "datom",
-            "features": [
-              "datom",
-              "datom-codec",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos"
-            ],
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "memory-engine": {
-      "0.20.0": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
-    "meta-signal-orchestrate": {
-      "6.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal-orchestrate/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "signal-orchestrate": {
-      "6.0.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "signal-transport": {
-      "0.1.0": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
-    "nexus-client": {
-      "0.1.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [],
-            "features": [
-              "datom",
-              "default",
-              "nexus/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "harness-nexus-library": {
-      "0.1.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow/datom",
-              "protos"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "meta-signal-codex-harness-nexus": {
-      "0.4.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "harness/datom",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "nexus-exchange": {
-      "0.3.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "protos",
-              "shared-translator/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "nexus-querying": {
-      "0.3.0": {
-        "attaches": [],
-        "features": []
-      }
-    },
-    "nexus-serving": {
-      "0.3.0": {
-        "attaches": [],
-        "features": []
-      }
-    },
-    "signal-codex-harness-nexus": {
-      "0.3.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow/datom",
-              "harness/datom",
-              "nexus-exchange/datom",
-              "protos",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "translator-client": {
-      "0.3.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "dep:datom-codec",
-              "dep:protos",
-              "nexus-exchange/datom",
-              "protos",
-              "shared-translator/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "translator-serving": {
-      "0.3.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "nexus-exchange/datom",
-              "protos",
-              "shared-translator/datom",
-              "shared-translator/text",
-              "text"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "codex-harness-nexus": {
-      "0.1.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow/datom",
-              "harness/datom",
-              "meta-signal-codex-harness-nexus/datom",
-              "nexus-exchange/datom",
-              "nexus/datom",
-              "protos",
-              "shared-translator/datom",
-              "signal-codex-harness-nexus/datom",
-              "signal/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "codex-harness-translator": {
-      "0.1.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [
-              "default"
-            ],
-            "name": "plain",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec",
-              "protos"
-            ],
-            "features": [
-              "codex-harness-nexus/datom",
-              "datom",
-              "datom-codec",
-              "default",
-              "dep:datom-codec",
-              "dep:protos",
-              "flow/datom",
-              "harness/datom",
-              "meta-signal-codex-harness-nexus/datom",
-              "protos",
-              "shared-translator/text",
-              "signal-codex-harness-nexus/datom",
-              "text",
-              "translator-client/datom",
-              "translator-serving/text"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
-    "listener-library": {
-      "0.1.0": {
-        "sets": [
-          {
-            "name": "plain",
-            "features": [],
-            "attaches": [],
-            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "name": "datom",
-            "features": [
-              "datom",
-              "datom-codec",
-              "dep:datom-codec",
-              "nexus/datom",
-              "signal/datom",
-              "translator/datom"
-            ],
-            "attaches": [
-              "datom-codec"
-            ],
-            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
-          }
-        ]
-      }
-    },
     "signal-listener": {
       "1.0.0": {
         "sets": [
           {
-            "name": "plain",
-            "features": [],
             "attaches": [],
+            "features": [],
+            "name": "plain",
             "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
           },
           {
-            "name": "datom",
+            "attaches": [
+              "datom-codec"
+            ],
             "features": [
               "datom",
               "datom-codec",
@@ -2152,81 +209,109 @@
               "listener-library/datom",
               "signal/datom"
             ],
-            "attaches": [
-              "datom-codec"
-            ],
+            "name": "datom",
             "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
           }
         ]
       }
     },
-    "meta-signal-listener": {
-      "1.0.0": {
+    "translator": {
+      "0.2.0": {
         "sets": [
           {
-            "name": "plain",
-            "features": [],
             "attaches": [],
+            "features": [],
+            "name": "plain",
             "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
           },
           {
-            "name": "datom",
+            "attaches": [
+              "datom-codec",
+              "protos"
+            ],
             "features": [
               "datom",
               "datom-codec",
               "dep:datom-codec",
-              "listener-library/datom",
-              "signal/datom",
-              "translator/datom"
+              "dep:protos",
+              "protos"
             ],
-            "attaches": [
-              "datom-codec"
-            ],
+            "name": "datom",
             "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
           }
         ]
       }
     },
-    "listener-memory": {
+    "translator-runtime": {
       "0.1.0": {
-        "sets": [
-          {
-            "attaches": [],
-            "features": [],
-            "name": "plain",
-            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
-          },
-          {
-            "attaches": [
-              "datom-codec"
-            ],
-            "features": [
-              "datom",
-              "datom-codec",
-              "dep:datom-codec",
-              "listener-library/datom",
-              "meta-signal-listener/datom",
-              "signal-listener/datom"
-            ],
-            "name": "datom",
-            "vision": "vision:ethos:0, \"The datom traits are compiled in only where text is spoken\""
-          }
+        "attaches": [],
+        "features": [
+          "default"
         ]
       }
     }
   },
   "registry": {
-    "anyhow": {
-      "1.0.104": {
+    "async-broadcast": {
+      "0.7.2": {
         "attaches": [],
         "features": [
-          "default",
-          "std"
+          "default"
         ]
       }
     },
-    "arrayvec": {
-      "0.7.8": {
+    "async-channel": {
+      "2.5.0": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "async-io": {
+      "2.6.0": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "async-lock": {
+      "3.4.2": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "async-process": {
+      "2.5.0": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "async-recursion": {
+      "1.1.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "async-signal": {
+      "0.2.14": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "async-task": {
+      "4.7.1": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "async-trait": {
+      "0.1.92": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "atomic-waker": {
+      "1.1.2": {
         "attaches": [],
         "features": []
       }
@@ -2247,23 +332,11 @@
           "default",
           "std"
         ]
-      }
-    },
-    "bit-set": {
-      "0.8.0": {
+      },
+      "0.23.1": {
         "attaches": [],
         "features": [
-          "bit-vec/std",
-          "default",
-          "std"
-        ]
-      }
-    },
-    "bit-vec": {
-      "0.8.0": {
-        "attaches": [],
-        "features": [
-          "default",
+          "alloc",
           "std"
         ]
       }
@@ -2277,22 +350,18 @@
         ]
       }
     },
-    "blake3": {
-      "1.8.7": {
-        "attaches": [],
-        "features": [
-          "constant_time_eq/std",
-          "default",
-          "std"
-        ]
-      }
-    },
     "block-buffer": {
       "0.10.4": {
         "attaches": [],
         "features": [
           "default"
         ]
+      }
+    },
+    "blocking": {
+      "1.7.0": {
+        "attaches": [],
+        "features": []
       }
     },
     "bumpalo": {
@@ -2327,14 +396,6 @@
         ]
       }
     },
-    "caseless": {
-      "0.2.2": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
     "cc": {
       "1.4.6": {
         "attaches": [],
@@ -2359,18 +420,10 @@
         ]
       }
     },
-    "comrak": {
-      "0.59.0": {
+    "concurrent-queue": {
+      "2.5.0": {
         "attaches": [],
         "features": []
-      }
-    },
-    "constant_time_eq": {
-      "0.4.2": {
-        "attaches": [],
-        "features": [
-          "std"
-        ]
       }
     },
     "cpufeatures": {
@@ -2379,28 +432,18 @@
         "features": [
           "default"
         ]
-      },
-      "0.3.1": {
+      }
+    },
+    "crossbeam-utils": {
+      "0.8.23": {
         "attaches": [],
-        "features": [
-          "default"
-        ]
+        "features": []
       }
     },
     "crypto-common": {
       "0.1.7": {
         "attaches": [],
         "features": [
-          "default",
-          "std"
-        ]
-      }
-    },
-    "data-encoding": {
-      "2.11.1": {
-        "attaches": [],
-        "features": [
-          "alloc",
           "default",
           "std"
         ]
@@ -2422,26 +465,29 @@
         ]
       }
     },
-    "downcast-rs": {
-      "2.0.2": {
+    "endi": {
+      "1.1.1": {
         "attaches": [],
         "features": [
           "default",
-          "std",
-          "sync"
+          "std"
         ]
       }
     },
-    "dyn-clone": {
-      "1.0.20": {
-        "attaches": [],
+    "enumflags2": {
+      "0.7.12": {
+        "attaches": [
+          "serde"
+        ],
         "features": [
-          "default"
+          "default",
+          "dep:serde",
+          "serde"
         ]
       }
     },
-    "entities": {
-      "1.0.1": {
+    "enumflags2_derive": {
+      "0.7.12": {
         "attaches": [],
         "features": [
           "default"
@@ -2464,6 +510,29 @@
         ]
       }
     },
+    "event-listener": {
+      "5.4.2": {
+        "attaches": [
+          "parking"
+        ],
+        "features": [
+          "default",
+          "dep:parking",
+          "parking",
+          "std"
+        ]
+      }
+    },
+    "event-listener-strategy": {
+      "0.5.4": {
+        "attaches": [],
+        "features": [
+          "default",
+          "event-listener/std",
+          "std"
+        ]
+      }
+    },
     "fastrand": {
       "2.5.0": {
         "attaches": [],
@@ -2474,83 +543,11 @@
         ]
       }
     },
-    "fearless_simd": {
-      "1.2.0": {
-        "attaches": [],
-        "features": [
-          "default",
-          "std"
-        ]
-      }
-    },
-    "fearless_simd_macros": {
-      "0.1.0": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
     "find-msvc-tools": {
       "0.1.12": {
         "attaches": [],
         "features": [
           "default"
-        ]
-      }
-    },
-    "finl_unicode": {
-      "1.5.1": {
-        "attaches": [],
-        "features": [
-          "categories",
-          "default",
-          "grapheme_clusters"
-        ]
-      }
-    },
-    "fnv": {
-      "1.0.7": {
-        "attaches": [],
-        "features": [
-          "default",
-          "std"
-        ]
-      }
-    },
-    "fsevent-sys": {
-      "4.1.0": {
-        "attaches": [],
-        "features": []
-      }
-    },
-    "futures": {
-      "0.3.34": {
-        "attaches": [
-          "futures-executor"
-        ],
-        "features": [
-          "alloc",
-          "async-await",
-          "default",
-          "executor",
-          "futures-channel/alloc",
-          "futures-core/alloc",
-          "futures-core/std",
-          "futures-executor",
-          "futures-executor/std",
-          "futures-io/std",
-          "futures-sink/alloc",
-          "futures-sink/std",
-          "futures-task/alloc",
-          "futures-task/std",
-          "futures-util/alloc",
-          "futures-util/async-await",
-          "futures-util/async-await-macro",
-          "futures-util/channel",
-          "futures-util/io",
-          "futures-util/std",
-          "std"
         ]
       }
     },
@@ -2575,17 +572,7 @@
         "attaches": [],
         "features": [
           "alloc",
-          "std"
-        ]
-      }
-    },
-    "futures-executor": {
-      "0.3.34": {
-        "attaches": [],
-        "features": [
-          "futures-core/std",
-          "futures-task/std",
-          "futures-util/std",
+          "default",
           "std"
         ]
       }
@@ -2596,6 +583,12 @@
         "features": [
           "std"
         ]
+      }
+    },
+    "futures-lite": {
+      "2.6.1": {
+        "attaches": [],
+        "features": []
       }
     },
     "futures-macro": {
@@ -2609,6 +602,7 @@
         "attaches": [],
         "features": [
           "alloc",
+          "default",
           "std"
         ]
       }
@@ -2670,7 +664,7 @@
       }
     },
     "getrandom": {
-      "0.3.4": {
+      "0.2.17": {
         "attaches": [],
         "features": [
           "default",
@@ -2679,9 +673,7 @@
       },
       "0.4.3": {
         "attaches": [],
-        "features": [
-          "default"
-        ]
+        "features": []
       }
     },
     "hashbrown": {
@@ -2690,11 +682,19 @@
         "features": []
       }
     },
-    "heck": {
-      "0.5.0": {
+    "hermit-abi": {
+      "0.5.3": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "hex": {
+      "0.4.3": {
         "attaches": [],
         "features": [
-          "default"
+          "alloc",
+          "default",
+          "std"
         ]
       }
     },
@@ -2702,7 +702,6 @@
       "1.5.0": {
         "attaches": [],
         "features": [
-          "default",
           "std"
         ]
       }
@@ -2710,10 +709,7 @@
     "httparse": {
       "1.10.1": {
         "attaches": [],
-        "features": [
-          "default",
-          "std"
-        ]
+        "features": []
       }
     },
     "indexmap": {
@@ -2722,20 +718,6 @@
         "features": [
           "default",
           "std"
-        ]
-      }
-    },
-    "inotify": {
-      "0.11.5": {
-        "attaches": [],
-        "features": []
-      }
-    },
-    "inotify-sys": {
-      "0.1.8": {
-        "attaches": [],
-        "features": [
-          "default"
         ]
       }
     },
@@ -2749,43 +731,6 @@
     },
     "js-sys": {
       "0.3.105": {
-        "attaches": [],
-        "features": []
-      }
-    },
-    "kameo": {
-      "0.22.2": {
-        "attaches": [
-          "kameo_macros",
-          "tracing"
-        ],
-        "features": [
-          "default",
-          "dep:kameo_macros",
-          "dep:tracing",
-          "kameo_macros",
-          "macros",
-          "tokio/tracing",
-          "tracing"
-        ]
-      }
-    },
-    "kameo_macros": {
-      "0.21.1": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
-    "kqueue": {
-      "1.2.1": {
-        "attaches": [],
-        "features": []
-      }
-    },
-    "kqueue-sys": {
-      "1.1.2": {
         "attaches": [],
         "features": []
       }
@@ -2836,14 +781,6 @@
         ]
       }
     },
-    "memchr-n": {
-      "0.1.10": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
     "memoffset": {
       "0.9.1": {
         "attaches": [],
@@ -2882,51 +819,23 @@
       }
     },
     "nix": {
-      "0.30.1": {
+      "0.29.0": {
         "attaches": [
           "memoffset"
         ],
         "features": [
-          "default",
           "dep:memoffset",
           "feature",
-          "fs",
-          "inotify",
           "memoffset",
-          "poll",
-          "process",
-          "signal",
           "socket",
+          "uio",
           "user"
         ]
-      }
-    },
-    "notify": {
-      "8.2.0": {
-        "attaches": [
-          "fsevent-sys"
-        ],
-        "features": [
-          "default",
-          "dep:fsevent-sys",
-          "fsevent-sys",
-          "macos_fsevent"
-        ]
-      }
-    },
-    "notify-types": {
-      "2.1.0": {
+      },
+      "0.30.1": {
         "attaches": [],
         "features": [
-          "default"
-        ]
-      }
-    },
-    "num-traits": {
-      "0.2.19": {
-        "attaches": [],
-        "features": [
-          "std"
+          "inotify"
         ]
       }
     },
@@ -2941,37 +850,27 @@
         ]
       }
     },
-    "phf": {
-      "0.14.0": {
-        "attaches": [],
-        "features": [
-          "default",
-          "phf_shared/std",
-          "serde?/std",
-          "std"
-        ]
-      }
-    },
-    "phf_codegen": {
-      "0.14.0": {
+    "ordered-stream": {
+      "0.2.0": {
         "attaches": [],
         "features": [
           "default"
         ]
       }
     },
-    "phf_generator": {
-      "0.14.0": {
+    "parking": {
+      "2.2.1": {
         "attaches": [],
         "features": [
           "default"
         ]
       }
     },
-    "phf_shared": {
-      "0.14.0": {
+    "percent-encoding": {
+      "2.3.2": {
         "attaches": [],
         "features": [
+          "alloc",
           "default",
           "std"
         ]
@@ -2983,6 +882,26 @@
         "features": [
           "default"
         ]
+      }
+    },
+    "piper": {
+      "0.2.5": {
+        "attaches": [],
+        "features": []
+      }
+    },
+    "pkg-config": {
+      "0.3.34": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "polling": {
+      "3.11.0": {
+        "attaches": [],
+        "features": []
       }
     },
     "ppv-lite86": {
@@ -3002,43 +921,20 @@
         ]
       }
     },
+    "proc-macro-crate": {
+      "3.5.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
     "proc-macro2": {
       "1.0.107": {
         "attaches": [],
         "features": [
           "default",
           "proc-macro"
-        ]
-      }
-    },
-    "proptest": {
-      "1.11.0": {
-        "attaches": [
-          "bit-set",
-          "bit-vec",
-          "regex-syntax",
-          "rusty-fork",
-          "tempfile"
-        ],
-        "features": [
-          "bit-set",
-          "bit-vec",
-          "default",
-          "dep:bit-set",
-          "dep:bit-vec",
-          "dep:regex-syntax",
-          "dep:rusty-fork",
-          "dep:tempfile",
-          "fork",
-          "num-traits/std",
-          "rand/os_rng",
-          "rand/std",
-          "regex-syntax",
-          "rusty-fork",
-          "rusty-fork/timeout",
-          "std",
-          "tempfile",
-          "timeout"
         ]
       }
     },
@@ -3061,14 +957,6 @@
         "features": []
       }
     },
-    "quick-error": {
-      "1.2.3": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
     "quote": {
       "1.0.47": {
         "attaches": [],
@@ -3080,10 +968,6 @@
       }
     },
     "r-efi": {
-      "5.3.0": {
-        "attaches": [],
-        "features": []
-      },
       "6.0.0": {
         "attaches": [],
         "features": []
@@ -3098,56 +982,49 @@
       }
     },
     "rand": {
-      "0.9.5": {
+      "0.8.8": {
         "attaches": [
+          "libc",
           "rand_chacha"
         ],
         "features": [
           "alloc",
           "default",
+          "dep:libc",
           "dep:rand_chacha",
-          "os_rng",
+          "getrandom",
+          "libc",
           "rand_chacha",
-          "rand_chacha?/std",
-          "rand_core/os_rng",
+          "rand_chacha/std",
+          "rand_core/alloc",
+          "rand_core/getrandom",
           "rand_core/std",
-          "small_rng",
           "std",
-          "std_rng",
-          "thread_rng"
+          "std_rng"
         ]
       }
     },
     "rand_chacha": {
-      "0.9.0": {
+      "0.3.1": {
         "attaches": [],
         "features": [
           "ppv-lite86/std",
-          "rand_core/std",
           "std"
         ]
       }
     },
     "rand_core": {
-      "0.9.5": {
+      "0.6.4": {
         "attaches": [
           "getrandom"
         ],
         "features": [
+          "alloc",
           "default",
           "dep:getrandom",
           "getrandom",
-          "getrandom?/std",
-          "os_rng",
+          "getrandom/std",
           "std"
-        ]
-      }
-    },
-    "rand_xorshift": {
-      "0.4.0": {
-        "attaches": [],
-        "features": [
-          "default"
         ]
       }
     },
@@ -3157,23 +1034,6 @@
         "features": [
           "default",
           "std"
-        ]
-      }
-    },
-    "regex-syntax": {
-      "0.8.11": {
-        "attaches": [],
-        "features": [
-          "default",
-          "std",
-          "unicode",
-          "unicode-age",
-          "unicode-bool",
-          "unicode-case",
-          "unicode-gencat",
-          "unicode-perl",
-          "unicode-script",
-          "unicode-segment"
         ]
       }
     },
@@ -3188,6 +1048,16 @@
         ]
       }
     },
+    "ring": {
+      "0.17.14": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "default",
+          "dev_urandom_fallback"
+        ]
+      }
+    },
     "rkyv": {
       "0.8.18": {
         "attaches": [
@@ -3198,7 +1068,6 @@
           "alloc",
           "bytecheck",
           "bytes-1?/std",
-          "default",
           "dep:bytecheck",
           "dep:hashbrown",
           "hashbrown",
@@ -3221,15 +1090,6 @@
         "attaches": [],
         "features": [
           "bytecheck"
-        ]
-      }
-    },
-    "rustc-hash": {
-      "2.1.3": {
-        "attaches": [],
-        "features": [
-          "default",
-          "std"
         ]
       }
     },
@@ -3257,30 +1117,61 @@
         ]
       }
     },
+    "rustls": {
+      "0.23.46": {
+        "attaches": [
+          "log",
+          "ring"
+        ],
+        "features": [
+          "dep:log",
+          "dep:ring",
+          "log",
+          "logging",
+          "once_cell/std",
+          "pki-types/std",
+          "ring",
+          "std",
+          "tls12",
+          "webpki/ring",
+          "webpki/std"
+        ]
+      }
+    },
+    "rustls-pki-types": {
+      "1.16.0": {
+        "attaches": [
+          "zeroize"
+        ],
+        "features": [
+          "alloc",
+          "default",
+          "dep:zeroize",
+          "std",
+          "zeroize"
+        ]
+      }
+    },
+    "rustls-webpki": {
+      "0.103.16": {
+        "attaches": [
+          "ring"
+        ],
+        "features": [
+          "alloc",
+          "dep:ring",
+          "pki-types/alloc",
+          "pki-types/std",
+          "ring",
+          "ring?/alloc",
+          "std"
+        ]
+      }
+    },
     "rustversion": {
       "1.0.23": {
         "attaches": [],
         "features": []
-      }
-    },
-    "rusty-fork": {
-      "0.3.1": {
-        "attaches": [
-          "wait-timeout"
-        ],
-        "features": [
-          "dep:wait-timeout",
-          "timeout",
-          "wait-timeout"
-        ]
-      }
-    },
-    "same-file": {
-      "1.0.6": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
       }
     },
     "serde": {
@@ -3326,18 +1217,16 @@
         ]
       }
     },
-    "sha1": {
-      "0.10.7": {
+    "serde_repr": {
+      "0.1.21": {
         "attaches": [],
         "features": [
-          "default",
-          "digest/std",
-          "std"
+          "default"
         ]
       }
     },
-    "sha2": {
-      "0.10.9": {
+    "sha1": {
+      "0.10.7": {
         "attaches": [],
         "features": [
           "default",
@@ -3369,28 +1258,11 @@
         "features": []
       }
     },
-    "siphasher": {
-      "1.0.4": {
-        "attaches": [],
-        "features": [
-          "default",
-          "std"
-        ]
-      }
-    },
     "slab": {
       "0.4.12": {
         "attaches": [],
         "features": [
           "std"
-        ]
-      }
-    },
-    "smallvec": {
-      "1.16.5": {
-        "attaches": [],
-        "features": [
-          "default"
         ]
       }
     },
@@ -3401,6 +1273,20 @@
           "all",
           "default"
         ]
+      }
+    },
+    "static_assertions": {
+      "1.1.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "subtle": {
+      "2.6.1": {
+        "attaches": [],
+        "features": []
       }
     },
     "syn": {
@@ -3414,6 +1300,7 @@
           "dep:quote",
           "derive",
           "extra-traits",
+          "fold",
           "full",
           "parsing",
           "printing",
@@ -3433,14 +1320,14 @@
           "default",
           "dep:quote",
           "derive",
-          "fold",
           "full",
           "parsing",
           "printing",
           "proc-macro",
           "proc-macro2/proc-macro",
           "quote",
-          "quote?/proc-macro"
+          "quote?/proc-macro",
+          "visit-mut"
         ]
       }
     },
@@ -3475,23 +1362,14 @@
     },
     "tinyvec": {
       "1.13.2": {
-        "attaches": [
-          "tinyvec_macros"
-        ],
-        "features": [
-          "alloc",
-          "default",
-          "dep:tinyvec_macros",
-          "tinyvec_macros"
-        ]
+        "attaches": [],
+        "features": []
       }
     },
     "tinyvec_macros": {
       "0.1.1": {
         "attaches": [],
-        "features": [
-          "default"
-        ]
+        "features": []
       }
     },
     "tokio": {
@@ -3517,6 +1395,7 @@
           "dep:tokio-macros",
           "dep:tracing",
           "dep:windows-sys",
+          "fs",
           "io-util",
           "libc",
           "macros",
@@ -3556,32 +1435,34 @@
       }
     },
     "toml_datetime": {
-      "0.6.11": {
+      "1.1.1+spec-1.1.0": {
         "attaches": [],
         "features": [
-          "default"
+          "alloc",
+          "default",
+          "serde_core?/alloc",
+          "serde_core?/std",
+          "std"
         ]
       }
     },
     "toml_edit": {
-      "0.22.27": {
+      "0.25.15+spec-1.1.0": {
         "attaches": [
-          "toml_write",
+          "toml_parser",
           "winnow"
         ],
         "features": [
-          "default",
-          "dep:toml_write",
+          "dep:toml_parser",
           "dep:winnow",
-          "display",
           "parse",
-          "toml_write",
+          "toml_parser",
           "winnow"
         ]
       }
     },
-    "toml_write": {
-      "0.1.2": {
+    "toml_parser": {
+      "1.1.3+spec-1.1.0": {
         "attaches": [],
         "features": [
           "alloc",
@@ -3625,37 +1506,6 @@
         ]
       }
     },
-    "tungstenite": {
-      "0.28.0": {
-        "attaches": [
-          "data-encoding",
-          "http",
-          "httparse",
-          "sha1"
-        ],
-        "features": [
-          "data-encoding",
-          "default",
-          "dep:data-encoding",
-          "dep:http",
-          "dep:httparse",
-          "dep:sha1",
-          "handshake",
-          "http",
-          "httparse",
-          "sha1"
-        ]
-      }
-    },
-    "typed-arena": {
-      "2.0.2": {
-        "attaches": [],
-        "features": [
-          "default",
-          "std"
-        ]
-      }
-    },
     "typenum": {
       "1.20.1": {
         "attaches": [],
@@ -3664,12 +1514,10 @@
         ]
       }
     },
-    "unarray": {
-      "0.1.4": {
+    "uds_windows": {
+      "1.2.1": {
         "attaches": [],
-        "features": [
-          "default"
-        ]
+        "features": []
       }
     },
     "unicode-ident": {
@@ -3680,20 +1528,51 @@
         ]
       }
     },
-    "unicode-normalization": {
-      "0.1.26": {
+    "untrusted": {
+      "0.9.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "ureq": {
+      "3.5.1": {
+        "attaches": [
+          "rustls",
+          "rustls-pki-types",
+          "webpki-roots"
+        ],
+        "features": [
+          "_ring",
+          "_rustls",
+          "_tls",
+          "dep:rustls",
+          "dep:rustls-pki-types",
+          "dep:webpki-roots",
+          "rustls",
+          "rustls-no-provider",
+          "rustls-pki-types",
+          "rustls-webpki-roots",
+          "rustls?/ring",
+          "webpki-roots"
+        ]
+      }
+    },
+    "ureq-proto": {
+      "0.7.1": {
+        "attaches": [],
+        "features": [
+          "client"
+        ]
+      }
+    },
+    "utf8-zero": {
+      "0.8.1": {
         "attaches": [],
         "features": [
           "default",
           "std"
-        ]
-      }
-    },
-    "utf-8": {
-      "0.7.6": {
-        "attaches": [],
-        "features": [
-          "default"
         ]
       }
     },
@@ -3711,30 +1590,8 @@
         ]
       }
     },
-    "wait-timeout": {
-      "0.2.1": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
-    "walkdir": {
-      "2.5.0": {
-        "attaches": [],
-        "features": [
-          "default"
-        ]
-      }
-    },
     "wasi": {
       "0.11.1+wasi-snapshot-preview1": {
-        "attaches": [],
-        "features": []
-      }
-    },
-    "wasip2": {
-      "1.0.1+wasi-0.2.4": {
         "attaches": [],
         "features": []
       }
@@ -3763,8 +1620,8 @@
         "features": []
       }
     },
-    "winapi-util": {
-      "0.1.11": {
+    "webpki-roots": {
+      "1.0.12": {
         "attaches": [],
         "features": []
       }
@@ -3776,7 +1633,11 @@
       }
     },
     "windows-sys": {
-      "0.60.2": {
+      "0.52.0": {
+        "attaches": [],
+        "features": []
+      },
+      "0.59.0": {
         "attaches": [],
         "features": []
       },
@@ -3786,74 +1647,106 @@
       }
     },
     "windows-targets": {
-      "0.53.5": {
+      "0.52.6": {
         "attaches": [],
         "features": []
       }
     },
     "windows_aarch64_gnullvm": {
-      "0.53.1": {
+      "0.52.6": {
         "attaches": [],
         "features": []
       }
     },
     "windows_aarch64_msvc": {
-      "0.53.1": {
+      "0.52.6": {
         "attaches": [],
         "features": []
       }
     },
     "windows_i686_gnu": {
-      "0.53.1": {
+      "0.52.6": {
         "attaches": [],
         "features": []
       }
     },
     "windows_i686_gnullvm": {
-      "0.53.1": {
+      "0.52.6": {
         "attaches": [],
         "features": []
       }
     },
     "windows_i686_msvc": {
-      "0.53.1": {
+      "0.52.6": {
         "attaches": [],
         "features": []
       }
     },
     "windows_x86_64_gnu": {
-      "0.53.1": {
+      "0.52.6": {
         "attaches": [],
         "features": []
       }
     },
     "windows_x86_64_gnullvm": {
-      "0.53.1": {
+      "0.52.6": {
         "attaches": [],
         "features": []
       }
     },
     "windows_x86_64_msvc": {
-      "0.53.1": {
+      "0.52.6": {
         "attaches": [],
         "features": []
       }
     },
     "winnow": {
-      "0.7.15": {
+      "1.0.4": {
         "attaches": [],
         "features": [
           "alloc",
+          "ascii",
+          "binary",
           "default",
           "memchr?/std",
+          "parser",
           "std"
         ]
       }
     },
-    "wit-bindgen": {
-      "0.46.0": {
+    "xdg-home": {
+      "1.3.0": {
         "attaches": [],
-        "features": []
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "zbus": {
+      "4.4.0": {
+        "attaches": [
+          "tokio"
+        ],
+        "features": [
+          "dep:tokio",
+          "tokio"
+        ]
+      }
+    },
+    "zbus_macros": {
+      "4.4.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "zbus_names": {
+      "3.0.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
       }
     },
     "zerocopy": {
@@ -3871,8 +1764,44 @@
         "features": []
       }
     },
+    "zeroize": {
+      "1.9.1": {
+        "attaches": [],
+        "features": [
+          "alloc",
+          "default"
+        ]
+      }
+    },
     "zmij": {
       "1.0.23": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "zvariant": {
+      "4.2.0": {
+        "attaches": [
+          "enumflags2"
+        ],
+        "features": [
+          "dep:enumflags2",
+          "enumflags2"
+        ]
+      }
+    },
+    "zvariant_derive": {
+      "4.2.0": {
+        "attaches": [],
+        "features": [
+          "default"
+        ]
+      }
+    },
+    "zvariant_utils": {
+      "2.1.0": {
         "attaches": [],
         "features": [
           "default"

@@ -29,7 +29,12 @@
             inherit pkgs toolchain;
             # Native inputs a crate needs to build. Extend here, never in a
             # repository, so every repository hashes the crate the same.
-            crateOverrides = pkgs.defaultCrateOverrides;
+            crateOverrides = pkgs.defaultCrateOverrides // {
+              listener-recording = _: {
+                nativeBuildInputs = [ pkgs.pkg-config ];
+                buildInputs = [ pkgs.libpulseaudio pkgs.libopus pkgs.libogg ];
+              };
+            };
             # The one crate2nix every repository generates its Cargo.nix with.
             # crate2nix 0.15.0, which reads a git crate's hash under its own
             # revision alone (crate2nix-git-hash-by-rev.patch).
