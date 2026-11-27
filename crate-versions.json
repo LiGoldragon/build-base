@@ -204,6 +204,9 @@
       "0.1.0": "3613d63d0994de7841bcf6f070c83bebb0ddfa5a",
       "0.3.0": "ae7e008700972b7f033de6ba94c36e6c49fc93f8"
     },
+    "kameo": {
+      "0.22.2-loom.1": "306e02ba6cc9fdeec553254e14a1734cfc2e1ee3"
+    },
     "memory": {
       "0.2.0": "e78519c2fc8f213246328bf28f9e38f9a216f76e"
     },
@@ -375,6 +378,7 @@
       "0.5.0": "abc89b9cc7469a35700cb222ba31a8f5cb0745e6",
       "0.5.1": "2310db311e8bd3cbbda308fbc3d8ac76c14049c7",
       "0.5.2": "29601a3485bf8b726e7a2da7b3fa73a8a8bce58d",
+      "0.5.3": "fc037957ca0887165fee69abbc0eea5169b5980a",
       "0.6.0": "6892a15b11653a2ef8932a4390b34f5e81583744"
     },
     "translator-client": {
