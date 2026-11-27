@@ -3,8 +3,8 @@
 # the crate and its version.
 #
 # A crate's store path is then decided by what the build reads and nothing
-# else. The same crate at two commits that differ in a README, a test, a lock
-# or a flake, or in another crate of its repository, is one path, so one
+# else. The same crate at two commits that differ only in an unselected
+# README, a test, a lock, a flake, or another crate, is one path, so one
 # build; and a crate built in its own repository, a member, is the same path
 # as the same commit taken as a git dependency, whether it sits at the root of
 # its repository or in a subdirectory. A member's source is its crate
@@ -17,10 +17,11 @@
 #
 # Dropped, in every directory that holds a Cargo.toml (the crate's directory,
 # and any crate nested in it): the directories and files named below, and
-# Markdown. Left whole: src/, build.rs, and every other file or directory,
+# Markdown other than the crate's selected readme. Left whole: src/, build.rs,
+# and every other file or directory,
 # which a crate may read with include_str! or from its build script. A crate
 # reading a file outside its own directory (include_str!("../../x"), a build
-# script reading the workspace root) finds it absent; no active crate does.
+# script reading the workspace root) finds it absent.
 { lib }:
 let
   # Read by tests, examples and benchmarks, by the repository's tools, or by
@@ -57,6 +58,55 @@ let
         lib.elem name files || lib.hasSuffix ".md" name
     );
 
+  # Only a regular file reached through real directories is eligible. Check
+  # each component before descending, so neither an absolute path, a parent
+  # component nor a symlink can add an asset to the source.
+  containedFile = directory: components:
+    let
+      next = lib.head components;
+      rest = lib.tail components;
+      type = (builtins.readDir directory).${next} or null;
+      path = "${directory}/${next}";
+    in
+    if rest == [ ] then
+      (if type == "regular" then path else null)
+    else if type == "directory" && !(unread path type) then
+      containedFile path rest
+    else
+      null;
+
+  # Cargo selects a literal package readme, README.md for true, or its first
+  # default candidate when unspecified. False, workspace inheritance, and
+  # non-contained or already excluded paths grant no extra source access.
+  packageReadme = directory:
+    let
+      entries = builtins.readDir directory;
+      manifest =
+        if (entries."Cargo.toml" or null) == "regular" then
+          builtins.fromTOML (builtins.readFile "${directory}/Cargo.toml")
+        else
+          { };
+      declared = (manifest.package or { }).readme or null;
+      name =
+        if builtins.isString declared then
+          declared
+        else if declared == true then
+          "README.md"
+        else if declared == null then
+          lib.findFirst (file: lib.elem (entries.${file} or null) [ "regular" "symlink" ]) null [
+            "README.md"
+            "README.txt"
+            "README"
+          ]
+        else
+          null;
+      components = if name == null then [ ] else lib.filter (part: part != ".") (lib.splitString "/" name);
+    in
+    if components == [ ] || lib.any (part: part == "" || part == "..") components then
+      null
+    else
+      containedFile directory components;
+
   # The directories under `directory`, itself first, that hold a Cargo.toml,
   # relative to it; hidden directories and target are not searched.
   manifests =
@@ -90,8 +140,16 @@ in
 # The crate's source: a fetchgit of its repository, or a member's path source
 # (itself a cleanSourceWith, whose own filter holds as well).
 crate:
+let
+  source = if crate.src ? rev then directoryOf crate.src crate.crateName else crate.src;
+  # cleanSourceWith evaluates its filter on paths in the original source.
+  readme = packageReadme (toString (source.origSrc or source));
+in
 lib.cleanSourceWith {
-  src = if crate.src ? rev then directoryOf crate.src crate.crateName else crate.src;
-  filter = path: type: !(unread path type);
+  src = source;
+  filter =
+    path: type:
+    !(unread path type)
+    || (type == "regular" && lib.hasSuffix ".md" (baseNameOf path) && path == readme);
   name = "${crate.crateName}-${crate.version}";
 }
