@@ -101,6 +101,7 @@
         };
         crate-features-named-sets = import ./crate-features-test.nix contexts.${system};
         crate-default-features = import ./crate-default-features-test.nix contexts.${system};
+        crate-source-readme = import ./crate-source-test.nix contexts.${system};
       });
 
       packages = lib.genAttrs systems (
